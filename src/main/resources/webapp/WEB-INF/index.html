@@ -52,15 +52,14 @@
 
 	<!-- Page Header -->
 	<!-- Set your background image for this header on the line below. -->
-	<header class="intro-header"
-		style="background-image: url('img/home-bg.jpg')">
+	<header class="intro-header"  style="background-image: url('img/home-bg.jpg')"   >
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 					<div class="site-heading">
-						<h1 th:text="${message.PAGE_TITLE}"></h1>
+						<h1 th:text="${message.page_title}"></h1>
 						<hr class="small"></hr>
-						<span class="subheading" th:text="${message.PAGE_SUBTITLE}"></span>
+						<span class="subheading" th:text="${message.page_sub_title}"></span>
 					</div>
 				</div>
 			</div>
@@ -68,75 +67,31 @@
 	</header>
 
 	<!-- Main Content -->
-	<div class="container">
-		<div class="row">
+	<div class="container" >
+		<div class="row" th:each="link : ${message.MAIN_SECTION.SECTION_LINKS_ZN}">
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<div class="post-preview">
-				<h2 class="post-title" th:text="${message.Main_section.section_links}"></h2>
-					<table>
-						<tr th:each="link : ${message.Main_section.section_links}">
-							<td th:text="${link.link_title}">Onions</td>
-
-						</tr>
-					</table>
-
-					<a href="/post"
-						th:each="link : ${message.Main_section.section_links}">
+				<div class="post-preview" >			
+					<a th:href="${link.link_title}"	>
 						<h2 class="post-title" th:text="${link.link_title}"></h2>
 						<h3 class="post-subtitle" th:text="${link.link_sub_title}"></h3>
 					</a>
 					<p class="post-meta">
-						Posted by <a href="#">Start Bootstrap</a> on September 24, 2014
+						Posted by <a href="#">Admin</a> <p th:text="${link.link_date}"></p>
 					</p>
 				</div>
-				<hr></hr>
-				<div class="post-preview">
-					<a href="post.html">
-						<h2 class="post-title">I believe every human has a finite
-							number of heartbeats. I don't intend to waste any of mine.</h2>
-					</a>
-					<p class="post-meta">
-						Posted by <a href="#">Start Bootstrap</a> on September 18, 2014
-					</p>
-				</div>
-				<hr></hr>
-				<div class="post-preview">
-					<a href="post.html">
-						<h2 class="post-title">Science has not yet mastered prophecy
-						</h2>
-						<h3 class="post-subtitle">We predict too much for the next
-							year and yet far too little for the next ten.</h3>
-					</a>
-					<p class="post-meta">
-						Posted by <a href="#">Start Bootstrap</a> on August 24, 2014
-					</p>
-				</div>
-				<hr></hr>
-				<div class="post-preview">
-					<a href="post.html">
-						<h2 class="post-title">Failure is not an option</h2>
-						<h3 class="post-subtitle">Many say exploration is part of our
-							destiny, but it’s actually our duty to future generations.</h3>
-					</a>
-					<p class="post-meta">
-						Posted by <a href="#">Start Bootstrap</a> on July 8, 2014
-					</p>
-				</div>
-				<hr></hr>
-				<!-- Pager -->
-				<ul class="pager">
-					<li class="next"><a href="#" onClick="javaScript:loadajax()">Older
-							Posts &rarr;</a> <input id="hello" type="submit" value="helloworld"
-						onClick="javaScript:loadajax()"></input></li>
-				</ul>
+				<hr></hr>			
+				
 			</div>
 		</div>
+		<!-- Pager -->
+				<ul class="pager">
+					<li class="next"><a href="#" onClick="javaScript:loadajax()">Older
+							Posts &rarr;</a> </li>
+				</ul>
 	</div>
 
 	<hr></hr>
-	<div class="container">
-		<textarea id="myTextArea" rows="20" cols="80"></textarea>
-	</div>
+	
 	<!-- Footer -->
 	<footer>
 		<div class="container">
