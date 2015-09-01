@@ -27,7 +27,7 @@ import org.springframework.stereotype.Component;
 public class MQConnector {
 
 	private ThreadExchanger exchanger=ThreadExchanger.instance();
-	private static final String URL="tcp://dal-cont056-9w7:61616";
+	private static final String URL="tcp://localhost:61616";
 	private String response;
 	public String getResponse( QMessage domainMessage) throws Exception{
 		try {
