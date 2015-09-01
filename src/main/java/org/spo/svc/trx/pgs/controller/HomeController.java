@@ -74,6 +74,28 @@ public class HomeController {
     public String root(Locale locale, Model model) {
         logger.info("Welcome home! the client locale is " + locale.toString());
 
+        logger.info("Welcome home! the client locale is " + locale.toString());
+        QMessage message = new QMessage();
+		message.setHandler("pages");
+		message.setFileName("PG01O/01");
+		String response ="";
+		try {
+			response = connector.getResponse(message);
+			
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		try{
+			Gson gson = new Gson();
+			Type typ = new TypeToken<PG01O>(){}.getType();//FIXME right now only string works
+			PG01O cmd= gson.fromJson(response,typ);		
+			model.addAttribute("message",cmd);
+			System.out.println(cmd.toString());
+			
+		}catch(Exception e){
+			System.out.println("Error during messagePayload processing from  TestResourceServerException on" );
+			e.printStackTrace();
+		}
         Date date = new Date();
         DateFormat dateFormat =DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG, locale);
 
