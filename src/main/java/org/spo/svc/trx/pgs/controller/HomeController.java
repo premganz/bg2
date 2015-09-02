@@ -72,9 +72,11 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String root(Locale locale, Model model) {
+    	
         logger.info("Welcome home! the client locale is " + locale.toString());
 
         logger.info("Welcome home! the client locale is " + locale.toString());
+      
         QMessage message = new QMessage();
 		message.setHandler("pages");
 		message.setFileName("PG01O/01");
@@ -103,6 +105,7 @@ public class HomeController {
         model.addAttribute("serverTime", formattedDate);
         model.addAttribute("echoService", echoService);
         model.addAttribute("someItems", new String[] { "one", "two", "three" });
+      
         return "index";
     }
     
