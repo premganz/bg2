@@ -31,7 +31,7 @@ public class HomeController {
 
     @Autowired
     private EchoService echoService = null;
-    @Autowired
+  
 	private MQConnector connector;
     /**
      * Simple controller for "/" that returns a Thymeleaf view.
@@ -44,6 +44,7 @@ public class HomeController {
 		message.setFileName("PG01O/01");
 		String response ="";
 		try {
+			connector=new MQConnector();
 			response = connector.getResponse(message);
 			
 		} catch (Exception e) {			
