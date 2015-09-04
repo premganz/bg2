@@ -24,7 +24,7 @@ public class TestPythonController {
 			
 		}
 	
-	@Test 
+	//@Test 
 	public void testHttpdRunning() {
 		String result="";
 		PyCgiInvocationSvc svc = new PyCgiInvocationSvc();
@@ -39,7 +39,7 @@ public class TestPythonController {
 
 	}
 	
-	@Test 
+	//@Test 
 	public void resultConvertibleToMessage() {
 		String result="";
 		JsonMessage message= new JsonMessage();	

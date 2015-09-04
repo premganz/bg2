@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class TestTextQController {
 
 	
-	@Test 
+	//@Test 
 	public void testAsController() {		
 		RestTemplate restTemplate = new RestTemplate();
 		String result = (String)restTemplate.getForObject("http://localhost:8080/pages/x/y" , String.class );

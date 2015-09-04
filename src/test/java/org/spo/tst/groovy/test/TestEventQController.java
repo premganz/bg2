@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class TestEventQController {
 
 	
-	@Test 
+	//@Test 
 	public void testAsController() {		
 		RestTemplate restTemplate = new RestTemplate();
 		String result = (String)restTemplate.getForObject("http://localhost:8081/events//" , String.class );

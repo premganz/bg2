@@ -11,10 +11,10 @@ import org.springframework.web.client.RestTemplate;
 public class TestXlsController {
 
 	
-	@Test 
+	//@Test 
 	public void queryWholeSheet() {}
 		
-	@Test 
+	//@Test 
 	public void queryWholeSheet_1() {
 		RestTemplate restTemplate = new RestTemplate();
 		List resultList = (List)restTemplate.getForObject("http://localhost:8080/readxl/x/" , List.class );
@@ -22,7 +22,7 @@ public class TestXlsController {
 		
 	}
 	
-	@Test 
+	//@Test 
 	public void queryWholeSheet_2() {
 		RestTemplate restTemplate = new RestTemplate();
 		ArrayList<Map<String, String>> resultList = (ArrayList<Map<String, String>>)restTemplate.getForObject("http://localhost:8080/readxl/x/y?fld=a&val=b" , ArrayList.class );
@@ -30,7 +30,7 @@ public class TestXlsController {
 		
 	}
 	
-	@Test 
+	//@Test 
 	public void queryWholeSheet_3() {
 		RestTemplate restTemplate = new RestTemplate();
 		ArrayList<Map<String, String>> resultList = (ArrayList<Map<String, String>>)restTemplate.getForObject("http://localhost:8080/readxl/x/y?fld=a&val=b" , ArrayList.class );
