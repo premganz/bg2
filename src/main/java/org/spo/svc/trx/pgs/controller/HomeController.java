@@ -5,10 +5,14 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.jms.Message;
+import javax.jms.TextMessage;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spo.ifs.template.EchoService;
 import org.spo.svc.pages.gateway.model.QMessage;
+import org.spo.svc.pages.gateway.svc.JmsQueueSender;
 import org.spo.svc.pages.gateway.svc.MQConnector;
 import org.spo.svc.trx.pgs.cmd.PG01O;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,21 +35,27 @@ public class HomeController {
 
     @Autowired
     private EchoService echoService = null;
-  
+ 
 	private MQConnector connector;
+    @Autowired
+    private JmsQueueSender sender;
     /**
      * Simple controller for "/" that returns a Thymeleaf view.
      */
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {
         logger.info("Welcome home! the client locale is " + locale.toString());
+      
+        
         QMessage message = new QMessage();
 		message.setHandler("pages");
 		message.setFileName("PG01O/01");
 		String response ="";
 		try {
-			connector=new MQConnector();
-			response = connector.getResponse(message);
+			//connector=new MQConnector();
+			//response = connector.getResponse(message);
+			TextMessage reply = sender.simpleSend(message.toString()); 
+			response=reply.getText();
 			
 		} catch (Exception e) {			
 			e.printStackTrace();

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/event")
 public class ActorQMessageController {
 
-	@Autowired
+	
 	private MQConnector connector;
 
 	

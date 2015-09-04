@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/pages")
 public class PageQMapController {
 
-	@Autowired
+	
 	private MQConnector connector;
 
 	

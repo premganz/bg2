@@ -1,5 +1,11 @@
 package org.spo.svc.pages.gateway.model;
 
+import java.io.StringWriter;
+import java.io.Writer;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -39,6 +45,25 @@ public class QMessage {
 		this.repo = repo;
 	}
 
-	
+@Override
+public String toString() {
+	Writer writer = new StringWriter();
+	try {
+
+
+		JAXBContext jaxbContext = JAXBContext.newInstance(QMessage.class);
+		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+		// output pretty printed
+		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+		jaxbMarshaller.marshal(this, writer);
+
+
+	} catch (JAXBException e) {
+		e.printStackTrace();
+	}
+	return writer.toString();
+}	
 	
 }

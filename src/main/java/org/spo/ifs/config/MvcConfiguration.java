@@ -28,16 +28,18 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
  */
 @EnableWebMvc
 @Configuration
-@ComponentScan(useDefaultFilters = false, basePackages = {"org.spo.ifs.template",
-		"org.spo.svc.xlaccess",
-		"org.spo.svc.pages.gateway",
+@ImportResource("classpath:META-INF/spring/servlet-context.xml")
+@ComponentScan(useDefaultFilters = false, basePackages = {
+		"org.spo.ifs.template",
+		"org.spo.svc.xlaccess.service",
+		"org.spo.svc.xlaccess.controller",		
+		"org.spo.svc.pages.gateway.svc",		
 		"org.spo.svc.httpd",
 		"org.spo.svc.trx",
-		"org.spo.svc.trx.pgs",
-		"org.spo.svc.pages.gateway",
+		"org.spo.svc.trx.pgs",		
 		"org.spo.svc.xlaccess.test"},
         includeFilters = {@ComponentScan.Filter(Controller.class)})
-@ImportResource("classpath:META-INF/spring/servlet-context.xml")
+
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
     final Logger logger = LoggerFactory.getLogger(getClass());
