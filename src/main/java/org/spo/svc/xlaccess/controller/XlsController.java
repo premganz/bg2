@@ -5,10 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.spo.svc.config.AppConstants;
-import org.spo.svc.xlaccess.model.QueryResult;
-import org.spo.svc.xlaccess.model.QueryResultImpl;
 import org.spo.svc.xlaccess.service.XlsReader;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/readxl")
 public class XlsController {
 
-	@Autowired
+	
 	private XlsReader reader;
-	@Autowired
+	
 	private XlsReader reader_node_1;
 
 	
