@@ -74,15 +74,7 @@ public class XlsReader {
 	}
 
 	public XlsReader(){
-		URL resourceUrl = getClass().getResource("/"+resourceXml);
-		String resourcePath;
-		try {
-			resourcePath = resourceUrl.toURI().getPath();
-			 file= new File(resourcePath);
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		
 	} 
 
