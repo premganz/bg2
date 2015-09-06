@@ -36,7 +36,8 @@ public class HomeController {
     @Autowired
     private EchoService echoService = null;
  
-	private MQConnector connector;
+    
+	private MQConnector connector=new MQConnector();
     @Autowired
     private JmsQueueSender sender;
     /**
@@ -51,11 +52,10 @@ public class HomeController {
 		message.setHandler("pages");
 		message.setFileName("PG01O/01");
 		String response ="";
-		try {
-			//connector=new MQConnector();
-			//response = connector.getResponse(message);
-			TextMessage reply = sender.simpleSend(message.toString()); 
-			response=reply.getText();
+		try {		
+			response = connector.getResponse(message);
+			//TextMessage reply = sender.simpleSend(message.toString()); 
+			//response=reply.getText();
 			
 		} catch (Exception e) {			
 			e.printStackTrace();
