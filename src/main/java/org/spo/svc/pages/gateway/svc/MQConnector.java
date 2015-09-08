@@ -70,26 +70,27 @@ public class MQConnector {
 			
 		}
 	}
-	public String getResponse( QMessage domainMessage) throws Exception{
+	public synchronized String getResponse( QMessage domainMessage) throws Exception{
 		Writer writer = new StringWriter();
 		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();		
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		jaxbMarshaller.marshal(domainMessage, writer);
 		domainRequest=writer.toString();
-
+		
 			TextMessage requestMessage =null;
 
 			try {
 				
 				requestMessage = sessionOut.createTextMessage(domainRequest);
+				requestMessage.setJMSReplyTo(sessionOut.createTemporaryQueue());
 				reqProducer.send(destinationOut, requestMessage);
-				Message responseMessage = consumer.receive(500);
+				Message responseMessage = consumer.receive(500);				
 				if(responseMessage instanceof TextMessage && ((TextMessage)responseMessage).getText()!=null) {
 					TextMessage txtMsg = (TextMessage) responseMessage;
 					replyMessageText= txtMsg.getText();
+				}else{
+				System.err.println("NO MESSAGE RECEIVED");
 				}
-
-
 			}catch (Exception e) {
 				System.out.println("Caught: " + e);
 				e.printStackTrace();

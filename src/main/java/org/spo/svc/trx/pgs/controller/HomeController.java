@@ -5,7 +5,6 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.jms.Message;
 import javax.jms.TextMessage;
 
 import org.slf4j.Logger;
@@ -13,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.spo.ifs.template.EchoService;
 import org.spo.svc.pages.gateway.model.QMessage;
 import org.spo.svc.pages.gateway.svc.JmsQueueSender;
-import org.spo.svc.pages.gateway.svc.MQConnector;
+import org.spo.svc.pages.gateway.svc.SocketConnector;
 import org.spo.svc.trx.pgs.cmd.PG01O;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,9 +36,9 @@ public class HomeController {
     private EchoService echoService = null;
  
     
-	private MQConnector connector=new MQConnector();
-    @Autowired
-    private JmsQueueSender sender;
+	private SocketConnector connector=new SocketConnector();
+   // @Autowired
+    //private JmsQueueSender sender;
     /**
      * Simple controller for "/" that returns a Thymeleaf view.
      */
@@ -90,11 +89,10 @@ public class HomeController {
 		message.setHandler("pages");
 		message.setFileName("PG01O/01");
 		String response ="";
-		try {
-			//connector=new MQConnector();
-			//response = connector.getResponse(message);
-			TextMessage reply = sender.simpleSend(message.toString()); 
-			response=reply.getText();
+		try {		
+			response = connector.getResponse(message);
+			//TextMessage reply = sender.simpleSend(message.toString()); 
+			//response=reply.getText();
 			
 		} catch (Exception e) {			
 			e.printStackTrace();
