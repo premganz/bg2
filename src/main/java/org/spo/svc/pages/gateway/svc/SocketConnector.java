@@ -25,27 +25,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class SocketConnector {
 
-	private ThreadExchanger exchanger=ThreadExchanger.instance();
-	private static final String URL="tcp://localhost:61616";
+	
 	private String response;
 	
 	String domainRequest= "";
 	String replyMessageText= "";		
 	
 	
-	// Create a ConnectionFactory
-	ActiveMQConnectionFactory connectionFactoryIN = new ActiveMQConnectionFactory("tcp://localhost:61616");
-	Connection connectionIn ;
 	
-	Session session ;
-	Destination destinationIn ;
-	MessageConsumer consumer ;
-
-	ActiveMQConnectionFactory connectionFactoryOut = new ActiveMQConnectionFactory("tcp://localhost:61616");
-	Connection connectionOut ;	
-	Session sessionOut ;
-	Destination destinationOut ;
-	MessageProducer reqProducer ;
 	JAXBContext jaxbContext ;
 	
 	{
@@ -56,7 +43,7 @@ public class SocketConnector {
 			
 		}
 	}
-	public synchronized String getResponse( QMessage domainMessage) throws Exception{
+	public  String getResponse( QMessage domainMessage) throws Exception{
 		Writer writer = new StringWriter();
 		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();		
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -89,33 +76,10 @@ public class SocketConnector {
 
 			return replyMessageText;
 
-
-	
 		
 	}
-	public List<String> getResponseAsList( QMessage domainMessage) throws Exception{
-		String response = getResponse(domainMessage);
-		//String[] array = response.split("\\*\\*\\*EOL\\*\\*\\*");
-		//String[] array = response.split("[\r\n]");
-		String[] array = response.split("</br>");
-		return Arrays.asList(array);
-	}
-
-	public String pollResponse() {
-
-		for(int i=0;i<5;i++){			
-			response=exchanger.getResponse();
-			if(!response.isEmpty()){
-				break;
-			}
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		return response;
-	}
+	
+	
 
 	public String getResponse() {
 		return response;
