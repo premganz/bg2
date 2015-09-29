@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Hello jQuery</title>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script	src="http://tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+ <script type="text/javascript">
+        tinymce.init({
+        	  plugins: "image",
+              image_list: [ 
+                  {title: 'My image 1', value: 'http://www.tinymce.com/my1.gif'}, 
+                  {title: 'My image 2', value: 'http://www.moxiecode.com/my2.gif'} 
+              ],             
+            selector: "#mytextarea"
+            
+        });
+        
+    </script>
+    
+</head>
+
+<body>
+	
+	<form action="#" th:action="@{/contentSubmit}"  method="post" >
+	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+	<h1 th:text="${content.htmlContent}"></h1>
+       <textarea id="mytextarea" th:field="*{content.htmlContent}"></textarea>
+          <input type="submit" id="doUpdate" name="_eventId_updateData" value="Update now!" />
+    </form>
+</body>
+</html>

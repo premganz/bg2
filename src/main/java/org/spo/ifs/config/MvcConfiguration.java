@@ -33,7 +33,8 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 		"org.spo.ifs.template",
 		"org.spo.svc.xlaccess.service",
 		"org.spo.svc.xlaccess.controller",		
-		"org.spo.svc.pages.gateway.svc",		
+		"org.spo.svc.pages.gateway.svc",
+		"org.spo.svc.pages.gateway.controller",
 		"org.spo.svc.httpd",
 		"org.spo.svc.trx",
 		"org.spo.svc.trx.pgs",		
@@ -50,6 +51,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
         /* Mapping to the login view. */
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/debug").setViewName("debug");
+        registry.addViewController("/x_content").setViewName("x_content");
 
     }
 

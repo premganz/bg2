@@ -18,10 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/debug")
 public class DebugPageController {
 
-	
-
-	
-
 	@ResponseBody
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String handlePageRequest_String( ) {
