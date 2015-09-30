@@ -40,6 +40,7 @@ public class ContentPageController {
 	    if (bindingResult.hasErrors()) {
 	        return "seedstartermng";
 	    }
+	    
 	    System.out.println(content.getHtmlContent());
 	   // this.seedStarterService.add(seedStarter);
 	    model.clear();

@@ -72,7 +72,7 @@
 		<div class="row" th:each="link : ${message.MAIN_SECTION.SECTION_LINKS_ZN}">
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 				<div class="post-preview" >			
-					<a th:href="${link.link_title}"	>
+					<a th:href="${link.link_id}"	>
 						<h2 class="post-title" th:text="${link.link_title}"></h2>
 						<h3 class="post-subtitle" th:text="${link.link_sub_title}"></h3>
 					</a>
@@ -123,7 +123,7 @@
 	<script>
 
 	function loadajax1($scope, $http) {
-    $.ajax('http://localhost:8082/pages/PG01O/01?meta=none').success(function(data) {
+    $.ajax('http://localhost:8082/home/').success(function(data) {
        $scope.$apply(function(){
     $scope.user = data;
 	});

@@ -17,6 +17,7 @@ import org.spo.svc.trx.pgs.cmd.PG01O;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -49,7 +50,7 @@ public class HomeController {
         
         QMessage message = new QMessage();
 		message.setHandler("pages");
-		message.setFileName("PG01O/01");
+		message.setFileName("M_Home_1/f01/null");
 		String response ="";
 		try {		
 			response = connector.getResponse(message);
@@ -80,6 +81,43 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping(value = "/home/{contentId}", method = RequestMethod.GET)
+    public String content(Locale locale, Model model,@PathVariable String contentId) {
+        logger.info("Welcome home! the client locale is " + locale.toString());
+        
+        QMessage message = new QMessage();
+		message.setHandler("pages");
+		message.setFileName("M_Content_1/f01/"+contentId);
+		String response ="";
+		try {		
+			response = connector.getResponse(message);
+			//TextMessage reply = sender.simpleSend(message.toString()); 
+			//response=reply.getText();
+			
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		try{
+			Gson gson = new Gson();
+			Type typ = new TypeToken<PG01O>(){}.getType();//FIXME right now only string works
+			PG01O cmd= gson.fromJson(response,typ);		
+			model.addAttribute("message",cmd);
+			System.out.println(cmd.toString());
+			
+		}catch(Exception e){
+			System.out.println("Error during messagePayload processing from  TestResourceServerException on" );
+			e.printStackTrace();
+		}
+        Date date = new Date();
+        DateFormat dateFormat =DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG, locale);
+
+        String formattedDate = dateFormat.format(date);
+        model.addAttribute("serverTime", formattedDate);
+        model.addAttribute("echoService", echoService);
+        model.addAttribute("someItems", new String[] { "one", "two", "three" });
+        return "index";
+    }
+    
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String root(Locale locale, Model model) {
         logger.info("Welcome home! the client locale is " + locale.toString());
@@ -87,7 +125,7 @@ public class HomeController {
         
         QMessage message = new QMessage();
 		message.setHandler("pages");
-		message.setFileName("PG01O/01");
+		message.setFileName("M_Home_1/f01/null");
 		String response ="";
 		try {		
 			response = connector.getResponse(message);
@@ -135,5 +173,11 @@ public class HomeController {
         logger.info("Welcome home! the client locale is " + locale.toString());
 
         return "post";
+    }
+    @RequestMapping(value = "admin/metrics", method = RequestMethod.GET)
+    public String metrics(Locale locale, Model model) {
+        logger.info("Welcome home! the client locale is " + locale.toString());
+
+        return "home";
     }
 }
