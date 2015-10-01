@@ -174,10 +174,5 @@ public class HomeController {
 
         return "post";
     }
-    @RequestMapping(value = "admin/metrics", method = RequestMethod.GET)
-    public String metrics(Locale locale, Model model) {
-        logger.info("Welcome home! the client locale is " + locale.toString());
-
-        return "home";
-    }
+  
 }

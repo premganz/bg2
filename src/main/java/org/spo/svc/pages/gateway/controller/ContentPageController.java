@@ -24,7 +24,7 @@ import com.google.gson.reflect.TypeToken;
 public class ContentPageController {
 	
 	
-	 @RequestMapping(value = "/entry", method = RequestMethod.GET)
+	 @RequestMapping(value = "admin/entry", method = RequestMethod.GET)
 	 public String home(Locale locale, Model model) {
 		 PostContent content1 = new PostContent();
 		 content1.setHtmlContent("hello");
@@ -34,7 +34,7 @@ public class ContentPageController {
 	 }
 	
 	
-	@RequestMapping(value="/contentSubmit")
+	@RequestMapping(value="admin/contentSubmit")
 	public String processContent(
 	        final PostContent content, final BindingResult bindingResult, final ModelMap model) {
 	    if (bindingResult.hasErrors()) {

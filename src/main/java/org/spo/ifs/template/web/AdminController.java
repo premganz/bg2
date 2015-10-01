@@ -25,17 +25,32 @@
 
 package org.spo.ifs.template.web;
 
+import java.util.Locale;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.spo.svc.trx.pgs.controller.HomeController;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-
+	   private static final Logger logger = LoggerFactory
+	            .getLogger(AdminController.class);
     @RequestMapping("")
     public @ResponseBody String index() {
         return "This is the admin section.";
     }
 
+    
+    @RequestMapping(value = "/metrics", method = RequestMethod.GET)
+    public String metrics(Locale locale, Model model) {
+        logger.info("Welcome home! the client locale is " + locale.toString());
+
+        return "home";
+    }
 }
