@@ -31,7 +31,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll();
 
-        http.formLogin().loginPage("http://mergersandmalagamations.com/login").failureUrl(
+        http.formLogin().loginPage("/about").failureUrl(
                 "http://mergersandmalagamations.com/login?error").defaultSuccessUrl("/");
         http.logout().logoutUrl("/logout").logoutSuccessUrl("/login?loggedOut");
         http.httpBasic();
