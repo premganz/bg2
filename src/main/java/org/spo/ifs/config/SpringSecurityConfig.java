@@ -29,7 +29,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/login**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .anyRequest().permitAll();
+                .anyRequest().permitAll()
+                .and()
+                // Example portMapper() configuration
+                .portMapper()
+                    .http(8080).mapsTo(80)
+                    
+                ;
 
         http.formLogin().failureUrl(
                 "/login?error").defaultSuccessUrl("/");
