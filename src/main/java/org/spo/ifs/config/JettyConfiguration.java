@@ -131,7 +131,7 @@ public class JettyConfiguration {
     //    ServerConnector  ajpConnector = new org.eclipse.jetty.ajp.Ajp13SocketConnector();
         httpConnector.setPort(jettyPort);
         //ajpConnector.setPort(8009);
-        
+        //httpConnector.setHost("mergersandamalgamations.com");
         server.addConnector(httpConnector);
         
       //  server.addConnector(ajpConnector);
