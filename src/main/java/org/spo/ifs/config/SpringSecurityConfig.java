@@ -31,9 +31,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll();
 
-        http.formLogin().loginPage("http://mergersandamalgamations.com/login").failureUrl(
-                "http://mergersandamalgamations.com/login?error").defaultSuccessUrl("/");
-        http.logout().logoutUrl("/logout").logoutSuccessUrl("/login?loggedOut");
+        http.formLogin().loginProcessingUrl("/login").failureUrl(
+                "/login?error").defaultSuccessUrl("/");
+        http.logout().logoutUrl("logout").logoutSuccessUrl("/login?loggedOut");
         http.httpBasic();
 
         /* You may want to disable CSRF protection, for instance if developing
