@@ -53,4 +53,14 @@ public class AdminController {
 
         return "home";
     }
+    
+    @RequestMapping(value = "/login1", method = RequestMethod.GET)
+    public String login(Locale locale, Model model) {
+        return "login1";
+    }
+    
+    @RequestMapping(value = "/login1", method = RequestMethod.POST)
+    public String loggedin(Locale locale, Model model) {
+        return "admin/metrics";
+    }
 }

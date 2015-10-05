@@ -50,7 +50,7 @@ public class HomeController {
         
         QMessage message = new QMessage();
 		message.setHandler("pages");
-		message.setFileName("M_Home_1/f01/null");
+		message.setContent("M_Home_1/f01/null");
 		String response ="";
 		try {		
 			response = connector.getResponse(message);
@@ -87,7 +87,7 @@ public class HomeController {
         
         QMessage message = new QMessage();
 		message.setHandler("pages");
-		message.setFileName("M_Content_1/f01/"+contentId);
+		message.setContent("M_Content_1/f01/"+contentId);
 		String response ="";
 		try {		
 			response = connector.getResponse(message);
@@ -125,7 +125,7 @@ public class HomeController {
         
         QMessage message = new QMessage();
 		message.setHandler("pages");
-		message.setFileName("M_Home_1/f01/null");
+		message.setContent("M_Home_1/f01/null");
 		String response ="";
 		try {		
 			response = connector.getResponse(message);

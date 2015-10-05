@@ -5,9 +5,15 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.spo.ifs.template.EchoService;
 import org.spo.svc.pages.gateway.model.PostContent;
 import org.spo.svc.pages.gateway.model.QMessage;
+import org.spo.svc.pages.gateway.svc.SocketConnector;
 import org.spo.svc.trx.pgs.cmd.PG01O;
+import org.spo.svc.trx.pgs.controller.HomeController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -22,7 +28,14 @@ import com.google.gson.reflect.TypeToken;
 
 @Controller
 public class ContentPageController {
-	
+
+    private static final Logger logger = LoggerFactory
+            .getLogger(ContentPageController.class);
+
+   
+ 
+    
+	private SocketConnector connector=new SocketConnector();
 	
 	 @RequestMapping(value = "admin/entry", method = RequestMethod.GET)
 	 public String home(Locale locale, Model model) {
@@ -43,8 +56,28 @@ public class ContentPageController {
 	    
 	    System.out.println(content.getHtmlContent());
 	   // this.seedStarterService.add(seedStarter);
+	    
+	  
+	        logger.info("Writing "+content.getMeta()  );
+	      
+	        
+	        QMessage message = new QMessage();
+			message.setHandler("write");
+			message.setContent(content.getHtmlContent());
+			message.setMeta(content.getMeta());
+			String response ="";
+			try {		
+				response = connector.getResponse(message);
+				//TextMessage reply = sender.simpleSend(message.toString()); 
+				//response=reply.getText();
+				
+			} catch (Exception e) {			
+				e.printStackTrace();
+			}
+		
+	     
 	    model.clear();
-	    return "redirect:/seedstartermng";
+	    return "/";
 	}
 	
 }

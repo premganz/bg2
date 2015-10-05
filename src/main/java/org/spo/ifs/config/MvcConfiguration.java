@@ -49,7 +49,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
 
         /* Mapping to the login view. */
-        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/login1").setViewName("login1");
         registry.addViewController("/debug").setViewName("debug");
         registry.addViewController("/x_content").setViewName("x_content");
 
