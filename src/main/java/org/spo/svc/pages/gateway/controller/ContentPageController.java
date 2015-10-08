@@ -45,7 +45,41 @@ public class ContentPageController {
 
 		 return "x_content";
 	 }
-	
+	 
+	 @ResponseBody
+	 @RequestMapping(value="admin/edit")
+	 public String editContent(
+		        final PostContent content, final BindingResult bindingResult, final ModelMap model) {
+		    if (bindingResult.hasErrors()) {
+		        return "seedstartermng";
+		    }
+		    
+		    System.out.println(content.getHtmlContent());
+		   // this.seedStarterService.add(seedStarter);
+		    
+		  
+		        logger.info("Searching "+content.getMeta()  );
+		      
+		        
+		        QMessage message = new QMessage();
+				message.setHandler("fetch");
+				//message.setContent(content.getHtmlContent());
+				message.setMeta(content.getMeta());
+				String response ="<p>blank reply</p>";
+				try {		
+					response = connector.getResponse(message);
+					//TextMessage reply = sender.simpleSend(message.toString()); 
+					//response=reply.getText();
+					content.setHtmlContent(response);
+				} catch (Exception e) {			
+					e.printStackTrace();
+				}
+			
+			response=response.equals("")?"<p>blank reply</p>":response;
+		    model.clear();
+		    model.addAttribute("content", message);
+		    return response ;
+		}
 	
 	@RequestMapping(value="admin/contentSubmit")
 	public String processContent(

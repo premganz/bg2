@@ -16,6 +16,29 @@
             content_css : "/css/clean-blog.min.css" 
             
         });
+        function loadajax1($scope, $http) {
+            $.ajax('http://mergersandamalgamations.com/admin/').success(function(data) {
+               $scope.$apply(function(){
+            $scope.content= data;
+        	});
+            });
+        }
+        
+        function loadContent() {
+        $(document).ready(function(){        	
+        	   loadajax1($scope, $http);
+        	 $("#myTextArea").val({{content}});
+
+        	});
+        }
+        function loadContent1() {
+        	var form = document.getElementById('form1');
+        	alert(form.getAttribute("action"));
+        	form.setAttribute("action","@{../admin/edit}");
+        	alert(form.getAttribute("action"));
+        	form.submit();
+        }
+        
         
     </script>
 <!-- Bootstrap Core CSS -->
@@ -33,25 +56,80 @@
 </head>
 
 <body>
+<script>
+    var greet='';
+		$(document).ready(function(){
+		  $("#select1").change(function(){
+			  var msg= 'Select  '+ $(this).attr('id')+'   '+ $(this).val();
+		  $("#myEdit").html(msg);
+		  $("#mytextarea").val("new text");
+		
+		  });
+		});
+		$(document).ready(function(){
+		$("#fetch1").click(function(){
+		    $.ajax({url: "http://localhost:8082/admin/edit?fileName"+ $("#fileName").val(),async: false, 
+		    	success: function(result){
+		    		alert(result);
+		        $("#mytextarea").val(result);
+		    }});
+		   
+		});
+		});
+		
+		function update(inputId) {
+			// alert('making call');
+			  $.ajax({
+			    type: 'GET',
+			    dataType: 'json',
+			    url:"http://localhost:8081/"+"/"+$("#"+inputId).val()+$("#select1").val(),
+			    timeout: 600000,
+			    success: function(data, textStatus ){
+			       $("#mytextarea").val(JSONstringify(data));
+			    },
+			    error:function(exception){alert('Exeption:'+exception);}
+			  });
+			}
+			
+		function JSONstringify(json) {
+		    if (typeof json != 'string') {
+		        json = JSON.stringify(json, undefined, '\t');
+		    }
 
-	<form action="#" th:action="@{../admin/contentSubmit}" method="post">
+		    json = json.replace(/\"/g, "");
+		    json = json.replace(/\,/g, "");
+		    
+		   
+		    return json;
+		}
+		
+	
+		
+	</script>
+<button  id="fetch1">Fetch</button>
+	<form id="form1" action="#" th:action="@{../admin/contentSubmit}" method="post">
 		<div class="container">
 			<div class="row">
-				
-					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
-					<p>
-					<h3>Post Content (use filename format eg M_C01)</h3>
-					</p>
-					<p>
-						FileName : <input th:name="input" th:field="${content.meta}" maxlength="100" />
-					</p>
-					
-					<p>
-						<textarea id="mytextarea" th:field="*{content.htmlContent}" cols="80" rows="40"></textarea>
-						<br></br> <input type="submit" id="doUpdate" name="_eventId_updateData" value="POST" />
-					</p>
-				
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+				<table>
+					<tr>
+						<td>
+							<p>
+							<h3>Post Content (use filename format eg M_C01)</h3>
+							</p>
+							<p>
+								FileName : <input id="fileName" th:name="input" th:field="${content.meta}" maxlength="100" />
+							</p>
+						</td>
+						<td><br></br> <button  id="fetch" onClick="loadContent()">Fetch</button></td>
+					</tr>
+				</table>
+				<p>
+					<textarea id="mytextarea" th:field="*{content.htmlContent}" cols="80" rows="40"></textarea>
+					<br></br> <input type="submit" id="doUpdate" name="_eventId_updateData" value="POST" />
+				</p>
+
 			</div>
 		</div>
 	</form>
