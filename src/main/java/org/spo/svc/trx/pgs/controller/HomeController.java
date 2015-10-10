@@ -13,7 +13,7 @@ import org.spo.ifs.template.EchoService;
 import org.spo.svc.pages.gateway.model.QMessage;
 import org.spo.svc.pages.gateway.svc.JmsQueueSender;
 import org.spo.svc.pages.gateway.svc.SocketConnector;
-import org.spo.svc.trx.pgs.cmd.PG01O;
+import org.spo.svc.trx.pgs.cmd.M_Home_01;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,8 +62,8 @@ public class HomeController {
 		}
 		try{
 			Gson gson = new Gson();
-			Type typ = new TypeToken<PG01O>(){}.getType();//FIXME right now only string works
-			PG01O cmd= gson.fromJson(response,typ);		
+			Type typ = new TypeToken<M_Home_01>(){}.getType();//FIXME right now only string works
+			M_Home_01 cmd= gson.fromJson(response,typ);		
 			model.addAttribute("message",cmd);
 			System.out.println(cmd.toString());
 			
@@ -99,8 +99,8 @@ public class HomeController {
 		}
 		try{
 			Gson gson = new Gson();
-			Type typ = new TypeToken<PG01O>(){}.getType();//FIXME right now only string works
-			PG01O cmd= gson.fromJson(response,typ);		
+			Type typ = new TypeToken<M_Home_01>(){}.getType();//FIXME right now only string works
+			M_Home_01 cmd= gson.fromJson(response,typ);		
 			model.addAttribute("message",cmd);
 			System.out.println(cmd.toString());
 			
@@ -124,8 +124,8 @@ public class HomeController {
       
         
         QMessage message = new QMessage();
-		message.setHandler("pages");
-		message.setContent("M_Home_1/f01/null");
+		message.setHandler("templates");
+		message.setContent("M_Home_1/f02/null");
 		String response ="";
 		try {		
 			response = connector.getResponse(message);
@@ -137,8 +137,8 @@ public class HomeController {
 		}
 		try{
 			Gson gson = new Gson();
-			Type typ = new TypeToken<PG01O>(){}.getType();//FIXME right now only string works
-			PG01O cmd= gson.fromJson(response,typ);		
+			Type typ = new TypeToken<M_Home_01>(){}.getType();//FIXME right now only string works
+			M_Home_01 cmd= gson.fromJson(response,typ);		
 			model.addAttribute("message",cmd);
 			System.out.println(cmd.toString());
 			

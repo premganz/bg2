@@ -11,7 +11,7 @@ import org.spo.ifs.template.EchoService;
 import org.spo.svc.pages.gateway.model.PostContent;
 import org.spo.svc.pages.gateway.model.QMessage;
 import org.spo.svc.pages.gateway.svc.SocketConnector;
-import org.spo.svc.trx.pgs.cmd.PG01O;
+import org.spo.svc.trx.pgs.cmd.M_Home_01;
 import org.spo.svc.trx.pgs.controller.HomeController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +20,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
@@ -47,9 +48,10 @@ public class ContentPageController {
 	 }
 	 
 	 @ResponseBody
-	 @RequestMapping(value="admin/edit")
+	 @RequestMapping(value="admin/edit",   params={"fileName"})
 	 public String editContent(
-		        final PostContent content, final BindingResult bindingResult, final ModelMap model) {
+		        final PostContent content, final BindingResult bindingResult, final ModelMap model,
+		        @RequestParam(value="fileName", required=false) String metaValue) {
 		    if (bindingResult.hasErrors()) {
 		        return "seedstartermng";
 		    }
@@ -58,13 +60,13 @@ public class ContentPageController {
 		   // this.seedStarterService.add(seedStarter);
 		    
 		  
-		        logger.info("Searching "+content.getMeta()  );
+		        logger.info("Searching "+metaValue  );
 		      
 		        
 		        QMessage message = new QMessage();
 				message.setHandler("fetch");
 				//message.setContent(content.getHtmlContent());
-				message.setMeta(content.getMeta());
+				message.setMeta(metaValue);
 				String response ="<p>blank reply</p>";
 				try {		
 					response = connector.getResponse(message);
@@ -81,11 +83,47 @@ public class ContentPageController {
 		    return response ;
 		}
 	
+	
+	 @RequestMapping(value="/post",   params={"fileName"})
+	 public String fetchPost(
+		        final PostContent content, final BindingResult bindingResult, final ModelMap model,
+		        @RequestParam(value="fileName", required=false) String metaValue) {
+		    if (bindingResult.hasErrors()) {
+		        return "seedstartermng";
+		    }
+		    
+		    System.out.println(content.getHtmlContent());
+		   // this.seedStarterService.add(seedStarter);
+		    
+		  
+		        logger.info("Searching "+metaValue  );
+		      
+		        
+		        QMessage message = new QMessage();
+				message.setHandler("fetch");				
+				message.setMeta(metaValue);
+				String response ="<p>blank reply</p>";
+				try {		
+					response = connector.getResponse(message);
+					//TextMessage reply = sender.simpleSend(message.toString()); 
+					//response=reply.getText();
+					content.setHtmlContent(response);
+				} catch (Exception e) {			
+					e.printStackTrace();
+				}
+			
+			response=response.equals("")?"<p>blank reply</p>":response;
+		    model.clear();
+		    model.addAttribute("message", content);
+		    return "post" ;
+		}
+	 
+	 
 	@RequestMapping(value="admin/contentSubmit")
 	public String processContent(
 	        final PostContent content, final BindingResult bindingResult, final ModelMap model) {
 	    if (bindingResult.hasErrors()) {
-	        return "seedstartermng";
+	        return "x_content";
 	    }
 	    
 	    System.out.println(content.getHtmlContent());
@@ -110,8 +148,8 @@ public class ContentPageController {
 			}
 		
 	     
-	    model.clear();
-	    return "/";
+	   // model.clear();
+	    return "post";
 	}
 	
 }

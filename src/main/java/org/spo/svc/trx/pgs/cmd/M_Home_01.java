@@ -2,7 +2,7 @@ package org.spo.svc.trx.pgs.cmd;
 
 import java.util.List;
 
-public class PG01O
+public class M_Home_01
 {
 	private String page_sub_title;
 
