@@ -1,19 +1,13 @@
 package org.spo.svc.pages.gateway.controller;
 
-import java.lang.reflect.Type;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spo.ifs.template.EchoService;
+import org.spo.cms.svc.PageService;
 import org.spo.svc.pages.gateway.model.PostContent;
 import org.spo.svc.pages.gateway.model.QMessage;
 import org.spo.svc.pages.gateway.svc.SocketConnector;
-import org.spo.svc.trx.pgs.cmd.M_Home_01;
-import org.spo.svc.trx.pgs.controller.HomeController;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -23,15 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 
 @Controller
-public class ContentPageController {
+public class CMSContentPageController {
 
     private static final Logger logger = LoggerFactory
-            .getLogger(ContentPageController.class);
+            .getLogger(CMSContentPageController.class);
 
    
  
@@ -48,8 +39,8 @@ public class ContentPageController {
 	 }
 	 
 	 @ResponseBody
-	 @RequestMapping(value="admin/edit",   params={"fileName"})
-	 public String editContent(
+	 @RequestMapping(value="admin/edit1",   params={"fileName"})
+	 public String editContent1(
 		        final PostContent content, final BindingResult bindingResult, final ModelMap model,
 		        @RequestParam(value="fileName", required=false) String metaValue) {
 		    if (bindingResult.hasErrors()) {
@@ -83,9 +74,9 @@ public class ContentPageController {
 		    return response ;
 		}
 	
-	
-	 @RequestMapping(value="/post",   params={"fileName"})
-	 public String fetchPost(
+	 @ResponseBody
+	 @RequestMapping(value="admin/edit",   params={"fileName"})
+	 public String editContent(
 		        final PostContent content, final BindingResult bindingResult, final ModelMap model,
 		        @RequestParam(value="fileName", required=false) String metaValue) {
 		    if (bindingResult.hasErrors()) {
@@ -100,11 +91,14 @@ public class ContentPageController {
 		      
 		        
 		        QMessage message = new QMessage();
-				message.setHandler("fetch");				
+				message.setHandler("fetch");
+				//message.setContent(content.getHtmlContent());
 				message.setMeta(metaValue);
 				String response ="<p>blank reply</p>";
 				try {		
-					response = connector.getResponse(message);
+					PageService svc = new PageService();
+					response = svc.readUpPage("posts", metaValue);
+					//response = connector.getResponse(message);
 					//TextMessage reply = sender.simpleSend(message.toString()); 
 					//response=reply.getText();
 					content.setHtmlContent(response);
@@ -114,10 +108,10 @@ public class ContentPageController {
 			
 			response=response.equals("")?"<p>blank reply</p>":response;
 		    model.clear();
-		    model.addAttribute("message", content);
-		    return "post" ;
+		    model.addAttribute("content", message);
+		    return response ;
 		}
-	 
+	
 	 
 	@RequestMapping(value="admin/contentSubmit")
 	public String processContent(
@@ -138,7 +132,9 @@ public class ContentPageController {
 			message.setContent(content.getHtmlContent());
 			message.setMeta(content.getMeta());
 			String response ="";
-			try {		
+			try {
+				PageService svc = new PageService();
+				svc.writePage("posts/"+content.getMeta(), content.getHtmlContent());
 				response = connector.getResponse(message);
 				//TextMessage reply = sender.simpleSend(message.toString()); 
 				//response=reply.getText();

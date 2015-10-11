@@ -1,4 +1,4 @@
-package org.spo.svc.trx.pgs.cmd;
+package org.spo.svc.trx.pgs.mh01.cmd;
 
 import java.util.List;
 
