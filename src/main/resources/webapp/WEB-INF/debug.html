@@ -31,7 +31,7 @@
 			  $.ajax({
 			    type: 'GET',
 			    dataType: 'json',
-			    url:"http://localhost:8081/"+"/"+$("#"+inputId).val()+$("#select1").val(),
+			    url:"http://localhost:8082"+"/"+$("#"+inputId).val()+$("#select1").val(),
 			    timeout: 600000,
 			    success: function(data, textStatus ){
 			       $("#myTextArea").val(JSONstringify(data));

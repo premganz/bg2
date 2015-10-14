@@ -7,14 +7,16 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.spo.cms.svc.PageService;
 import org.spo.ifs.template.EchoService;
 import org.spo.svc.pages.gateway.model.QMessage;
 import org.spo.svc.pages.gateway.svc.SocketConnector;
+import org.spo.svc.trx.pgs.mc01.cmd.PostContent;
 import org.spo.svc.trx.pgs.mh01.cmd.M_Home_01;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -43,14 +45,14 @@ public class HomeController {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {
         logger.info("Welcome home! the client locale is " + locale.toString());
-      
-        
         QMessage message = new QMessage();
 		message.setHandler("pages");
 		message.setContent("M_Home_1/f01/null");
 		String response ="";
 		try {		
-			response = connector.getResponse(message);
+			PageService svc = new PageService();
+			response = svc.readUpPage("templates", "M_Home_01");
+			//response = connector.getResponse(message);
 			//TextMessage reply = sender.simpleSend(message.toString()); 
 			//response=reply.getText();
 			
@@ -78,85 +80,37 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping(value = "/home/{contentId}", method = RequestMethod.GET)
-    public String content(Locale locale, Model model,@PathVariable String contentId) {
-        logger.info("Welcome home! the client locale is " + locale.toString());
-        
-        QMessage message = new QMessage();
-		message.setHandler("pages");
-		message.setContent("M_Content_1/f01/"+contentId);
-		String response ="";
-		try {		
-			response = connector.getResponse(message);
-			//TextMessage reply = sender.simpleSend(message.toString()); 
-			//response=reply.getText();
-			
-		} catch (Exception e) {			
-			e.printStackTrace();
-		}
-		try{
-			Gson gson = new Gson();
-			Type typ = new TypeToken<M_Home_01>(){}.getType();//FIXME right now only string works
-			M_Home_01 cmd= gson.fromJson(response,typ);		
-			model.addAttribute("message",cmd);
-			System.out.println(cmd.toString());
-			
-		}catch(Exception e){
-			System.out.println("Error during messagePayload processing from  TestResourceServerException on" );
-			e.printStackTrace();
-		}
-        Date date = new Date();
-        DateFormat dateFormat =DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG, locale);
-
-        String formattedDate = dateFormat.format(date);
-        model.addAttribute("serverTime", formattedDate);
-        model.addAttribute("echoService", echoService);
-        model.addAttribute("someItems", new String[] { "one", "two", "three" });
-        return "index";
-    }
+   
     
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String root(Locale locale, Model model) {
-        logger.info("Welcome home! the client locale is " + locale.toString());
-      
-        
-        QMessage message = new QMessage();
-		message.setHandler("templates");
-		message.setContent("M_Home_1/f02/null");
-		String response ="";
-		try {		
-			response = connector.getResponse(message);
-			//TextMessage reply = sender.simpleSend(message.toString()); 
-			//response=reply.getText();
-			
-		} catch (Exception e) {			
-			e.printStackTrace();
-		}
-		try{
-			Gson gson = new Gson();
-			Type typ = new TypeToken<M_Home_01>(){}.getType();//FIXME right now only string works
-			M_Home_01 cmd= gson.fromJson(response,typ);		
-			model.addAttribute("message",cmd);
-			System.out.println(cmd.toString());
-			
-		}catch(Exception e){
-			System.out.println("Error during messagePayload processing from  TestResourceServerException on" );
-			e.printStackTrace();
-		}
-        Date date = new Date();
-        DateFormat dateFormat =DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG, locale);
+    	PageService svc = new PageService();
+    	String	response = svc.readUpPage("templates", "M_Home_01");
 
-        String formattedDate = dateFormat.format(date);
-        model.addAttribute("serverTime", formattedDate);
-        model.addAttribute("echoService", echoService);
-        model.addAttribute("someItems", new String[] { "one", "two", "three" });
-        return "index";
+    	try{
+    		Gson gson = new Gson();
+    		Type typ = new TypeToken<M_Home_01>(){}.getType();//FIXME right now only string works
+    		M_Home_01 cmd= gson.fromJson(response,typ);		
+    		model.addAttribute("message",cmd);
+    		System.out.println(cmd.toString());
+
+    	}catch(Exception e){
+    		System.out.println("Error during messagePayload processing from  TestResourceServerException on" );
+    		e.printStackTrace();
+    	}
+    	return "index";
     }
     
     @RequestMapping(value = "/about", method = RequestMethod.GET)
-    public String about(Locale locale, Model model) {
-        logger.info("Welcome home! the client locale is " + locale.toString());
+    public String about(Locale locale, final ModelMap model) {
 
+    	PostContent content = new PostContent();
+		 PageService svc = new PageService();
+		 String response = svc.readUpPage("posts", "M_About");
+		 response=response.equals("")?"<p>blank reply</p>":response;
+		 model.clear();
+		 content.setHtmlContent(response);
+		 model.addAttribute("message", content);
         return "about";
     }
     @RequestMapping(value = "/contact", method = RequestMethod.GET)

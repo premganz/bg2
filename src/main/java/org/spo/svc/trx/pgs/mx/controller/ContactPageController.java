@@ -1,4 +1,4 @@
-package org.spo.svc.trx.pgs.mc01.controller;
+package org.spo.svc.trx.pgs.mx.controller;
 
 import java.util.Locale;
 
@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-public class ContentPageController {
+public class ContactPageController {
 
     private static final Logger logger = LoggerFactory
-            .getLogger(ContentPageController.class);
+            .getLogger(ContactPageController.class);
 
    
  
@@ -31,7 +31,7 @@ public class ContentPageController {
 	private SocketConnector connector=new SocketConnector();
 	
 	
-	 @RequestMapping(value="/home/{contentId}", method = RequestMethod.GET)
+	 @RequestMapping(value="/contactdfsdfsafsafs", method = RequestMethod.GET)
 	 public String fetchPost(    final PostContent content, final BindingResult bindingResult, final ModelMap model,
 			 @PathVariable String contentId) {
 		 if (bindingResult.hasErrors()) {

@@ -38,6 +38,16 @@ public class CMSContentPageController {
 		 return "x_content";
 	 }
 	 
+	 @RequestMapping(value = "admin/entryTemplate", method = RequestMethod.GET)
+	 public String homeTemplate(Locale locale, Model model) {
+		 PostContent content1 = new PostContent();
+		 content1.setHtmlContent("hello");
+		 model.addAttribute("content", content1);
+
+		 return "y_content";
+	 }
+	 
+	 
 	 @ResponseBody
 	 @RequestMapping(value="admin/edit1",   params={"fileName"})
 	 public String editContent1(
@@ -113,6 +123,41 @@ public class CMSContentPageController {
 		}
 	
 	 
+	 
+	 @ResponseBody
+	 @RequestMapping(value="admin/editTemplate",   params={"fileName"})
+	 public String editTemplateContent(
+		        final PostContent content, final BindingResult bindingResult, final ModelMap model,
+		        @RequestParam(value="fileName", required=false) String metaValue) {
+		    if (bindingResult.hasErrors()) {
+		        return "seedstartermng";
+		    }
+		    
+		    System.out.println(content.getHtmlContent());
+		        logger.info("Searching "+metaValue  );
+		        QMessage message = new QMessage();
+				message.setHandler("fetch");
+				//message.setContent(content.getHtmlContent());
+				message.setMeta(metaValue);
+				String response ="<p>blank reply</p>";
+				try {		
+					PageService svc = new PageService();
+					response = svc.readUpPage("templates", metaValue);
+					//response = connector.getResponse(message);
+					//TextMessage reply = sender.simpleSend(message.toString()); 
+					//response=reply.getText();
+					content.setHtmlContent(response);
+				} catch (Exception e) {			
+					e.printStackTrace();
+				}
+			
+			response=response.equals("")?"<p>blank reply</p>":response;
+		    model.clear();
+		   // model.addAttribute("content", message);
+		    return response ;
+		}
+	
+	 
 	@RequestMapping(value="admin/contentSubmit")
 	public String processContent(
 	        final PostContent content, final BindingResult bindingResult, final ModelMap model) {
@@ -145,7 +190,42 @@ public class CMSContentPageController {
 		
 	     
 	   // model.clear();
-	    return "post";
+	    return "home";
+	}
+	
+	@RequestMapping(value="admin/submitContentTemplate")
+	public String processContentTemplate(
+	        final PostContent content, final BindingResult bindingResult, final ModelMap model) {
+	    if (bindingResult.hasErrors()) {
+	        return "x_content";
+	    }
+	    
+	    System.out.println(content.getHtmlContent());
+	   // this.seedStarterService.add(seedStarter);
+	    
+	  
+	        logger.info("Writing "+content.getMeta()  );
+	      
+	        
+	        QMessage message = new QMessage();
+			message.setHandler("write");
+			message.setContent(content.getHtmlContent());
+			message.setMeta(content.getMeta());
+			String response ="";
+			try {
+				PageService svc = new PageService();
+				svc.writePage("templates/"+content.getMeta(), content.getHtmlContent());
+				//response = connector.getResponse(message);
+				//TextMessage reply = sender.simpleSend(message.toString()); 
+				//response=reply.getText();
+				
+			} catch (Exception e) {			
+				e.printStackTrace();
+			}
+		
+	     
+	   // model.clear();
+	    return "home";
 	}
 	
 }
