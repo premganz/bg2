@@ -11,12 +11,14 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.spo.svc.trx.pgs.mx.cmd.ContactForm;
+
 public class MailMe {
 
-	public static void main(String[] args) {
+	public void mailContactForm(ContactForm form) {
 
-		final String username = "username@gmail.com";
-		final String password = "password";
+		final String username = "lemonytreetech@gmail.com";
+		final String password = "tse-3067";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -34,12 +36,13 @@ public class MailMe {
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("from-email@gmail.com"));
+			message.setFrom(new InternetAddress("lemonytreetech@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
-				InternetAddress.parse("to-email@gmail.com"));
+				InternetAddress.parse("krishnaveni610@gmail.com"));
 			message.setSubject("Testing Subject");
-			message.setText("Dear Mail Crawler,"
-				+ "\n\n No spam to my email, please!");
+			StringBuffer buf = new StringBuffer();
+			buf.append(form.getName()+'\n'+form.getMessage()+'\n'+form.getName()+'\n'+form.getPhoneNumber());
+			message.setText(buf.toString());
 
 			Transport.send(message);
 

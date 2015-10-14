@@ -113,7 +113,7 @@ public class HomeController {
 		 model.addAttribute("message", content);
         return "about";
     }
-    @RequestMapping(value = "/contact", method = RequestMethod.GET)
+    @RequestMapping(value = "/contactold", method = RequestMethod.GET)
     public String contact(Locale locale, Model model) {
         logger.info("Welcome home! the client locale is " + locale.toString());
 

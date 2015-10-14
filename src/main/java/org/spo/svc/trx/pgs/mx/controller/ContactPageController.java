@@ -1,22 +1,16 @@
 package org.spo.svc.trx.pgs.mx.controller;
 
-import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spo.cms.svc.PageService;
-import org.spo.svc.pages.gateway.model.PostContent;
-import org.spo.svc.pages.gateway.model.QMessage;
 import org.spo.svc.pages.gateway.svc.SocketConnector;
+import org.spo.svc.trx.pgs.mx.cmd.ContactForm;
+import org.spo.svc.trx.pgs.mx.svc.MailMe;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -31,24 +25,34 @@ public class ContactPageController {
 	private SocketConnector connector=new SocketConnector();
 	
 	
-	 @RequestMapping(value="/contactdfsdfsafsafs", method = RequestMethod.GET)
-	 public String fetchPost(    final PostContent content, final BindingResult bindingResult, final ModelMap model,
-			 @PathVariable String contentId) {
+	 @RequestMapping(value="/contact", method = RequestMethod.GET)
+	 public String fetchPost( final ModelMap model  ) {
+		ContactForm form = new ContactForm();
+
+		 model.clear();
+		 model.addAttribute("form", form);
+		 return "contact" ;
+	 }
+	 
+	 
+	 @RequestMapping(value="/contactSubmit", method = RequestMethod.POST)
+	 public String submitContact(    final ContactForm form, final BindingResult bindingResult, final ModelMap model
+			) {
 		 if (bindingResult.hasErrors()) {
 			 return "seedstartermng";
 		 }
 
-		 System.out.println(content.getHtmlContent());
-		 logger.info("Searching "+contentId  );
+		 System.out.println(form.getMessage());
 
-		 PageService svc = new PageService();
-		 String response = svc.readUpPage("posts", contentId);
-content.setHtmlContent(response);
-		 response=response.equals("")?"<p>blank reply</p>":response;
+		 MailMe svc = new MailMe();
+		svc.mailContactForm(form);
+
+		 
 		 model.clear();
-		 model.addAttribute("message", content);
-		 return "post" ;
+		 model.addAttribute("form", form);
+		 return "contact" ;
 	 }
+	 
 	 
 	 
 	
