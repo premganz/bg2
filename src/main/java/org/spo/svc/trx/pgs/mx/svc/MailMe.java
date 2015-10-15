@@ -38,10 +38,10 @@ public class MailMe {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("lemonytreetech@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
-				InternetAddress.parse("krishnaveni610@gmail.com"));
-			message.setSubject("Testing Subject");
+				InternetAddress.parse("lemonytreetech@gmail.com"));
+			message.setSubject("Mail Mergers and amalgamations");
 			StringBuffer buf = new StringBuffer();
-			buf.append(form.getName()+'\n'+form.getMessage()+'\n'+form.getName()+'\n'+form.getPhoneNumber());
+			buf.append(form.getName()+'\n'+form.getMessage()+'\n'+form.getEmailId()+'\n'+form.getPhoneNumber());
 			message.setText(buf.toString());
 
 			Transport.send(message);

@@ -40,8 +40,9 @@
 		
 		$(document).ready(function(){
 		$("#fetch1").click(function(){
+			
 		    $.ajax(
-		    	{url: "http://localhost:8082/admin/edit?fileName="+ $("#fileName").val(),async: false, 
+		    	{url: "edit?fileName="+ $("#fileName").val(),async: false, 
 		    	success: function(result){
 		    		tinyMCE.activeEditor.setContent(result);
 		    		$("#fileName").prop("readonly", true);

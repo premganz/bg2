@@ -9,7 +9,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 
-<title>Post</title>
+<title>Mergers</title>
 
 <!-- Bootstrap Core CSS -->
 <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"></link>
@@ -53,28 +53,19 @@
 
 	<!-- Page Header -->
 	<!-- Set your background image for this header on the line below. -->
-	
-
-	<!-- Main Content -->
-	<div class="container" >
-		
-	</div>
-
-	<hr></hr>
-	
-	  <header class="intro-header" style="background-image: url('img/post-bg.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="post-heading">
-                        <h1>Man </h1>
-                        <h2 class="subheading">P</h2>
-                        <span class="meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+	<header class="intro-header"  style="background-image: url('../img/home-bg.jpg')"   >
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+					<div class="site-heading">
+						<h1 th:text="post"></h1>
+						<hr class="small"></hr>
+						<span class="subheading" ></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
 
     <!-- Post Content -->
     <article>
@@ -120,29 +111,15 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                    <p class="copyright text-muted">Copyright &copy; LTTC 2015</p>
                 </div>
             </div>
         </div>
     </footer>
 	<script>
 
-	function loadajax1($scope, $http) {
-    $.ajax('http://mergersandamalgamations.com/home/').success(function(data) {
-       $scope.$apply(function(){
-    $scope.user = data;
-	});
-    });
-}
-
-
-
-$(document).ready(function(){
 	
-	   loadajax1($scope, $http);
-	 $("#myTextArea").val({{user.PAGE_SUBTITLE}});
 
-	});
 
 
 </script>

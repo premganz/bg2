@@ -8,9 +8,9 @@
 		"link_qtt": 3,
 		"SECTION_LINKS_ZN": [
 			{
-				"link_id": "home/C01",
-				"link_title": "Comprehensive Guide to the Amalgamation Procedures in India",
-				"link_sub_title": "Lists provisions under the Companies Act",
+				"link_id": "home/MC01",
+				"link_title": "Basic Definitions of Amalgamations and Mergers",
+				"link_sub_title": "The legal meaning of the terms.",
 				"link_by": "Admin",
 				"link_date": "September 1, 2015"
 			},
