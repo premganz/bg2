@@ -1,8 +1,8 @@
-package org.spo.ifs.template;
+package org.spo.ifs2.template;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spo.ifs.config.RootConfiguration;
+import org.spo.ifs2.config.RootConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

@@ -1,12 +1,12 @@
-package org.spo.cms.cons;
+package org.spo.cms2.cons;
 
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 
 public class Constants {
-	//public static final String path_repo = "/usr/local/share/data-cms";
-	public static  String path_repo = "C:\\Users\\premganesh\\git\\bg1_3\\src\\main\\resources\\data-cms";
+	public static final String path_repo = "/usr/local/share/data-cms";
+	//public static  String path_repo = "C:\\Users\\premganesh\\git\\bg1_3\\src\\main\\resources\\data-cms";
 	
 //	static{
 //		URL resourceUrl = Constants.class.getResource("/data-cms");
