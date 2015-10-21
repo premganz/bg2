@@ -5,7 +5,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 public class Constants {
-	public static final String path_repo = "/usr/local/share/data-cms";
+	public static final String path_repo = "C:/works/experiment/data-cms";
 	//public static  String path_repo = "C:\\Users\\premganesh\\git\\bg1_3\\src\\main\\resources\\data-cms";
 	
 //	static{

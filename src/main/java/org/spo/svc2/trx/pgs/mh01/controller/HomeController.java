@@ -77,7 +77,7 @@ public class HomeController {
         model.addAttribute("serverTime", formattedDate);
         model.addAttribute("echoService", echoService);
         model.addAttribute("someItems", new String[] { "one", "two", "three" });
-        return "index";
+        return "lc/index";
     }
 
    
@@ -98,7 +98,7 @@ public class HomeController {
     		System.out.println("Error during messagePayload processing from  TestResourceServerException on" );
     		e.printStackTrace();
     	}
-    	return "index";
+    	return "lc/index";
     }
     
     @RequestMapping(value = "/about", method = RequestMethod.GET)
@@ -117,7 +117,7 @@ public class HomeController {
     public String contact(Locale locale, Model model) {
         logger.info("Welcome home! the client locale is " + locale.toString());
 
-        return "contact";
+        return "lc/contact";
     }
     @RequestMapping(value = "/post", method = RequestMethod.GET)
     public String post(Locale locale, Model model) {
