@@ -77,7 +77,7 @@ public class HomeController {
         model.addAttribute("serverTime", formattedDate);
         model.addAttribute("echoService", echoService);
         model.addAttribute("someItems", new String[] { "one", "two", "three" });
-        return "lc/index1";
+        return "lc/index";
     }
 
    
@@ -98,7 +98,7 @@ public class HomeController {
     		System.out.println("Error during messagePayload processing from  TestResourceServerException on" );
     		e.printStackTrace();
     	}
-    	return "lc/index1";
+    	return "lc/index";
     }
     
     @RequestMapping(value = "/about", method = RequestMethod.GET)
