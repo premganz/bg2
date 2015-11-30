@@ -1,6 +1,6 @@
 {
-	"page_sub_title": "Resource bank for the legal angle to the Amalgamations and Mergers in India",
-	"page_title": "Mergers and Amalgamations",
+	"page_sub_title": "better education, better future for all",
+	"page_title": "Leafy Campus",
 	"MAIN_SECTION": {
 		"section_id": "Resources",
 		"section_title": "",

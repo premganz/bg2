@@ -53,6 +53,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
         registry.addViewController("/x_content").setViewName("lc/x_content");
         registry.addViewController("/y_content").setViewName("lc/y_content");
         registry.addViewController("/contact").setViewName("lc/contact");
+        registry.addViewController("/index1").setViewName("lc/index1");
 
     }
 

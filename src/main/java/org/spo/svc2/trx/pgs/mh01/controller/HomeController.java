@@ -98,7 +98,7 @@ public class HomeController {
     		System.out.println("Error during messagePayload processing from  TestResourceServerException on" );
     		e.printStackTrace();
     	}
-    	return "lc/index";
+    	return "lc/index1";
     }
     
     @RequestMapping(value = "/about", method = RequestMethod.GET)
