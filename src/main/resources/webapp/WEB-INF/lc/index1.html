@@ -47,7 +47,7 @@
 			<div class="row" >
 				<div class="col-lg-12 col-md-12 ">
 					<div class="site-heading">
-						<h1 th:text="${message.page_title}"></h1>
+						<h1>leafy campus</h1>
 						<hr class="small"></hr>
 						<span class="subheading" th:text="${message.page_sub_title}"></span>
 					</div>
@@ -55,6 +55,7 @@
 			</div>
 		</div>
 	</header>
+	
 	<div class="container">
 		<div class="row" style="background-color:white;">
 			<div class="col1-lg-2  col1-md-2 col-1-sm-2">
@@ -112,26 +113,30 @@
 						<ul>
 							<lh> <a style="cursor: pointer;">Contribute</a> </lh>
 						</ul>
+						
+						<ul>
+							<lh>
+							<a>For Schools</a></lh>
+							<li><a style="cursor: pointer;" onclick="">Pedagogy</a></li>
+							<li><a style="cursor: pointer;" onclick="">Strategy</a></li>
+							<li><a style="cursor: pointer;" onclick="">Liberal Education</a></li>
+						</ul>
+						<ul>
+							<lh>
+							<a>For Students</a></lh>
+							<li><a style="cursor: pointer;" onclick="">Resources</a></li>
+							<li><a style="cursor: pointer;" onclick="">Videos</a></li>
+							<li><a style="cursor: pointer;" onclick="">Resources</a></li>
+							<li><a style="cursor: pointer;" onclick="">Activities</a></li>
+						</ul>
 						<ul>
 							<lh>
 							<a>Organization</a></lh>							
 							<li><a style="cursor: pointer;" onclick="">Organization Values</a></li>
-							<li><a style="cursor: pointer;" onclick="">Liberal Education</a></li>
-							<li><a style="cursor: pointer;" onclick="">Resources</a></li>
-							<li><a style="cursor: pointer;" onclick="">Activities</a></li>
-							<li><a style="cursor: pointer;" onclick="">Photo Gallery</a></li>
-						</ul>
-						<ul>
-							<lh>
-							<a>Journey</a></lh>
-							<li><a style="cursor: pointer;" onclick="">Plans</a></li>
+							<li><a style="cursor: pointer;" onclick="">Vision</a></li>
+							<li><a style="cursor: pointer;" onclick="">Our Programmes</a></li>
 							<li><a style="cursor: pointer;" onclick="">Strategy</a></li>
-						</ul>
-						<ul>
-							<lh>
-							<a>Contribute</a></lh>
-							<li><a style="cursor: pointer;" onclick="">Contribute</a></li>
-							<li><a style="cursor: pointer;" onclick="">Our Story</a></li>
+							<li><a style="cursor: pointer;" onclick="">Photo Gallery</a></li>
 						</ul>
 						<ul>
 							<lh>
@@ -144,7 +149,7 @@
 							<lh>
 							<a>Contact</a></lh>							
 							<li><a style="cursor: pointer;" href="/contact">ContactForm</a></li>
-							<li><a style="cursor: pointer;" onclick="">Login</a></li>
+							<li><a style="cursor: pointer;" href="/admin/metrics">Login</a></li>
 							<li><a style="cursor: pointer;" onclick="">Comment</a></li>
 							<li><a style="cursor: pointer;" onclick="">SocialMedia</a></li>
 						</ul>
@@ -161,18 +166,19 @@
 
 				</div>
 			<div class="col-lg-8  col-md-8 ">
-			<div class="container" style="border-right-color: yellow;">				
-					<p th:text="${message.page_title}"></p>
+			<div class="container1" style="border-right-color: yellow;">				
+				
+					 <div th:utext="${message.page_title}"></div>
 					
 									
 				</div>
 			
 			<!-- Main Content -->
-	<div class="container" >
+	<div class="container1" >
 	<hr></hr>	
 	<h2>Updated Articles</h2>
 	<hr></hr>		
-		<div class="row" th:each="link : ${message.MAIN_SECTION.SECTION_LINKS_ZN}">
+		<div class="row1" th:each="link : ${message.MAIN_SECTION.SECTION_LINKS_ZN}">
 		
 				<div class="post-preview" >			
 					<a th:href="${link.link_id}"	>
@@ -189,10 +195,7 @@
 			</div>
 		</div>
 		<!-- Pager -->
-				<ul class="pager">
-					<li class="next"><a href="#" onClick="javaScript:loadajax()">Older
-							Posts &rarr;</a> </li>
-				</ul>
+				
 	</div>
 	</div>
 				<div class="col-lg-2  col-md-2 ">
