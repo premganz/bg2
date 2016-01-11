@@ -77,7 +77,7 @@ public class HomeController {
         model.addAttribute("serverTime", formattedDate);
         model.addAttribute("echoService", echoService);
         model.addAttribute("someItems", new String[] { "one", "two", "three" });
-        return "lc/index";
+        return "lc/index1";
     }
 
    

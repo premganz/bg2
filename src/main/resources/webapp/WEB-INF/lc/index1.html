@@ -2,22 +2,15 @@
 <!DOCTYPE html>
 
 <html>
-
 <head>
 
 
 <title>The Leafy Campus</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="lcx/InnerAccordion.js"></script>
-
-
 <link href="lcx/lcnew.css" rel="stylesheet" type="text/css" media="all"></link>
-
 <link href="lcx/InnerAccordion.css" rel="stylesheet" type="text/css" media="screen"></link>
-
-
-
-
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
 <!-- Bootstrap Core CSS -->
 <link href="lcx/bootstrap.css" rel="stylesheet"></link>
 
@@ -48,12 +41,10 @@
 <script src="js/clean-blog.min.js"></script>
 </head>
 
-
 <body>
-
 	<header class="intro-header" style="background-image: url('img/lc-home-bg1.jpg')">
 		<div class="container">
-			<div class="row">
+			<div class="row" >
 				<div class="col-lg-12 col-md-12 ">
 					<div class="site-heading">
 						<h1 th:text="${message.page_title}"></h1>
@@ -66,7 +57,7 @@
 	</header>
 	<div class="container">
 		<div class="row" style="background-color:white;">
-			<div class="col1-lg-2  col1-md-2 ">
+			<div class="col1-lg-2  col1-md-2 col-1-sm-2">
 				<script type="text/javascript">
 					$(document).ready(function() {
 						setupRotator();
@@ -112,104 +103,104 @@
 }
 </style>
 
-
-
-
 					<div id="menu">
 						<ul>
-							<lh> <a style="cursor: pointer;" onclick="return form_action_load('','pages','vision','view',0);">Vision</a> </lh>
-							<lh> <a style="cursor: pointer;" onclick="return form_action_load('','pages','management','view',0);">Management</a> </lh>
+							<lh> <a style="cursor: pointer;" href="/home">Home</a> </lh>
+							<lh> <a style="cursor: pointer;" href="/about" >About</a> </lh>
+						</ul>
+						
+						<ul>
+							<lh> <a style="cursor: pointer;">Contribute</a> </lh>
 						</ul>
 						<ul>
-							<!--<lh >
-			<a style="cursor: pointer;" onclick="return form_action_load('','pages','education','view',0);">Education</a>
-		</lh>-->
 							<lh>
-							<a>Education</a></lh>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','curriculum','view',0);">Curriculum</a></li>
-							<!--<li >
-			<a style="cursor: pointer;" onclick="return form_action_load('','pages','assessment','view',0);">Assessment &amp; Exams</a>
-		</li>-->
+							<a>Organization</a></lh>							
+							<li><a style="cursor: pointer;" onclick="">Organization Values</a></li>
+							<li><a style="cursor: pointer;" onclick="">Liberal Education</a></li>
+							<li><a style="cursor: pointer;" onclick="">Resources</a></li>
+							<li><a style="cursor: pointer;" onclick="">Activities</a></li>
+							<li><a style="cursor: pointer;" onclick="">Photo Gallery</a></li>
+						</ul>
+						<ul>
+							<lh>
+							<a>Journey</a></lh>
+							<li><a style="cursor: pointer;" onclick="">Plans</a></li>
+							<li><a style="cursor: pointer;" onclick="">Strategy</a></li>
+						</ul>
+						<ul>
+							<lh>
+							<a>Contribute</a></lh>
+							<li><a style="cursor: pointer;" onclick="">Contribute</a></li>
+							<li><a style="cursor: pointer;" onclick="">Our Story</a></li>
+						</ul>
+						<ul>
+							<lh>
+							<a>Links</a></lh>
+							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','curriculum','view',0);">CBSE</a></li>
 							<li><a style="cursor: pointer;" href="http://www.cisce.org/" target="_blank">ICSE | ISC Syllabus</a></li>
-							<!--<li >
-			<a style="cursor: pointer;" onclick="return form_action_load('','pages','icse','view',0);">ICSE | ISC Syllabus</a>
-		</li>-->
-						</ul>
-						<ul>
-							<lh> <a style="cursor: pointer;">Admissions</a> </lh>
-							<!--<lh><a>Admissions</a></lh>
-		<li >
-			<a style="cursor: pointer;" onclick="return form_action_load('','pages','adm_prcdr','view',0);">Admission Procedure</a>
-		</li>
-		<li >
-			<a style="cursor: pointer;" onclick="return form_action_load('','pages','application','view',0);">Application Form</a>
-		</li>-->
+							<li><a style="cursor: pointer;" href="http://www.aacu.org/" target="_blank">AACU</a></li>
 						</ul>
 						<ul>
 							<lh>
-							<a>Organization</a></lh>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','life','view',0);">Life at Leafy Campus</a></li>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','Organization_calendar','view',0);">Organization Values</a></li>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','cal_evnt','view',0);">Liberal Education</a></li>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','news','view',0);">Resources</a></li>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','tour','view',0);">Activities</a></li>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','gallery','view',0);">Photo Gallery</a></li>
+							<a>Contact</a></lh>							
+							<li><a style="cursor: pointer;" href="/contact">ContactForm</a></li>
+							<li><a style="cursor: pointer;" onclick="">Login</a></li>
+							<li><a style="cursor: pointer;" onclick="">Comment</a></li>
+							<li><a style="cursor: pointer;" onclick="">SocialMedia</a></li>
 						</ul>
-						<ul>
-							<lh>
-							<a>Publications</a></lh>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','creative_corner','view',0);">Plansr</a></li>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','stud_article','view',0);">Strategy</a></li>
-						</ul>
-						<ul>
-							<lh>
-							<a>Faculty</a></lh>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','staff','view',0);">Contact</a></li>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','staff_vacancy','view',0);">Our Story</a></li>
-						</ul>
-						<ul>
-							<lh>
-							<a>Alumni</a></lh>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','network','view',0);">Network</a></li>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','register','view',0);">Register</a></li>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','login','view',0);">Login</a></li>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','alu_evnt','view',0);">Alumni Events</a></li>
-						</ul>
-						<ul>
-							<lh> <a style="cursor: pointer;" onclick="return form_action_load('','pages','contactus','view',0);">Contact</a> </lh>
-						</ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul><ul><lh> </lh></ul><ul><lh> </lh></ul><ul><lh> </lh></ul>
 					</div>
 
 				</div>
-				<div class="col-lg-8  col-md-7 ">
-					<div id="content1" style="border-right-style:solid;border-right-width:1px;border-right-color:yellow;">
-						
-						<h3>
-							<span style="font-size: 16px;"><span style="font-family: verdana, geneva, sans-serif;"><strong>Welcome to  the Leafy Campus Organization!</strong></span></span>
-						</h3>
-						<p>
-							<br /> <span style="font-size: 12px;"><span style="font-family: verdana, geneva, sans-serif;">Leafy Campus Organization was
-									founded in 2015</span></span>
-						</p>
-						<p>
-							<span style="font-size: 12px;"><span style="font-family: verdana, geneva, sans-serif;">
-							Welcome to the leafy campus foundation.
-							<br /> <br /> <strong>Do watch this video to get a
-										glimpse of Leafy Campus <br /> <br /> <a href="http://youtu.be/"
-										style="font-family: verdana, geneva, sans-serif; font-size: 12px;" target="_blank">Leafy Campus on YouTube!</a>
-								</strong>
-							</span></span>
-						</p>
-					</div>
+			<div class="col-lg-8  col-md-8 ">
+			<div class="container" style="border-right-color: yellow;">				
+					<p th:text="${message.page_title}"></p>
+					
+									
 				</div>
+			
+			<!-- Main Content -->
+	<div class="container" >
+	<hr></hr>	
+	<h2>Updated Articles</h2>
+	<hr></hr>		
+		<div class="row" th:each="link : ${message.MAIN_SECTION.SECTION_LINKS_ZN}">
+		
+				<div class="post-preview" >			
+					<a th:href="${link.link_id}"	>
+						<h3  th:text="${link.link_title}"></h3>
+						<h4 class="post-subtitle" th:text="${link.link_sub_title}"></h4>
+					</a>
+					<p class="post-meta">
+						<h5>Posted by <a href="#">Admin</a></h5>
+						<p th:text="${link.link_date}"></p>
+					</p>
+				
+				<hr></hr>			
+				
+			</div>
+		</div>
+		<!-- Pager -->
+				<ul class="pager">
+					<li class="next"><a href="#" onClick="javaScript:loadajax()">Older
+							Posts &rarr;</a> </li>
+				</ul>
+	</div>
+	</div>
 				<div class="col-lg-2  col-md-2 ">
-					<div id="news-section1">
 						<H3>News</H3>
 						<ul>
 						</ul>
 						<a style="cursor: pointer; font-size: 12px; text-decoration: underline;" onclick="return form_action_load('','pages','news','view',0);">More
 							News</a>
-					</div>
 				</div>
 			
 		</div>

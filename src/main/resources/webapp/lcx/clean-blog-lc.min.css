@@ -155,7 +155,7 @@ hr.small {
 @media only screen and (min-width:768px) {
 	.intro-header .site-heading, .intro-header .post-heading, .intro-header .page-heading
 		{
-		padding: 30px 0
+		padding: 18px 0
 	}
 }
 
@@ -185,7 +185,7 @@ hr.small {
 }
 
 .intro-header .post-heading h1 {
-	font-size: 35px
+	font-size: 18px
 }
 
 .intro-header .post-heading .subheading, .intro-header .post-heading .meta
@@ -196,7 +196,7 @@ hr.small {
 
 .intro-header .post-heading .subheading {
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: 24px;
+	font-size: 15px;
 	margin: 10px 0 30px;
 	font-weight: 600
 }
@@ -205,7 +205,7 @@ hr.small {
 	font-family: Lora, 'Times New Roman', serif;
 	font-style: italic;
 	font-weight: 300;
-	font-size: 20px
+	font-size: 15px
 }
 
 .intro-header .post-heading .meta a {
@@ -444,4 +444,30 @@ img::-moz-selection {
 
 body {
 	webkit-tap-highlight-color: #0085a1
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 992px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1200px;
+  }
+}
+@media (min-width: 1366px) {
+  .container {
+    width: 1366px;
+  }
 }

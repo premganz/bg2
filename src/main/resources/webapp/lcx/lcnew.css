@@ -117,6 +117,7 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, em, img, s
 	color: #000;
 	height: auto;
 	display: block;
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	padding-left: 20px;
 	font-weight: bold;
 	padding-top: 2px;
@@ -124,7 +125,7 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, em, img, s
 	/*cursor: pointer;*/
 	width: auto;
 	text-decoration: none;
-	font-size: 13px;
+	font-size: 15px;
 }
 #menu lh a:hover{
 	color: #000000 !important;
@@ -143,7 +144,7 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, em, img, s
 }
 #menu li{
 	list-style-type: none;
-	font-size: 13px;
+	font-size: 15px;
 	padding-top: 1px;
 	padding-bottom: 1px;
 	display: block;
@@ -286,39 +287,6 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, em, img, s
     margin: 0;
     padding: 10px;
     text-align: center;
-}
-
-H2 {
-	font-size:18px;
-	font-weight: 900;
-	color: #237000;
-	margin: 0px;
-	padding-bottom: 10px;
-}
-
-H3 {
-	font-size:14px;
-	font-weight: bold;
-	color: #237000;
-	margin: 0px;
-	padding-bottom: 5px;
-}
-H4 {
-	font-size:13px;
-	font-weight: 900;
-	color: #000;
-	margin: 0px;
-	padding-bottom: 8px;
-	text-align: left;
-	line-height: 1.4em;
-}
-
-p {
-	font-size: 12px;
-	padding-bottom: 10px;
-	line-height: 1.4em;
-	font-weight: normal;
-	color: #333;
 }
 
 #quote {
@@ -622,7 +590,7 @@ p {
 #SSA ul {
 	height: auto;
 	width: 98%;
-	padding-bottom: 13px;
+	padding-bottom: 15px;
 	/*margin-left: 15px !important;
 	margin-left: 30px;*/
 	float: left;

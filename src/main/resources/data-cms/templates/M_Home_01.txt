@@ -1,6 +1,6 @@
 {
 	"page_sub_title": "better education, better future for all",
-	"page_title": "Leafy Campus",
+	"page_title": "leafy campus",
 	"MAIN_SECTION": {
 		"section_id": "Resources",
 		"section_title": "",
