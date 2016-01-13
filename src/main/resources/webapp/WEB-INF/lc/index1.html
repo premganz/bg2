@@ -8,14 +8,14 @@
 <title>The Leafy Campus</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="lcx/InnerAccordion.js"></script>
-<link href="lcx/lcnew.css" rel="stylesheet" type="text/css" media="all"></link>
-<link href="lcx/InnerAccordion.css" rel="stylesheet" type="text/css" media="screen"></link>
+<link href="../lcx/lcnew.css" rel="stylesheet" type="text/css" media="all"></link>
+<link href="../lcx/InnerAccordion.css" rel="stylesheet" type="text/css" media="screen"></link>
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
 <!-- Bootstrap Core CSS -->
-<link href="lcx/bootstrap.css" rel="stylesheet"></link>
+<link href="../lcx/bootstrap.css" rel="stylesheet"></link>
 
 <!-- Custom CSS -->
-<link href="lcx/clean-blog-lc.min.css" rel="stylesheet"></link>
+<link href="../lcx/clean-blog-lc.min.css" rel="stylesheet"></link>
 
 <!-- Custom Fonts -->
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
@@ -35,17 +35,18 @@
 <script src="js/jquery.js"></script>
  -->
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="js/clean-blog.min.js"></script>
+<script src="../js/clean-blog.min.js"></script>
 </head>
 
 <body>
-	<header class="intro-header" style="background-image: url('img/lc-home-bg1.jpg')">
+	<div class="blackbody">
+	<header class="intro-header" style="background-image: url('../img/lc-home-bg1.jpg')">
 		<div class="container-fluid">
 			<div class="row" >
-				<div class="col-lg-12 col-md-12 col-sm-6 ">
+				<div class="col-lg-12 col-md-12 col-sm-6 col-xs-6 ">
 					<div class="site-heading">
 						<h1>leafy campus</h1>
 						<hr class="small"></hr>
@@ -58,8 +59,123 @@
 	
 	<div class="container-fluid">
 		<div class="row" style="background-color:white;">
-			<div class="col-lg-3  col-md-3 col-sm-6">
-				<script type="text/javascript">
+			<div class="col-lg-3  col-md-2 col-sm-6 col-xs-12">
+				<div id="menu">
+						<ul>
+							<lh> <a style="cursor: pointer;" href="/home/A01T">Home</a> </lh>
+							<lh> <a style="cursor: pointer;" href="/home/B01T" >About</a> </lh>
+						</ul>
+						
+						<ul>
+							<lh> <a style="cursor: pointer;">Contribute</a> </lh>
+						</ul>
+						
+						<ul>
+							<lh>
+							<a>For Schools</a></lh>
+							<li><a style="cursor: pointer;" href="/home/C01T" onclick="">Whats Fresh</a></li>
+							<li><a style="cursor: pointer;" href="/home/C02T" onclick="">Where we fit in</a></li>							
+							<li><a style="cursor: pointer;" href="/home/C03T" onclick="">Liberal Education</a></li>
+							<li><a style="cursor: pointer;" href="/home/C04T" onclick="">Demo</a></li>							
+						</ul>
+						<ul>
+							<lh>
+							<a>For Students</a></lh>
+							<li><a style="cursor: pointer;" onclick="">Resources</a></li>
+							<li><a style="cursor: pointer;" onclick="">Videos</a></li>
+							<li><a style="cursor: pointer;" onclick="">Collaborate</a></li>
+							<li><a style="cursor: pointer;" onclick="">Activities</a></li>
+						</ul>
+						<ul>
+							<lh>
+							<a>Organization</a></lh>							
+							<li><a style="cursor: pointer;" onclick="">Organization Values</a></li>
+							<li><a style="cursor: pointer;" onclick="">Vision</a></li>
+							<li><a style="cursor: pointer;" onclick="">Our Programmes</a></li>
+							<li><a style="cursor: pointer;" onclick="">Strategy</a></li>
+							<li><a style="cursor: pointer;" onclick="">Photo Gallery</a></li>
+						</ul>
+						<ul>
+							<lh>
+							<a>Links</a></lh>
+							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','curriculum','view',0);">CBSE</a></li>
+							<li><a style="cursor: pointer;" href="http://www.cisce.org/" target="_blank">ICSE | ISC Syllabus</a></li>
+							<li><a style="cursor: pointer;" href="http://www.aacu.org/" target="_blank">AACU</a></li>
+						</ul>
+						<ul>
+							<lh>
+							<a>Contact</a></lh>							
+							<li><a style="cursor: pointer;" href="/contact">ContactForm</a></li>
+							<li><a style="cursor: pointer;" href="/admin/metrics">Login</a></li>
+							<li><a style="cursor: pointer;" onclick="">Comment</a></li>
+							<li><a style="cursor: pointer;" onclick="">SocialMedia</a></li>
+						</ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul>
+						<ul><lh> </lh></ul><ul><lh> </lh></ul><ul><lh> </lh></ul><ul><lh> </lh></ul>
+					</div>
+
+				</div>
+			<div class="col-lg-7  col-md-8 col-sm-6 ">
+			<div class="container1" style="border-right-color: yellow;">				
+					 <div th:utext="${message.page_description_text}"></div>
+					
+					  <div th:utext="${message.page_content_text}"></div>
+				</div>
+			
+			<!-- Main Content -->
+	<div class="container1" >
+	<hr></hr>	
+	<h2> <div th:utext="${message.section_list_heading}"></div></h2>
+	<hr></hr>		
+		<div class="row1" th:each="link : ${message.SECTION_LINKS_ZN}">
+		
+				<div class="post-preview" >			
+					<a th:href="${link.link_id}"	>
+						<h3  th:text="${link.link_title}"></h3>
+						<h4 class="post-subtitle" th:text="${link.link_sub_title}"></h4>
+					</a>
+					<p class="post-meta">
+						<h5>Posted by <a href="#">Admin</a></h5>
+						<p th:text="${link.link_date}"></p>
+					</p>
+				
+				<hr></hr>			
+				
+			</div>
+		</div>
+		<!-- Pager -->
+				
+	</div>
+	</div>
+				<div class="col-lg-2  col-md-2 col-sm-12">
+						<H3>News</H3>
+						<ul>
+						</ul>
+						<a style="cursor: pointer; font-size: 12px; text-decoration: underline;" onclick="return form_action_load('','pages','news','view',0);">More
+							News</a>
+				</div>
+			
+		</div>
+		<div class="row">
+		<div id="footer">
+			<!-- Footer start -->
+			<p>
+				&copy; Leafy Campus Organization, Chennai <br></br> Best viewed on Mozilla Firefox / Google Chrome / Internet Explorer 9.0 and above
+			</p>
+			<!-- Footer end -->
+		</div>
+		</div>
+	</div>
+	
+	
+		<script type="text/javascript">
 					$(document).ready(function() {
 						setupRotator();
 					});
@@ -103,119 +219,7 @@
 	margin-right: 10px;
 }
 </style>
-
-					<div id="menu">
-						<ul>
-							<lh> <a style="cursor: pointer;" href="/home">Home</a> </lh>
-							<lh> <a style="cursor: pointer;" href="/about" >About</a> </lh>
-						</ul>
-						
-						<ul>
-							<lh> <a style="cursor: pointer;">Contribute</a> </lh>
-						</ul>
-						
-						<ul>
-							<lh>
-							<a>For Schools</a></lh>
-							<li><a style="cursor: pointer;" onclick="">Pedagogy</a></li>
-							<li><a style="cursor: pointer;" onclick="">Strategy</a></li>
-							<li><a style="cursor: pointer;" onclick="">Liberal Education</a></li>
-						</ul>
-						<ul>
-							<lh>
-							<a>For Students</a></lh>
-							<li><a style="cursor: pointer;" onclick="">Resources</a></li>
-							<li><a style="cursor: pointer;" onclick="">Videos</a></li>
-							<li><a style="cursor: pointer;" onclick="">Resources</a></li>
-							<li><a style="cursor: pointer;" onclick="">Activities</a></li>
-						</ul>
-						<ul>
-							<lh>
-							<a>Organization</a></lh>							
-							<li><a style="cursor: pointer;" onclick="">Organization Values</a></li>
-							<li><a style="cursor: pointer;" onclick="">Vision</a></li>
-							<li><a style="cursor: pointer;" onclick="">Our Programmes</a></li>
-							<li><a style="cursor: pointer;" onclick="">Strategy</a></li>
-							<li><a style="cursor: pointer;" onclick="">Photo Gallery</a></li>
-						</ul>
-						<ul>
-							<lh>
-							<a>Links</a></lh>
-							<li><a style="cursor: pointer;" onclick="return form_action_load('','pages','curriculum','view',0);">CBSE</a></li>
-							<li><a style="cursor: pointer;" href="http://www.cisce.org/" target="_blank">ICSE | ISC Syllabus</a></li>
-							<li><a style="cursor: pointer;" href="http://www.aacu.org/" target="_blank">AACU</a></li>
-						</ul>
-						<ul>
-							<lh>
-							<a>Contact</a></lh>							
-							<li><a style="cursor: pointer;" href="/contact">ContactForm</a></li>
-							<li><a style="cursor: pointer;" href="/admin/metrics">Login</a></li>
-							<li><a style="cursor: pointer;" onclick="">Comment</a></li>
-							<li><a style="cursor: pointer;" onclick="">SocialMedia</a></li>
-						</ul>
-						<ul><lh> </lh></ul>
-						<ul><lh> </lh></ul>
-						<ul><lh> </lh></ul>
-						<ul><lh> </lh></ul>
-						<ul><lh> </lh></ul>
-						<ul><lh> </lh></ul>
-						<ul><lh> </lh></ul>
-						<ul><lh> </lh></ul>
-						<ul><lh> </lh></ul><ul><lh> </lh></ul><ul><lh> </lh></ul><ul><lh> </lh></ul>
-					</div>
-
-				</div>
-			<div class="col-lg-7  col-md-7 col-sm-6">
-			<div class="container1" style="border-right-color: yellow;">				
-				
-					 <div th:utext="${message.page_title}"></div>
-					
-									
-				</div>
-			
-			<!-- Main Content -->
-	<div class="container1" >
-	<hr></hr>	
-	<h2>Updated Articles</h2>
-	<hr></hr>		
-		<div class="row1" th:each="link : ${message.MAIN_SECTION.SECTION_LINKS_ZN}">
-		
-				<div class="post-preview" >			
-					<a th:href="${link.link_id}"	>
-						<h3  th:text="${link.link_title}"></h3>
-						<h4 class="post-subtitle" th:text="${link.link_sub_title}"></h4>
-					</a>
-					<p class="post-meta">
-						<h5>Posted by <a href="#">Admin</a></h5>
-						<p th:text="${link.link_date}"></p>
-					</p>
-				
-				<hr></hr>			
-				
-			</div>
-		</div>
-		<!-- Pager -->
-				
-	</div>
-	</div>
-				<div class="col-lg-2  col-md-2 col-sm-12">
-						<H3>News</H3>
-						<ul>
-						</ul>
-						<a style="cursor: pointer; font-size: 12px; text-decoration: underline;" onclick="return form_action_load('','pages','news','view',0);">More
-							News</a>
-				</div>
-			
-		</div>
-		<div class="row">
-		<div id="footer">
-			<!-- Footer start -->
-			<p>
-				&copy; Leafy Campus Organization, Chennai <br></br> Best viewed on Mozilla Firefox / Google Chrome / Internet Explorer 9.0 and above
-			</p>
-			<!-- Footer end -->
-		</div>
-		</div>
+	
 	</div>
 </body>
 

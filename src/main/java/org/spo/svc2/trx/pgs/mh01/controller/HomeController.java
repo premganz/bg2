@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -49,9 +51,11 @@ public class HomeController {
 		message.setHandler("pages");
 		message.setContent("M_Home_1/f01/null");
 		String response ="";
+		PageService svc = new PageService();
 		try {		
-			PageService svc = new PageService();
-			response = svc.readUpPage("templates", "M_Home_01");
+			
+			response = svc.readUpPage("templates", "A01T");
+			
 			//response = connector.getResponse(message);
 			//TextMessage reply = sender.simpleSend(message.toString()); 
 			//response=reply.getText();
@@ -63,6 +67,12 @@ public class HomeController {
 			Gson gson = new Gson();
 			Type typ = new TypeToken<M_Home_01>(){}.getType();//FIXME right now only string works
 			M_Home_01 cmd= gson.fromJson(response,typ);		
+			if(cmd.getPage_content_type_cd().equals("1")){
+				String contentId = cmd.getPage_content_text();
+				 response = svc.readUpPage("posts", contentId);
+				 response=response.equals("")?"<p>blank reply</p>":response;				
+				 cmd.setPage_content_text(response);				 
+			}
 			model.addAttribute("message",cmd);
 			System.out.println(cmd.toString());
 			
@@ -80,25 +90,52 @@ public class HomeController {
         return "lc/index1";
     }
 
-   
+    @RequestMapping(value="/home/{contentId}", method = RequestMethod.GET)
+	 public String fetchPost(    final PostContent content, final BindingResult bindingResult, final ModelMap model,
+			 @PathVariable String contentId) {
+		 if (bindingResult.hasErrors()) {
+			 return "seedstartermng";
+		 }
+
+		 System.out.println(content.getHtmlContent());
+		 logger.info("Searching "+contentId  );
+
+		  QMessage message = new QMessage();
+			message.setHandler("pages");
+			message.setContent("M_Home_1/f01/null");
+			String response ="";
+			PageService svc = new PageService();
+			try {		
+				response = svc.readUpPage("templates", contentId);
+			} catch (Exception e) {			
+				e.printStackTrace();
+			}
+			try{
+				Gson gson = new Gson();
+				Type typ = new TypeToken<M_Home_01>(){}.getType();//FIXME right now only string works
+				M_Home_01 cmd= gson.fromJson(response,typ);		
+				if(cmd.getPage_content_type_cd().equals("1")){
+					String contentId1 = cmd.getPage_content_text();
+					 response = svc.readUpPage("posts", contentId1);
+					 response=response.equals("")?"<p>blank reply</p>":response;				
+					 cmd.setPage_content_text(response);				 
+				}
+				model.addAttribute("message",cmd);
+				System.out.println(cmd.toString());
+				
+			}catch(Exception e){
+				System.out.println("Error during messagePayload processing from  TestResourceServerException on" );
+				e.printStackTrace();
+			}
+	        
+	        return "lc/index1";
+	 }
+	 
     
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String root(Locale locale, Model model) {
-    	PageService svc = new PageService();
-    	String	response = svc.readUpPage("templates", "M_Home_01");
-
-    	try{
-    		Gson gson = new Gson();
-    		Type typ = new TypeToken<M_Home_01>(){}.getType();//FIXME right now only string works
-    		M_Home_01 cmd= gson.fromJson(response,typ);		
-    		model.addAttribute("message",cmd);
-    		System.out.println(cmd.toString());
-
-    	}catch(Exception e){
-    		System.out.println("Error during messagePayload processing from  TestResourceServerException on" );
-    		e.printStackTrace();
-    	}
-    	return "lc/index1";
+    	
+    	return "redirect:home/A01T";
     }
     
     @RequestMapping(value = "/about", method = RequestMethod.GET)

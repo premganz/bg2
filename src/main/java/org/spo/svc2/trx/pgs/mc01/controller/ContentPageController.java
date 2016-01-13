@@ -31,7 +31,7 @@ public class ContentPageController {
 	private SocketConnector connector=new SocketConnector();
 	
 	
-	 @RequestMapping(value="/home/{contentId}", method = RequestMethod.GET)
+	 @RequestMapping(value="/content/{contentId}", method = RequestMethod.GET)
 	 public String fetchPost(    final PostContent content, final BindingResult bindingResult, final ModelMap model,
 			 @PathVariable String contentId) {
 		 if (bindingResult.hasErrors()) {

@@ -1,14 +1,59 @@
 package org.spo.svc2.trx.pgs.mh01.cmd;
 
-import java.util.List;
 
 public class M_Home_01
 {
+	private String section_list_heading;
+
+	private String section_list_present_ic;
+
+	private SECTION_LINKS_ZN[] SECTION_LINKS_ZN;
+
 	private String page_sub_title;
 
-	private MAIN_SECTION MAIN_SECTION;
+	private String section_list_qtt;
+
+	private String page_content_present_ic;
+
+	private String page_content_text;
+
+	private String page_content_type_cd;
+
+	private String page_description_text;
+
+	private String list_pagination_ic;
 
 	private String page_title;
+
+	public String getSection_list_heading ()
+	{
+		return section_list_heading;
+	}
+
+	public void setSection_list_heading (String section_list_heading)
+	{
+		this.section_list_heading = section_list_heading;
+	}
+
+	public String getSection_list_present_ic ()
+	{
+		return section_list_present_ic;
+	}
+
+	public void setSection_list_present_ic (String section_list_present_ic)
+	{
+		this.section_list_present_ic = section_list_present_ic;
+	}
+
+	public SECTION_LINKS_ZN[] getSECTION_LINKS_ZN ()
+	{
+		return SECTION_LINKS_ZN;
+	}
+
+	public void setSECTION_LINKS_ZN (SECTION_LINKS_ZN[] SECTION_LINKS_ZN)
+	{
+		this.SECTION_LINKS_ZN = SECTION_LINKS_ZN;
+	}
 
 	public String getPage_sub_title ()
 	{
@@ -20,14 +65,64 @@ public class M_Home_01
 		this.page_sub_title = page_sub_title;
 	}
 
-	public MAIN_SECTION getMAIN_SECTION ()
+	public String getSection_list_qtt ()
 	{
-		return MAIN_SECTION;
+		return section_list_qtt;
 	}
 
-	public void setMAIN_SECTION (MAIN_SECTION MAIN_SECTION)
+	public void setSection_list_qtt (String section_list_qtt)
 	{
-		this.MAIN_SECTION = MAIN_SECTION;
+		this.section_list_qtt = section_list_qtt;
+	}
+
+	public String getPage_content_present_ic ()
+	{
+		return page_content_present_ic;
+	}
+
+	public void setPage_content_present_ic (String page_content_present_ic)
+	{
+		this.page_content_present_ic = page_content_present_ic;
+	}
+
+	public String getPage_content_text ()
+	{
+		return page_content_text;
+	}
+
+	public void setPage_content_text (String page_content_text)
+	{
+		this.page_content_text = page_content_text;
+	}
+
+	public String getPage_content_type_cd ()
+	{
+		return page_content_type_cd;
+	}
+
+	public void setPage_content_type_cd (String page_content_type_cd)
+	{
+		this.page_content_type_cd = page_content_type_cd;
+	}
+
+	public String getPage_description_text ()
+	{
+		return page_description_text;
+	}
+
+	public void setPage_description_text (String page_description_text)
+	{
+		this.page_description_text = page_description_text;
+	}
+
+	public String getList_pagination_ic ()
+	{
+		return list_pagination_ic;
+	}
+
+	public void setList_pagination_ic (String list_pagination_ic)
+	{
+		this.list_pagination_ic = list_pagination_ic;
 	}
 
 	public String getPage_title ()
@@ -43,97 +138,12 @@ public class M_Home_01
 	@Override
 	public String toString()
 	{
-		return "ClassPojo [page_sub_title = "+page_sub_title+", MAIN_SECTION = "+MAIN_SECTION+", page_title = "+page_title+"]";
+		return "ClassPojo [section_list_heading = "+section_list_heading+", section_list_present_ic = "+section_list_present_ic+", SECTION_LINKS_ZN = "+SECTION_LINKS_ZN+", page_sub_title = "+page_sub_title+", section_list_qtt = "+section_list_qtt+", page_content_present_ic = "+page_content_present_ic+", page_content_text = "+page_content_text+", page_content_type_cd = "+page_content_type_cd+", page_description_text = "+page_description_text+", list_pagination_ic = "+list_pagination_ic+", page_title = "+page_title+"]";
 	}
 }
 
 
-
-
-
-class MAIN_SECTION
-{
-	private String more_pages_link_ic;
-
-	private String section_title;
-
-	private String section_links_att;
-
-	private SECTION_LINKS_ZN[] SECTION_LINKS_ZN;
-
-	private String link_qtt;
-
-	private String section_id;
-
-	public String getMore_pages_link_ic ()
-	{
-		return more_pages_link_ic;
-	}
-
-	public void setMore_pages_link_ic (String more_pages_link_ic)
-	{
-		this.more_pages_link_ic = more_pages_link_ic;
-	}
-
-	public String getSection_title ()
-	{
-		return section_title;
-	}
-
-	public void setSection_title (String section_title)
-	{
-		this.section_title = section_title;
-	}
-
-	public String getSection_links_att ()
-	{
-		return section_links_att;
-	}
-
-	public void setSection_links_att (String section_links_att)
-	{
-		this.section_links_att = section_links_att;
-	}
-
-	public SECTION_LINKS_ZN[] getSECTION_LINKS_ZN ()
-	{
-		return SECTION_LINKS_ZN;
-	}
-
-	public void setSECTION_LINKS_ZN (SECTION_LINKS_ZN[] SECTION_LINKS_ZN)
-	{
-		this.SECTION_LINKS_ZN = SECTION_LINKS_ZN;
-	}
-
-	public String getLink_qtt ()
-	{
-		return link_qtt;
-	}
-
-	public void setLink_qtt (String link_qtt)
-	{
-		this.link_qtt = link_qtt;
-	}
-
-	public String getSection_id ()
-	{
-		return section_id;
-	}
-
-	public void setSection_id (String section_id)
-	{
-		this.section_id = section_id;
-	}
-
-	@Override
-	public String toString()
-	{
-		return "ClassPojo [more_pages_link_ic = "+more_pages_link_ic+", section_title = "+section_title+", section_links_att = "+section_links_att+", SECTION_LINKS_ZN = "+SECTION_LINKS_ZN+", link_qtt = "+link_qtt+", section_id = "+section_id+"]";
-	}
-}
-
-
-class SECTION_LINKS_ZN
+ class SECTION_LINKS_ZN
 {
 	private String link_sub_title;
 
@@ -201,3 +211,6 @@ class SECTION_LINKS_ZN
 		return "ClassPojo [link_sub_title = "+link_sub_title+", link_date = "+link_date+", link_by = "+link_by+", link_title = "+link_title+", link_id = "+link_id+"]";
 	}
 }
+
+
+
