@@ -38,7 +38,7 @@ public class MailMe {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("lemonytreetech@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
-				InternetAddress.parse("lemonytreetech@gmail.com"));
+				InternetAddress.parse("misterprem@gmail.com"));
 			message.setSubject("Mail Mergers and amalgamations");
 			StringBuffer buf = new StringBuffer();
 			buf.append(form.getName()+'\n'+form.getMessage()+'\n'+form.getEmailId()+'\n'+form.getPhoneNumber());

@@ -81,15 +81,15 @@
 						<ul>
 							<lh>
 							<a>For Students</a></lh>
-							<li><a style="cursor: pointer;" onclick="">Resources</a></li>
-							<li><a style="cursor: pointer;" onclick="">Videos</a></li>
-							<li><a style="cursor: pointer;" onclick="">Collaborate</a></li>
+							<li><a style="cursor: pointer;" href="/home/D01T"  onclick="">Resources</a></li>
+							<li><a style="cursor: pointer;" href="/home/D02T"  onclick="">Videos</a></li>
+							<li><a style="cursor: pointer;" href="/home/D03T" onclick="">Collaborate</a></li>
 							<li><a style="cursor: pointer;" onclick="">Activities</a></li>
 						</ul>
 						<ul>
 							<lh>
 							<a>Organization</a></lh>							
-							<li><a style="cursor: pointer;" onclick="">Organization Values</a></li>
+							<li><a style="cursor: pointer;" href="/home/E01T" onclick="">What we do</a></li>
 							<li><a style="cursor: pointer;" onclick="">Vision</a></li>
 							<li><a style="cursor: pointer;" onclick="">Our Programmes</a></li>
 							<li><a style="cursor: pointer;" onclick="">Strategy</a></li>
@@ -128,7 +128,10 @@
 					
 					  <div th:utext="${message.page_content_text}"></div>
 				</div>
-			
+		
+		<ul class="pager" >
+					<li class="next"><a th:href="${message.list_pagination_link}" style="background-color:gold;"> <div th:utext="${message.list_pagination_txt}"></div></a> </li>
+		</ul>
 			<!-- Main Content -->
 	<div class="container1" >
 	<hr></hr>	
@@ -142,7 +145,7 @@
 						<h4 class="post-subtitle" th:text="${link.link_sub_title}"></h4>
 					</a>
 					<p class="post-meta">
-						<h5>Posted by <a href="#">Admin</a></h5>
+						<h5>Posted by <a th:href="${message.page_description_text}">Admin</a></h5>
 						<p th:text="${link.link_date}"></p>
 					</p>
 				
@@ -150,7 +153,7 @@
 				
 			</div>
 		</div>
-		<!-- Pager -->
+		
 				
 	</div>
 	</div>
