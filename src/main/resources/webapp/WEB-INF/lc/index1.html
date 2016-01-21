@@ -120,7 +120,11 @@
 						<ul><lh> </lh></ul>
 						<ul><lh> </lh></ul><ul><lh> </lh></ul><ul><lh> </lh></ul><ul><lh> </lh></ul>
 					</div>
-
+ <div th:utext="${message.page_id}"></div>
+ <div th:utext="${message.contentObject.metaMap['contentid']}"></div>
+				<div th:switch="${message.page_id}">
+					<p th:case='A01T'><a href="http://info.flagcounter.com/fhT3"><img src="http://s01.flagcounter.com/count2/fhT3/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></img></a></p>					
+				</div>
 				</div>
 			<div class="col-lg-7  col-md-8 col-sm-6 ">
 			<div class="container1" style="border-right-color: yellow;">				
@@ -166,11 +170,12 @@
 				</div>
 			
 		</div>
-		<div class="row">
+		
+		<div class="row">		
 		<div id="footer">
 			<!-- Footer start -->
 			<p>
-				&copy; Leafy Campus Organization, Chennai <br></br> Best viewed on Mozilla Firefox / Google Chrome / Internet Explorer 9.0 and above
+				&copy; Leafy Campus Organization, Chennai <br></br> Powered by Bootstrap Fluidic, supports most devices. Feel free to Zoomin/out and see page respond with appropriate styles. 
 			</p>
 			<!-- Footer end -->
 		</div>

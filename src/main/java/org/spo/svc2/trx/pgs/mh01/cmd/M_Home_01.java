@@ -1,5 +1,7 @@
 package org.spo.svc2.trx.pgs.mh01.cmd;
 
+import org.spo.svc2.trx.pgs.mc01.cmd.PostContent;
+
 
 
 public class M_Home_01
@@ -19,6 +21,8 @@ public class M_Home_01
 	private String page_content_present_ic;
 
 	private String page_content_text;
+	
+	private String page_content_meta;
 
 	private String page_description_text;
 
@@ -35,6 +39,22 @@ public class M_Home_01
 	private String list_pagination_txt;
 
 	private String page_title;
+	
+	private PostContent contentObject;
+	
+	
+
+	
+
+	
+
+	public PostContent getContentObject() {
+		return contentObject;
+	}
+
+	public void setContentObject(PostContent contentObject) {
+		this.contentObject = contentObject;
+	}
 
 	public String getList_pagination_link ()
 	{
@@ -194,6 +214,15 @@ public class M_Home_01
 	public void setPage_title (String page_title)
 	{
 		this.page_title = page_title;
+	}
+	
+	
+	public String getPage_content_meta() {
+		return page_content_meta;
+	}
+
+	public void setPage_content_meta(String page_content_meta) {
+		this.page_content_meta = page_content_meta;
 	}
 
 	@Override

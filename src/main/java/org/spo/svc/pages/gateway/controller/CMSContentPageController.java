@@ -5,9 +5,9 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spo.cms.svc.PageService;
-import org.spo.svc.pages.gateway.model.PostContent;
 import org.spo.svc.pages.gateway.model.QMessage;
 import org.spo.svc.pages.gateway.svc.SocketConnector;
+import org.spo.svc2.trx.pgs.mc01.cmd.PostContent;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -160,37 +160,47 @@ public class CMSContentPageController {
 	 
 	@RequestMapping(value="admin/contentSubmit")
 	public String processContent(
-	        final PostContent content, final BindingResult bindingResult, final ModelMap model) {
-	    if (bindingResult.hasErrors()) {
-	        return "x_content";
-	    }
-	    
-	    System.out.println(content.getHtmlContent());
-	   // this.seedStarterService.add(seedStarter);
-	    
-	  
-	        logger.info("Writing "+content.getMeta()  );
-	      
-	        
-	        QMessage message = new QMessage();
-			message.setHandler("write");
-			message.setContent(content.getHtmlContent());
-			message.setMeta(content.getMeta());
-			String response ="";
-			try {
-				PageService svc = new PageService();
-				svc.writePage("posts/"+content.getMeta(), content.getHtmlContent());
-				response = connector.getResponse(message);
-				//TextMessage reply = sender.simpleSend(message.toString()); 
-				//response=reply.getText();
-				
-			} catch (Exception e) {			
-				e.printStackTrace();
-			}
-		
-	     
-	   // model.clear();
-	    return "home";
+			final PostContent content, final BindingResult bindingResult, final ModelMap model) {
+		if (bindingResult.hasErrors()) {
+			return "x_content";
+		}
+
+		System.out.println(content.getHtmlContent());
+		// this.seedStarterService.add(seedStarter);
+
+
+		logger.info("Writing "+content.getId()  );
+
+
+		QMessage message = new QMessage();
+		message.setHandler("write");
+		message.setContent(content.getHtmlContent());
+		message.setMeta(content.getId());
+		String response ="";
+		try {
+			PageService svc = new PageService();
+			svc.writePage("posts/"+content.getId(), content.getHtmlContent());
+			response = connector.getResponse(message);
+			//TextMessage reply = sender.simpleSend(message.toString()); 
+			//response=reply.getText();
+
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+
+		message = new QMessage();
+		message.setHandler("write");
+		message.setContent(content.getMeta());
+		message.setMeta(content.getId()+"_meta");
+
+		try {
+			PageService svc = new PageService();
+			svc.writePage("posts/"+content.getId()+"_meta", content.getMeta());
+			response = connector.getResponse(message);
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		return "home";
 	}
 	
 	@RequestMapping(value="admin/submitContentTemplate")

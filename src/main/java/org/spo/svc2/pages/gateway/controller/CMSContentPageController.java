@@ -5,9 +5,9 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spo.cms2.svc.PageService;
-import org.spo.svc2.pages.gateway.model.PostContent;
 import org.spo.svc2.pages.gateway.model.QMessage;
 import org.spo.svc2.pages.gateway.svc.SocketConnector;
+import org.spo.svc2.trx.pgs.mc01.cmd.PostContent;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -88,7 +88,8 @@ public class CMSContentPageController {
 	 @RequestMapping(value="admin/edit",   params={"fileName"})
 	 public String editContent(
 		        final PostContent content, final BindingResult bindingResult, final ModelMap model,
-		        @RequestParam(value="fileName", required=false) String metaValue) {
+		        @RequestParam(value="fileName", required=false) String fileName 
+		       ) {
 		    if (bindingResult.hasErrors()) {
 		        return "seedstartermng";
 		    }
@@ -97,21 +98,23 @@ public class CMSContentPageController {
 		   // this.seedStarterService.add(seedStarter);
 		    
 		  
-		        logger.info("Searching "+metaValue  );
+		        logger.info("Searching "+fileName  );
 		      
 		        
 		        QMessage message = new QMessage();
 				message.setHandler("fetch");
 				//message.setContent(content.getHtmlContent());
-				message.setMeta(metaValue);
+				
 				String response ="<p>blank reply</p>";
 				try {		
 					PageService svc = new PageService();
-					response = svc.readUpPage("posts", metaValue);
+					response = svc.readUpPage("posts", fileName);
+					String response_meta = svc.readUpPage("posts", fileName+"_meta");
 					//response = connector.getResponse(message);
 					//TextMessage reply = sender.simpleSend(message.toString()); 
 					//response=reply.getText();
 					content.setHtmlContent(response);
+					content.setMeta(response_meta);
 				} catch (Exception e) {			
 					e.printStackTrace();
 				}
@@ -162,7 +165,9 @@ public class CMSContentPageController {
 	public String processContent(
 	        final PostContent content, final BindingResult bindingResult, final ModelMap model) {
 	    if (bindingResult.hasErrors()) {
-	        return "x_content";
+	    	content.setFormErrors(bindingResult.getAllErrors().toString());
+	    	model.addAttribute("content", content);
+	        return "redirect:entry";
 	    }
 	    
 	    System.out.println(content.getHtmlContent());
@@ -179,7 +184,8 @@ public class CMSContentPageController {
 			String response ="";
 			try {
 				PageService svc = new PageService();
-				svc.writePage("posts/"+content.getMeta(), content.getHtmlContent());
+				svc.writePage("posts/"+content.getId(), content.getHtmlContent());
+				svc.writePage("posts/"+content.getId()+"_meta", content.getMeta());
 				response = connector.getResponse(message);
 				//TextMessage reply = sender.simpleSend(message.toString()); 
 				//response=reply.getText();

@@ -46,48 +46,8 @@ public class HomeController {
      */
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {
-        logger.info("Welcome home! the client locale is " + locale.toString());
-        QMessage message = new QMessage();
-		message.setHandler("pages");
-		message.setContent("M_Home_1/f01/null");
-		String response ="";
-		PageService svc = new PageService();
-		try {		
-			
-			response = svc.readUpPage("templates", "A01T");
-			
-			//response = connector.getResponse(message);
-			//TextMessage reply = sender.simpleSend(message.toString()); 
-			//response=reply.getText();
-			
-		} catch (Exception e) {			
-			e.printStackTrace();
-		}
-		try{
-			Gson gson = new Gson();
-			Type typ = new TypeToken<M_Home_01>(){}.getType();//FIXME right now only string works
-			M_Home_01 cmd= gson.fromJson(response,typ);		
-			if(cmd.getPage_content_type_cd().equals("1")){
-				String contentId = cmd.getPage_content_text();
-				 response = svc.readUpPage("posts", contentId);
-				 response=response.equals("")?"<p>blank reply</p>":response;				
-				 cmd.setPage_content_text(response);				 
-			}
-			model.addAttribute("message",cmd);
-			System.out.println(cmd.toString());
-			
-		}catch(Exception e){
-			System.out.println("Error during messagePayload processing from  TestResourceServerException on" );
-			e.printStackTrace();
-		}
-        Date date = new Date();
-        DateFormat dateFormat =DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG, locale);
-
-        String formattedDate = dateFormat.format(date);
-        model.addAttribute("serverTime", formattedDate);
-        model.addAttribute("echoService", echoService);
-        model.addAttribute("someItems", new String[] { "one", "two", "three" });
-        return "lc/index1";
+       
+        return "redirect:/";
     }
 
     @RequestMapping(value="/home/{contentId}", method = RequestMethod.GET)
@@ -117,8 +77,14 @@ public class HomeController {
 				if(cmd.getPage_content_type_cd().equals("1")){
 					String contentId1 = cmd.getPage_content_text();
 					 response = svc.readUpPage("posts", contentId1);
+					 String response_meta = svc.readUpPage("posts", contentId1+"_meta");
 					 response=response.equals("")?"<p>blank reply</p>":response;				
-					 cmd.setPage_content_text(response);				 
+					 cmd.setPage_content_text(response);	
+					 PostContent contentObj = new PostContent();
+					 contentObj.setHtmlContent(response);
+					 contentObj.setMeta(response_meta);
+					 cmd.setPage_content_meta(response_meta);
+					 cmd.setContentObject(contentObj);
 				}
 				model.addAttribute("message",cmd);
 				System.out.println(cmd.toString());

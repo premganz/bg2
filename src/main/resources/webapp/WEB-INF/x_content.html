@@ -45,9 +45,16 @@
 		    	{url: "edit?fileName="+ $("#fileName").val(),async: false, 
 		    	success: function(result){
 		    		tinyMCE.activeEditor.setContent(result);
-		    		$("#fileName").prop("readonly", true);
+		    		$("#fileName").prop("background-color", "PINK");
 		    	}
 		    	});
+		    $.ajax(
+			    	{url: "edit?fileName="+ $("#fileName").val()+"_meta",async: false, 
+			    	success: function(result){
+			    		$("#fileMeta").prop("value", result);
+			    		$("#fileMeta").prop("background-color", "PINK");
+			    	}
+			    });
 		   
 		});
 		});
@@ -103,9 +110,9 @@
 						<td>
 							
 							<p>Post Content (use filename format eg M_C01)</p>
+							 <h5><div th:utext="${content.formErrors}"></div></h5>
 							
-							
-								<p>FileName : <input id="fileName" th:name="input" th:field="${content.meta}" maxlength="100" /></p>
+								<p>FileName : <input id="fileName" th:name="input" th:field="${content.id}" maxlength="100" />Meta : <input id="fileMeta" th:name="input" th:field="*{content.meta}" maxlength="500" /></p>
 																					
 						</td>
 						<td><br></br> <button  id="fetch" onClick="loadContent()">Post</button></td>

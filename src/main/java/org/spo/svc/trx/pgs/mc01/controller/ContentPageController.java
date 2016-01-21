@@ -1,22 +1,16 @@
 package org.spo.svc.trx.pgs.mc01.controller;
 
-import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spo.cms.svc.PageService;
-import org.spo.svc.pages.gateway.model.PostContent;
-import org.spo.svc.pages.gateway.model.QMessage;
 import org.spo.svc.pages.gateway.svc.SocketConnector;
+import org.spo.svc2.trx.pgs.mc01.cmd.PostContent;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
