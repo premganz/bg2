@@ -3,19 +3,21 @@ package org.spo.svc2.trx.pgs.mc01.cmd;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.spo.cms2.svc.CMSValidationException;
+
 public class PostContent {
 
 	private String htmlContent;
 	private String meta;
 	/**MAnually Added**/
 	private Map<String,String> metaMap;
-	
+
 	private String id;
 	private String formErrors;
-	
-	
-	
-	
+
+
+
+
 	public String getFormErrors() {
 		return formErrors;
 	}
@@ -31,7 +33,7 @@ public class PostContent {
 	public void setId(String id) {
 		this.id = id;
 	}	
-	
+
 	public Map<String, String> getMetaMap() {
 		return metaMap;
 	}
@@ -46,10 +48,14 @@ public class PostContent {
 
 	public void setMeta(String meta) {
 		this.meta = meta;metaMap=new LinkedHashMap<String,String>();
-		String[] metaArr = meta.split(";");
-		for(String expr:metaArr){	
-			
-			metaMap.put(expr.split("=")[0],expr.split("=")[1]);
+		try{
+			String[] metaArr = meta.split(";");
+			for(String expr:metaArr){	
+				metaMap.put(expr.split("=")[0],expr.split("=")[1]);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new CMSValidationException();
 		}
 	}
 
@@ -60,7 +66,7 @@ public class PostContent {
 	public void setHtmlContent(String htmlContent) {
 		this.htmlContent = htmlContent;
 	}
-	
-	
-	
+
+
+
 }

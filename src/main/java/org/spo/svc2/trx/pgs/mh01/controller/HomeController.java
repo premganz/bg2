@@ -101,7 +101,7 @@ public class HomeController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String root(Locale locale, Model model) {
     	
-    	return "redirect:home/A01T";
+    	return "redirect:/A01T";
     }
     
     @RequestMapping(value = "/about", method = RequestMethod.GET)

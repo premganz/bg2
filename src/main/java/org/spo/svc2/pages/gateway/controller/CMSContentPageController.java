@@ -211,26 +211,14 @@ public class CMSContentPageController {
 	    
 	  
 	        logger.info("Writing "+content.getMeta()  );
-	      
-	        
-	        QMessage message = new QMessage();
-			message.setHandler("write");
-			message.setContent(content.getHtmlContent());
-			message.setMeta(content.getMeta());
-			String response ="";
+	       
 			try {
 				PageService svc = new PageService();
-				svc.writePage("templates/"+content.getMeta(), content.getHtmlContent());
-				//response = connector.getResponse(message);
-				//TextMessage reply = sender.simpleSend(message.toString()); 
-				//response=reply.getText();
+				svc.writePage("templates/"+content.getId(), content.getHtmlContent());
 				
 			} catch (Exception e) {			
 				e.printStackTrace();
 			}
-		
-	     
-	   // model.clear();
 	    return "home";
 	}
 	
