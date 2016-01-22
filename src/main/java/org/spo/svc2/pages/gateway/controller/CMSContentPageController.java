@@ -203,7 +203,7 @@ public class CMSContentPageController {
 	public String processContentTemplate(
 	        final PostContent content, final BindingResult bindingResult, final ModelMap model) {
 	    if (bindingResult.hasErrors()) {
-	        return "y_content";
+	       // return "y_content";
 	    }
 	    
 	    System.out.println(content.getHtmlContent());
