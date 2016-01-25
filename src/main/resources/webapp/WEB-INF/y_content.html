@@ -96,13 +96,13 @@
 	</table>
 	
 	<form id="form1" action="#" th:action="@{../admin/submitContentTemplate}" method="post" onsubmit="return confirm('Are you sure?');">
-			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+			<!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> -->
 				<table>
 					<tr>
 						<td>
 							
 							<p>Post Content (use filename format eg M_C01)</p>
-							
+							<div th:utext="${content.formErrors}"></div>
 							
 								<p>FileName : <input id="fileName" th:name="input" th:field="${content.id}" maxlength="100" /></p>
 																					

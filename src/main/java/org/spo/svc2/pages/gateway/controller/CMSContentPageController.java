@@ -96,11 +96,7 @@ public class CMSContentPageController {
 		    
 		    System.out.println(content.getHtmlContent());
 		   // this.seedStarterService.add(seedStarter);
-		    
-		  
 		        logger.info("Searching "+fileName  );
-		      
-		        
 		        QMessage message = new QMessage();
 				message.setHandler("fetch");
 				//message.setContent(content.getHtmlContent());
@@ -155,8 +151,8 @@ public class CMSContentPageController {
 				}
 			
 			response=response.equals("")?"<p>blank reply</p>":response;
-		    model.clear();
-		   // model.addAttribute("content", message);
+		    //model.clear();
+		    //model.addAttribute("content", message);
 		    return response ;
 		}
 	
@@ -186,17 +182,20 @@ public class CMSContentPageController {
 				PageService svc = new PageService();
 				svc.writePage("posts/"+content.getId(), content.getHtmlContent());
 				svc.writePage("posts/"+content.getId()+"_meta", content.getMeta());
-				response = connector.getResponse(message);
+				//response = connector.getResponse(message);
 				//TextMessage reply = sender.simpleSend(message.toString()); 
 				//response=reply.getText();
 				
 			} catch (Exception e) {			
 				e.printStackTrace();
 			}
-		
+		content.setFormErrors("Success");		
+		content.setHtmlContent("");		
+	    model.clear();
+	    model.addAttribute("content", content);
 	     
 	   // model.clear();
-	    return "home";
+	    return "x_content";
 	}
 	
 	@RequestMapping(value="admin/submitContentTemplate")
@@ -219,7 +218,18 @@ public class CMSContentPageController {
 			} catch (Exception e) {			
 				e.printStackTrace();
 			}
-	    return "home";
+			String response ="<p>blank reply</p>";
+			try {
+				content.setHtmlContent("");
+				content.setFormErrors("Posted Success");
+			} catch (Exception e) {			
+				e.printStackTrace();
+			}
+		
+		response=response.equals("")?"<p>blank reply</p>":response;
+	    model.clear();
+	    model.addAttribute("content", content);
+	    return "y_content";
 	}
 	
 }

@@ -47,7 +47,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         /* You may want to disable CSRF protection, for instance if developing
          * an API? */
-        //http.csrf().disable();
+        http.csrf().disable();
 
     }
 

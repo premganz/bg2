@@ -1,7 +1,7 @@
 {
 	"page_sub_title": "better education, better future for all",
 	"page_title": "",
-	"page_description_text": "<h2>Liberal Education in India</h2></br><h4>The Leafy Campus Organization is a small non profit for promoting liberal education in India",
+	"page_description_text": "<h2>localhost**localhost</h2></br><h4>The Leafy Campus Organization is a small non profit for promoting liberal education in India",
 	"page_content_present_ic": "1",
 	"page_content_type_cd": "1",
 	"page_content_text": "A01C01",
