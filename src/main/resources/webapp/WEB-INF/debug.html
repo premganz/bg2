@@ -31,7 +31,7 @@
 			  $.ajax({
 			    type: 'GET',
 			    dataType: 'json',
-			    url:"http://localhost:8082"+"/"+$("#"+inputId).val()+$("#select1").val(),
+			    url:"http://leafycampus.org"+"/"+$("#"+inputId).val()+$("#select1").val(),
 			    timeout: 600000,
 			    success: function(data, textStatus ){
 			       $("#myTextArea").val(JSONstringify(data));
@@ -58,7 +58,7 @@
 	<table>
 	<tr>
 	<td>
-	<div>Result is :</div> <textArea id="myTextArea" value="" style="height: 509px; width: 679px;" />
+	<div>Result  :</div> <textArea id="myTextArea" value="" style="height: 509px; width: 679px;" />
 	</td>
 	<td>
 	<table>

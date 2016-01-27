@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-@RequestMapping("/debug")
+@RequestMapping("/admin/debug")
 public class DebugPageController {
 
 	@ResponseBody

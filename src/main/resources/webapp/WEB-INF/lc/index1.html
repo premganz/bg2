@@ -137,8 +137,8 @@
 						<ul><lh> </lh></ul>
 						<ul><lh> </lh></ul><ul><lh> </lh></ul><ul><lh> </lh></ul><ul><lh> </lh></ul>
 					</div>
- <div th:utext="${message.page_id}"></div>
- <div th:utext="${message.contentObject.metaMap['contentid']}"></div>
+ 				<div th:utext="${message.page_id}"></div>
+ 				<div th:utext="${message.contentObject.metaMap['contentid']}"></div>
 				<div th:switch="${message.page_id}">
 					<p th:case='A01T'><a href="http://info.flagcounter.com/fhT3"><img src="http://s01.flagcounter.com/count2/fhT3/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></img></a></p>					
 				</div>
@@ -146,7 +146,6 @@
 			<div class="col-lg-7  col-md-8 col-sm-6 ">
 			<div class="container1" style="border-right-color: yellow;">				
 					 <div th:utext="${message.page_description_text}"></div>
-					
 					  <div th:utext="${message.page_content_text}"></div>
 				</div>
 		
@@ -180,8 +179,22 @@
 	</div>
 				<div class="col-lg-2  col-md-2 col-sm-12">
 						<H3>News</H3>
-						<ul>
-						</ul>
+						<div class="row1" th:each="link : ${message.SECTION_NEWS_ZN}">
+		
+				<div class="footnote" >			
+					<a th:href="${link.link_id}"	 target="_blank">
+						<p  th:text="${link.link_title}"></p>
+						<p class="post-subtitle" th:text="${link.link_sub_title}"></p>
+					</a>
+					<p class="post-meta">
+						Posted by <a th:href="${message.page_description_text}">Admin</a>
+						<p th:text="${link.link_date}"></p>
+					</p>
+				
+				<hr></hr>			
+				
+			</div>
+		</div>
 						<a style="cursor: pointer; font-size: 12px; text-decoration: underline;" onclick="return form_action_load('','pages','news','view',0);">More
 							News</a>
 				</div>
@@ -191,8 +204,9 @@
 		<div class="row">		
 		<div id="footer">
 			<!-- Footer start -->
-			<p>
-				&copy; Leafy Campus Organization, Chennai <br></br> Powered by Bootstrap Fluidic, supports most devices. Feel free to Zoomin/out and see page respond with appropriate styles. 
+			<p class="footnote">
+				&copy; Leafy Campus Organization, Chennai <br></br> Powered by Bootstrap, supports most devices. Feel free to Zoomin/out and see page respond with appropriate styles.<br></br>
+				Image Credits:Wikimedia Foundation. 
 			</p>
 			<!-- Footer end -->
 		</div>

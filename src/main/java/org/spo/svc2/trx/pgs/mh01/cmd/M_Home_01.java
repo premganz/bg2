@@ -308,8 +308,6 @@ class SECTION_LINKS_ZN
 
 class SECTION_NEWS_ZN
 {
-	private String link_href;
-
 	private String link_sub_title;
 
 	private String link_date;
@@ -318,15 +316,7 @@ class SECTION_NEWS_ZN
 
 	private String link_title;
 
-	public String getLink_href ()
-	{
-		return link_href;
-	}
-
-	public void setLink_href (String link_href)
-	{
-		this.link_href = link_href;
-	}
+	private String link_id;
 
 	public String getLink_sub_title ()
 	{
@@ -368,11 +358,22 @@ class SECTION_NEWS_ZN
 		this.link_title = link_title;
 	}
 
+	public String getLink_id ()
+	{
+		return link_id;
+	}
+
+	public void setLink_id (String link_id)
+	{
+		this.link_id = link_id;
+	}
+
 	@Override
 	public String toString()
 	{
-		return "ClassPojo [link_href = "+link_href+", link_sub_title = "+link_sub_title+", link_date = "+link_date+", link_by = "+link_by+", link_title = "+link_title+"]";
-	}
+		return "ClassPojo [link_sub_title = "+link_sub_title+", link_date = "+link_date+", link_by = "+link_by+", link_title = "+link_title+", link_id = "+link_id+"]";
+	}	
+
 }
 
 

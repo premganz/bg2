@@ -21,12 +21,18 @@ public class PageService {
 boolean testMode=false;
 	public String readUpPage(String scenario, String pageName){
 		File f = null;
-		StringBuffer buf = new StringBuffer();
 		if(scenario!=null){
 			f= new File(dataRootDir+"/"+scenario+"/"+pageName+".txt");
 		}else{
 			f= new File(dataRootDir+"/"+pageName+".txt");
 		}
+		return readUpPageUtils(f);
+	}
+	
+	
+	private String readUpPageUtils(File f){
+		
+		StringBuffer buf = new StringBuffer();
 			FileReader reader;
 			try {
 				reader = new FileReader(f);
@@ -99,6 +105,7 @@ boolean testMode=false;
 	}
 	
 	public List<String> readUpPageList(String scenario, String pageName){
+		
 		File f = null;
 		ArrayList<String> resultList = new ArrayList<String>();
 		URL resourceUrl = getClass().getResource("/"+scenario+"/"+pageName+".txt");
@@ -119,4 +126,34 @@ boolean testMode=false;
 		}
 		return resultList;
 	}
+	
+	public String readUpPageAll(){
+		StringBuffer buf = new StringBuffer();
+		String folderName=dataRootDir+"/"+"templates/";
+		File folder = new File(folderName);
+		File[] listOfFiles = folder.listFiles();
+		    for (int i = 0; i < listOfFiles.length; i++) {
+		      if (listOfFiles[i].isFile()) {
+		    	  File f = new File(folderName+listOfFiles[i].getName());
+		           System.out.println("File " + listOfFiles[i].getName());
+		        buf.append(readUpPageUtils(f));
+		        buf.append("++++++EOF++++++: "+f.getName());
+		      } 
+		    }
+		    buf.append("++++++SECTION++++++: POSTS");
+		    folderName = dataRootDir+"/"+"posts/";
+		    folder = new File(folderName);
+			listOfFiles = folder.listFiles();
+			    for (int i = 0; i < listOfFiles.length; i++) {
+			      if (listOfFiles[i].isFile()) {
+			    	  File f = new File(folderName+listOfFiles[i].getName());
+			           System.out.println("File " + listOfFiles[i].getName());
+			        buf.append(readUpPageUtils(f));
+			        buf.append("++++++EOF++++++: "+f.getName());
+			      } 
+			    }
+				return buf.toString();
+		
+	}
+	
 }

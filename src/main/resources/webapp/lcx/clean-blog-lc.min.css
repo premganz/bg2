@@ -426,6 +426,35 @@ form .row:first-child .floating-label-form-group {
 	
 }
 
+.footnote {
+	font-size: 11px;	
+	margin: 0px 0px;
+	color: darkgray;
+	line-height: 15px;
+	border-bottom:1px;
+	line-height: 1.5;
+	
+}
+
+.footnote a {	
+	padding: 5px 10px;	
+	color:#337ab7;
+	text-decoration:underline;
+	line-height: 1.5;
+	margin: 0px 0px;
+	
+			
+}
+.footnote p {	
+	border:2px;
+	line-height: 1.5;	
+	margin: 0px 0px;
+			
+}
+
+
+
+
 ::-moz-selection {
 	color: #fff;
 	text-shadow: none;

@@ -48,8 +48,9 @@ public class CMSContentPageController {
 	 }
 	 
 	 
+	 //MEthod unused
 	 @ResponseBody
-	 @RequestMapping(value="admin/edit1",   params={"fileName"})
+	 @RequestMapping(value="admin/editOLD",   params={"fileName"})
 	 public String editContent1(
 		        final PostContent content, final BindingResult bindingResult, final ModelMap model,
 		        @RequestParam(value="fileName", required=false) String metaValue) {
@@ -232,4 +233,17 @@ public class CMSContentPageController {
 	    return "y_content";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="admin/backup")
+	public String processBackup() {
+	    		String response ="<p>blank reply</p>";
+			try {		
+				PageService svc = new PageService();
+				response = svc.readUpPageAll();
+			
+			} catch (Exception e) {			
+				e.printStackTrace();
+			}
+	    return response ;
+	}
 }

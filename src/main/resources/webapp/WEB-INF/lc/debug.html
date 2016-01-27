@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Hello jQuery</title>
+<title>Hello </title>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 
@@ -31,10 +31,10 @@
 			  $.ajax({
 			    type: 'GET',
 			    dataType: 'json',
-			    url:"http://localhost:8082"+"/"+$("#"+inputId).val()+$("#select1").val(),
+			    url:"http://localhost:8089"+"/"+$("#"+inputId).val()+$("#select1").val(),
 			    timeout: 600000,
 			    success: function(data, textStatus ){
-			       $("#myTextArea").val(JSONstringify(data));
+			       $("#myTextArea").val(data);
 			    },
 			    error:function(exception){alert('Exeption:'+exception);}
 			  });
@@ -58,7 +58,7 @@
 	<table>
 	<tr>
 	<td>
-	<div>Result is :</div> <textArea id="myTextArea" value="" style="height: 509px; width: 679px;" />
+	<div>Result  :</div> <textArea id="myTextArea" value="" style="height: 509px; width: 679px;" />
 	</td>
 	<td>
 	<table>

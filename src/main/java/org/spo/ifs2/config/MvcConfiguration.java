@@ -49,9 +49,9 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
         /* Mapping to the login view. */
         registry.addViewController("/login1").setViewName("lc/login1");
-        registry.addViewController("/debug").setViewName("lc/debug");
-        registry.addViewController("/x_content").setViewName("lc/x_content");
-        registry.addViewController("/y_content").setViewName("lc/y_content");
+       // registry.addViewController("/debug").setViewName("lc/debug");
+       // registry.addViewController("/x_content").setViewName("lc/x_content");
+       // registry.addViewController("/y_content").setViewName("lc/y_content");
         registry.addViewController("/contact").setViewName("lc/contact");
         registry.addViewController("/index1").setViewName("lc/index1");
 
