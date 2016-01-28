@@ -36,8 +36,8 @@ public class ContactPageController {
 	 
 	 
 	 @RequestMapping(value="/contactSubmit", method = RequestMethod.POST)
-	 public String submitContact(    final ContactForm form, final BindingResult bindingResult, final ModelMap model,
-			 @RequestParam("g-recaptcha-response") String challangeField
+	 public String submitContact(    final ContactForm form, final BindingResult bindingResult, final ModelMap model
+			
 				) {
 		 if (bindingResult.hasErrors()) {
 			 return "seedstartermng";
