@@ -45,7 +45,7 @@
                     <div class="page-heading">
                         <h1>Contact Us</h1>
                         <hr class="small"></hr>
-                        <span class="subheading">Have more questions? We will get back in touch (under construction).</span>
+                        <span class="subheading">Have more questions? We will get back in touch.</span>
                     </div>
                 </div>
             </div>
@@ -60,10 +60,10 @@
                 <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
                 <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
                 <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-                <form name="sentMessage" id="contactForm"  th:action="@{../contactSubmit}" method="post" novalidate='false'>
+                <form name="sentMessage" id="contactForm"  th:action="@{/contactSubmit}" method="post" novalidate='false'>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Name</label>
+                            <label>Your Name Please</label>
                             <input type="text" class="form-control"  th:field="${form.name}" placeholder="Name" id="name" required='true' data-validation-required-message="Please enter your name."></input>
                             <p class="help-block text-danger"></p>
                         </div>
@@ -90,14 +90,13 @@
                         </div>
                     </div>
                     <br></br>
-                     <div class="g-recaptcha" data-sitekey="6LcemhYTAAAAAEDlseoH5Xo_MhMW9M6_IigfcxJY"></div>
                     <div id="success"></div>
                     <div class="row">
                         <div class="form-group col-xs-12">
                             <button type="submit" class="btn btn-default">Send</button>
                         </div>
                     </div>
-                   
+                    <div class="g-recaptcha" data-sitekey="6LcemhYTAAAAAEDlseoH5Xo_MhMW9M6_IigfcxJY"></div>
                 </form>
             </div>
         </div>
@@ -144,11 +143,12 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
-<script src="../js/bootstrap.min.js"></script>
 
-<!-- Custom Theme JavaScript -->
-<script src="../js/clean-blog.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/clean-blog.js"></script>
 
 </body>
 

@@ -8,9 +8,9 @@ import org.spo.svc2.trx.pgs.mx.svc.MailMe;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -36,8 +36,9 @@ public class ContactPageController {
 	 
 	 
 	 @RequestMapping(value="/contactSubmit", method = RequestMethod.POST)
-	 public String submitContact(    final ContactForm form, final BindingResult bindingResult, final ModelMap model
-			) {
+	 public String submitContact(    final ContactForm form, final BindingResult bindingResult, final ModelMap model,
+			 @RequestParam("g-recaptcha-response") String challangeField
+				) {
 		 if (bindingResult.hasErrors()) {
 			 return "seedstartermng";
 		 }

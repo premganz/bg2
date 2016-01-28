@@ -35,11 +35,27 @@
 	"SECTION_NEWS_ZN": [
 		{
 			"link_id": "http://timesofindia.indiatimes.com/home/education/news/Change-in-exam-welcome-but-teaching-rejig-needed-Experts/articleshow/50721021.cms",
-			"link_title": "Change in exam welcome but teaching rejig needed: Experts",
-			"link_sub_title": "TOI",
-			"link_by": "Admin",
-			"link_date": "Jan 25, 2016"
+			"link_title": "Times of India:Jan 25,2016",
+			"link_sub_title": "Change in exam welcome but teaching rejig needed: Experts"
+		},
+{
+			"link_id": "http://timesofindia.indiatimes.com/home/education/news/Change-in-exam-welcome-but-teaching-rejig-needed-Experts/articleshow/50721021.cms",
+			"link_title": "Times of India:Jan 25,2016",
+			"link_sub_title": "Change in exam welcome but teaching rejig needed: Experts"
+		},
+{
+			"link_id": "http://timesofindia.indiatimes.com/home/education/news/Change-in-exam-welcome-but-teaching-rejig-needed-Experts/articleshow/50721021.cms",
+			"link_title": "Times of India:Jan 25,2016",
+			"link_sub_title": "Change in exam welcome but teaching rejig needed: Experts"
+		},
+{
+			"link_id": "http://timesofindia.indiatimes.com/home/education/news/Change-in-exam-welcome-but-teaching-rejig-needed-Experts/articleshow/50721021.cms",
+			"link_title": "Times of India:Jan 25,2016",
+			"link_sub_title": "Change in exam welcome but teaching rejig needed: Experts"
 		}
+
+
+
 	],
 	"list_pagination_ic": "1"
 }

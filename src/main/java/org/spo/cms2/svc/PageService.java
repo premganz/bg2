@@ -137,7 +137,7 @@ boolean testMode=false;
 		    	  File f = new File(folderName+listOfFiles[i].getName());
 		           System.out.println("File " + listOfFiles[i].getName());
 		        buf.append(readUpPageUtils(f));
-		        buf.append("++++++EOF++++++: "+f.getName());
+		        buf.append('\n'+"++++++EOF++++++: "+f.getName()+'\n');
 		      } 
 		    }
 		    buf.append("++++++SECTION++++++: POSTS");
@@ -149,7 +149,7 @@ boolean testMode=false;
 			    	  File f = new File(folderName+listOfFiles[i].getName());
 			           System.out.println("File " + listOfFiles[i].getName());
 			        buf.append(readUpPageUtils(f));
-			        buf.append("++++++EOF++++++: "+f.getName());
+			        buf.append('\n'+"++++++EOF++++++: "+f.getName()+'\n');
 			      } 
 			    }
 				return buf.toString();

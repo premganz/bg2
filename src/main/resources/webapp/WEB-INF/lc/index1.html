@@ -59,7 +59,7 @@
 	
 	<div class="container-fluid">
 		<div class="row" style="background-color:white;">
-			<div class="col-lg-3  col-md-2 col-sm-6 col-xs-12">
+			<div class="col-lg-3  col-md-3 col-sm-6 col-xs-12">
 				<div id="menu">
 						<ul>
 							<lh> <a style="cursor: pointer;" href="/home/A01T">Home</a> </lh>
@@ -67,7 +67,7 @@
 						</ul>
 						
 						<ul>
-							<lh> <a style="cursor: pointer;">Get Involved</a> </lh>
+							<lh> <a style="cursor: pointer;" href="/home/B02T" >Get Involved</a> </lh>
 						</ul>
 						<ul>
 							<lh>
@@ -106,11 +106,10 @@
 						<ul>
 							<lh>
 							<a>Organization</a></lh>							
-							<li><a style="cursor: pointer;" href="/home/E01T" onclick="">What we do</a></li>
-							<li><a style="cursor: pointer;" onclick="">Vision</a></li>
-							<li><a style="cursor: pointer;" onclick="">Our Programmes</a></li>
-							<li><a style="cursor: pointer;" onclick="">Strategy</a></li>
-							<li><a style="cursor: pointer;" onclick="">Photo Gallery</a></li>
+							<li><a style="cursor: pointer;" href="/home/F01T" onclick="">Our Organization</a></li>							
+							<li><a style="cursor: pointer;" href="/home/F02T" onclick="">Our Programmes</a></li>
+							<li><a style="cursor: pointer;" href="/home/F03T" onclick="">Updates</a></li>
+							<li><a style="cursor: pointer;" href="/home/F04T" onclick="">Photo Gallery</a></li>
 						</ul>
 						<ul>
 							<lh>
@@ -177,11 +176,11 @@
 				
 	</div>
 	</div>
-				<div class="col-lg-2  col-md-2 col-sm-12">
+				<div class="col-lg-2  col-md-1 col-sm-12">
 						<H3>News</H3>
 						<div class="row1" th:each="link : ${message.SECTION_NEWS_ZN}">
 		
-				<div class="footnote" >			
+				<div class="footnote" >	
 					<a th:href="${link.link_id}"	 target="_blank">
 						<p  th:text="${link.link_title}"></p>
 						<p class="post-subtitle" th:text="${link.link_sub_title}"></p>
@@ -205,6 +204,7 @@
 		<div id="footer">
 			<!-- Footer start -->
 			<p class="footnote">
+			<br></br>
 				&copy; Leafy Campus Organization, Chennai <br></br> Powered by Bootstrap, supports most devices. Feel free to Zoomin/out and see page respond with appropriate styles.<br></br>
 				Image Credits:Wikimedia Foundation. 
 			</p>
