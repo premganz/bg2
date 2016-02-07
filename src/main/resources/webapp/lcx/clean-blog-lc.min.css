@@ -72,6 +72,12 @@ hr.small {
 .blackbody {	
 	color: #404040;
 	background-color:black;
+	/*background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Campus_MIT.jpg/1024px-Campus_MIT.jpg');*/
+	background-image:url('https://upload.wikimedia.org/wikipedia/commons/1/19/07182012Sesion_campus_redes_sociales047.jpg');
+	/*background-image:url('../img/lc-home-bg2.png');*/
+	background-size:contain;	
+	/*background: no-repeat center center;*/
+	
 }
 
 @media only screen and (min-width:768px) {
@@ -142,6 +148,7 @@ hr.small {
 
 .intro-header {
 	background-color: gray;
+	/*background-image:url('../img/lc-home-bg1.jpg');->put this line within style parameter of header-intro to get old image.*/
 	background: no-repeat center center;
 	background-attachment: scroll;
 	-webkit-background-size: cover;
@@ -427,14 +434,15 @@ form .row:first-child .floating-label-form-group {
 }
 
 .footnote {
-	font-size: 11px;	
+	font-size: 15px;
 	margin: 0px 0px;
-	color: darkgray;
-	line-height: 15px;
+	/* color: darkgray; */
+	/* background-color: azure; */
+	line-height: 12px;
 	border-bottom:1px;
 	line-height: 1.5;
-	padding-left:25px;
-	
+	color: white;
+	padding-left: 25px;	
 }
 
 .footnote a {	

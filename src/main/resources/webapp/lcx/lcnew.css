@@ -10,7 +10,7 @@
 	background-repeat: repeat-y;*/
 }
 #menu lh a {
-	color: #000;
+	color: white;
 	height: auto;
 	display: block;
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -21,7 +21,7 @@
 	/*cursor: pointer;*/
 	width: auto;
 	text-decoration: none;
-	font-size: 15px;
+	font-size: 18px;
 }
 #menu lh a:hover{
 	color: #000000 !important;
