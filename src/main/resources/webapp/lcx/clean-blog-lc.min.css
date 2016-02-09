@@ -73,8 +73,9 @@ hr.small {
 	color: #404040;
 	background-color:black;
 	/*background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Campus_MIT.jpg/1024px-Campus_MIT.jpg');*/
-	background-image:url('https://upload.wikimedia.org/wikipedia/commons/1/19/07182012Sesion_campus_redes_sociales047.jpg');
-	/*background-image:url('../img/lc-home-bg2.png');*/
+	/*background-image:url('https://upload.wikimedia.org/wikipedia/commons/1/19/07182012Sesion_campus_redes_sociales047.jpg');*/
+	background-image:url('../img/lc-home-bg3.jpg');
+	/*background-image:url('http://www.t5eiitm.org/wp-content/uploads/2013/07/Weather.jpg');*/
 	background-size:contain;	
 	/*background: no-repeat center center;*/
 	
