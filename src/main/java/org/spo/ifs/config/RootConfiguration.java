@@ -20,9 +20,7 @@ import org.springframework.stereotype.Controller;
 @ImportResource({"classpath:META-INF/spring/root-context.xml"})
 @Import({org.spo.ifs.config.JettyConfiguration.class, org.spo.ifs.config.SpringSecurityConfig.class})
 @ComponentScan(basePackages = {"org.spo.ifs.config", 
-		"org.spo.ifs.template",
-		"org.spo.svc.xlaccess.service",
-		"org.spo.svc.xlaccess.controller",		
+		"org.spo.ifs.template",		
 		"org.spo.svc.pages.gateway.svc",		
 		"org.spo.svc.httpd",
 		"org.spo.svc.trx",

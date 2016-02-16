@@ -30,15 +30,13 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 @Configuration
 @ImportResource("classpath:META-INF/spring/servlet-context.xml")
 @ComponentScan(useDefaultFilters = false, basePackages = {
-		"org.spo.ifs.template",
-		"org.spo.svc.xlaccess.service",
-		"org.spo.svc.xlaccess.controller",		
+		"org.spo.ifs.template",			
 		"org.spo.svc.pages.gateway.svc",
 		"org.spo.svc.pages.gateway.controller",
 		"org.spo.svc.httpd",
 		"org.spo.svc.trx",
 		"org.spo.svc.trx.pgs",		
-		"org.spo.svc.xlaccess.test"},
+		},
         includeFilters = {@ComponentScan.Filter(Controller.class)})
 
 public class MvcConfiguration extends WebMvcConfigurerAdapter {

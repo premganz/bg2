@@ -2,13 +2,12 @@ package org.spo.svc.trx.pgs.mx.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spo.svc.pages.gateway.svc.SocketConnector;
+import org.spo.cms2.svc.SocketConnector;
 import org.spo.svc.trx.pgs.mx.cmd.ContactForm;
 import org.spo.svc.trx.pgs.mx.svc.MailMe;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 

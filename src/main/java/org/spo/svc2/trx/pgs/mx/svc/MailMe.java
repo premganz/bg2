@@ -11,7 +11,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import org.spo.svc2.trx.pgs.mx.cmd.ContactForm;
+import org.spo.svc2.trx.pgs.mx.model.ContactForm;
 
 public class MailMe {
 

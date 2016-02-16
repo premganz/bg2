@@ -29,15 +29,12 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 @EnableWebMvc
 @Configuration
 @ComponentScan(useDefaultFilters = false, basePackages = {
-		"org.spo.ifs2.template",
-		"org.spo.svc2.xlaccess.service",
-		"org.spo.svc2.xlaccess.controller",		
-		"org.spo.svc2.pages.gateway.svc",
-		"org.spo.svc2.pages.gateway.controller",
-		"org.spo.svc2.httpd",
+		"org.spo.ifs2.template",	
+		"org.spo.cms2.svc",
+		"org.spo.cms2.controller",		
 		"org.spo.svc2.trx",
-		"org.spo.svc2.trx.pgs",		
-		"org.spo.svc2.xlaccess.test"},
+		"org.spo.svc2.trx.pgs"
+		},
         includeFilters = {@ComponentScan.Filter(Controller.class)})
 
 public class MvcConfiguration extends WebMvcConfigurerAdapter {

@@ -19,14 +19,9 @@ import org.springframework.stereotype.Controller;
 @Configuration
 @Import({org.spo.ifs2.config.JettyConfiguration.class, org.spo.ifs2.config.SpringSecurityConfig.class})
 @ComponentScan(basePackages = {"org.spo.ifs2.config", 
-		"org.spo.ifs2.template",
-		"org.spo.svc2.xlaccess.service",
-		"org.spo.svc2.xlaccess.controller",		
-		"org.spo.svc2.pages.gateway.svc",		
-		"org.spo.svc2.httpd",
+		"org.spo.ifs2.template",	
 		"org.spo.svc2.trx",
-		"org.spo.svc2.trx.pgs",		
-		"org.spo.svc2.xlaccess.test"
+		"org.spo.svc2.trx.pgs"
 		},
         excludeFilters = {@ComponentScan.Filter(Controller.class),
                 @ComponentScan.Filter(Configuration.class)})
