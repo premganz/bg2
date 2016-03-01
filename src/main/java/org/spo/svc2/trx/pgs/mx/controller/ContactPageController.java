@@ -25,10 +25,10 @@ public class ContactPageController {
 	
 	
 	 @RequestMapping(value="/contact", method = RequestMethod.GET)
-	 public String fetchPost( final ModelMap model  ) {
+	 public String fetchPost( final ModelMap info  ) {
 		ContactForm form = new ContactForm();
-		 model.clear();
-		 model.addAttribute("form", form);
+		 info.clear();
+		 info.addAttribute("form", form);
 		 return "contact" ;
 	 }
 	 

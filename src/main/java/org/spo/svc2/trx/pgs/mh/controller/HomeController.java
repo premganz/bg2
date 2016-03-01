@@ -103,15 +103,15 @@ public class HomeController {
     }
     
     @RequestMapping(value = "/about", method = RequestMethod.GET)
-    public String about(Locale locale, final ModelMap model) {
+    public String about(Locale locale, final ModelMap info) {
 
     	PostContent content = new PostContent();
 		 PageService svc = new PageService();
 		 String response = svc.readUpPage("posts", "M_About");
 		 response=response.equals("")?"<p>blank reply</p>":response;
-		 model.clear();
+		 info.clear();
 		 content.setHtmlContent(response);
-		 model.addAttribute("message", content);
+		 info.addAttribute("message", content);
         return "lc/about";
     }
     @RequestMapping(value = "/contactold", method = RequestMethod.GET)

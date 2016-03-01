@@ -4,9 +4,18 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public class Constants {
-	public static final String path_repo = "/usr/local/share/data-cms/lc";
+public class Constants {	
+	
+	public static String path_repo = "/usr/local/share/data-cms/lc";
 	//public static  String path_repo = "C:\\Users\\premganesh\\git\\bg1_3\\src\\main\\resources\\data-cms";
+	
+	static{
+		if(!System.getProperty("os.name").startsWith("Windows")){
+			path_repo = "/usr/local/share/data-cms/lc";
+		}else{
+			path_repo = "C:\\Users\\premganesh\\git\\bg1_3\\src\\main\\resources\\data-cms";
+		}
+	}
 	
 //	static{
 //		URL resourceUrl = Constants.class.getResource("/data-cms");
