@@ -48,8 +48,7 @@ public class EchoService {
          * scan filters should prevent this.
          */
         if (instance != null) {
-            throw new RuntimeException(
-                    "DummyServer has already been instantiated.");
+        	throw new RuntimeException("DummyServer has already been instantiated.");
         }
         instance = this;
 
