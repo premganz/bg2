@@ -5,9 +5,10 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spo.cms2.model.QMessage;
-import org.spo.cms2.svc.PageService;
-import org.spo.cms2.svc.SocketConnector;
+import org.spo.cms.model.QMessage;
+import org.spo.cms.svc.PageService;
+import org.spo.cms.svc.SocketConnector;
+import org.spo.ifs2.template.web.Constants;
 import org.spo.ifs2.template.EchoService;
 import org.spo.svc2.trx.pgs.mc.cmd.PostContent;
 import org.spo.svc2.trx.pgs.mh.cmd.M_Home_01;
@@ -62,7 +63,7 @@ public class HomeController {
 			message.setHandler("pages");
 			message.setContent("M_Home_1/f01/null");
 			String response ="";
-			PageService svc = new PageService();
+			PageService svc = new PageService(Constants.path_repo);
 			try {		
 				response = svc.readUpPage("templates", contentId);
 			} catch (Exception e) {			
@@ -106,7 +107,7 @@ public class HomeController {
     public String about(Locale locale, final ModelMap info) {
 
     	PostContent content = new PostContent();
-		 PageService svc = new PageService();
+		 PageService svc = new PageService(Constants.path_repo);
 		 String response = svc.readUpPage("posts", "M_About");
 		 response=response.equals("")?"<p>blank reply</p>":response;
 		 info.clear();

@@ -2,7 +2,7 @@ package org.spo.svc2.trx.pgs.mx.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spo.cms2.svc.SocketConnector;
+import org.spo.cms.svc.SocketConnector;
 import org.spo.svc2.trx.pgs.mx.model.ContactForm;
 import org.spo.svc2.trx.pgs.mx.svc.MailMe;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package org.spo.cms2.model;
+package org.spo.cms.model;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

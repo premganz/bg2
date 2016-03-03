@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package org.spo.ifs2.template;
+package org.spo.ifs.template;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

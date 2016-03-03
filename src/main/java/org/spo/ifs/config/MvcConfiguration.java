@@ -47,17 +47,11 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
 
         /* Mapping to the login view. */
-        //shared ifs common for ifs2 also
-    	registry.addViewController("/login1").setViewName("login1");
+        registry.addViewController("/login1").setViewName("login1");
         registry.addViewController("/debug").setViewName("debug");
         registry.addViewController("/x_content").setViewName("x_content");
         registry.addViewController("/y_content").setViewName("y_content");
-        //Specific files
         registry.addViewController("/contact").setViewName("contact");
-        registry.addViewController("/index1").setViewName("wm/index1");
-        
-        
-        
 
     }
 

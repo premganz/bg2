@@ -1,4 +1,4 @@
-package org.spo.cms2.cons;
+package org.spo.ifs2.template.web;
 
 import java.io.File;
 import java.net.URISyntaxException;

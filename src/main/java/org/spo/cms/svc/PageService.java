@@ -1,4 +1,4 @@
-package org.spo.cms2.svc;
+package org.spo.cms.svc;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,12 +11,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.spo.cms2.cons.Constants;
-
 
 
 public class PageService {
-	String dataRootDir =Constants.path_repo;
+	String dataRootDir ;
+	
+	public PageService(String rootDir){
+		this.dataRootDir=rootDir;
+	}
 	
 boolean testMode=false;
 	public String readUpPage(String scenario, String pageName){

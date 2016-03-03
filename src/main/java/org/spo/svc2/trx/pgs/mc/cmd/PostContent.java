@@ -3,7 +3,7 @@ package org.spo.svc2.trx.pgs.mc.cmd;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.spo.cms2.svc.CMSValidationException;
+import org.spo.cms.svc.CMSValidationException;
 
 public class PostContent {
 

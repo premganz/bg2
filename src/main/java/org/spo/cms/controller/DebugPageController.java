@@ -1,4 +1,4 @@
-package org.spo.cms2.controller;
+package org.spo.cms.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

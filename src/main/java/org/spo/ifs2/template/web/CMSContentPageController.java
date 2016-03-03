@@ -1,12 +1,12 @@
-package org.spo.cms2.controller;
+package org.spo.ifs2.template.web;
 
 import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spo.cms2.model.QMessage;
-import org.spo.cms2.svc.PageService;
-import org.spo.cms2.svc.SocketConnector;
+import org.spo.cms.model.QMessage;
+import org.spo.cms.svc.PageService;
+import org.spo.cms.svc.SocketConnector;
 import org.spo.svc2.trx.pgs.mc.cmd.PostContent;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -104,7 +104,7 @@ public class CMSContentPageController {
 				
 				String response ="<p>blank reply</p>";
 				try {		
-					PageService svc = new PageService();
+					PageService svc = new PageService(Constants.path_repo);
 					response = svc.readUpPage("posts", fileName);
 					String response_meta = svc.readUpPage("posts", fileName+"_meta");
 					//response = connector.getResponse(message);
@@ -141,7 +141,7 @@ public class CMSContentPageController {
 				message.setMeta(metaValue);
 				String response ="<p>blank reply</p>";
 				try {		
-					PageService svc = new PageService();
+					PageService svc = new PageService(Constants.path_repo);
 					response = svc.readUpPage("templates", metaValue);
 					//response = connector.getResponse(message);
 					//TextMessage reply = sender.simpleSend(message.toString()); 
@@ -180,7 +180,7 @@ public class CMSContentPageController {
 			message.setMeta(content.getMeta());
 			String response ="";
 			try {
-				PageService svc = new PageService();
+				PageService svc = new PageService(Constants.path_repo);
 				svc.writePage("posts/"+content.getId(), content.getHtmlContent());
 				svc.writePage("posts/"+content.getId()+"_meta", content.getMeta());
 				//response = connector.getResponse(message);
@@ -213,7 +213,7 @@ public class CMSContentPageController {
 	        logger.info("Writing "+content.getMeta()  );
 	       
 			try {
-				PageService svc = new PageService();
+				PageService svc = new PageService(Constants.path_repo);
 				svc.writePage("templates/"+content.getId(), content.getHtmlContent());
 				
 			} catch (Exception e) {			
@@ -238,7 +238,7 @@ public class CMSContentPageController {
 	public String processBackup() {
 	    		String response ="<p>blank reply</p>";
 			try {		
-				PageService svc = new PageService();
+				PageService svc = new PageService(Constants.path_repo);
 				response = svc.readUpPageAll();
 			
 			} catch (Exception e) {			

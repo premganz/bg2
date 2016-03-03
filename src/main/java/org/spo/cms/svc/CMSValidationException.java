@@ -1,4 +1,4 @@
-package org.spo.cms2.svc;
+package org.spo.cms.svc;
 
 public class CMSValidationException extends RuntimeException{
 @Override

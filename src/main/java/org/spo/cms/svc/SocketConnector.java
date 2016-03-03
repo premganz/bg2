@@ -1,4 +1,4 @@
-package org.spo.cms2.svc;
+package org.spo.cms.svc;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -10,7 +10,7 @@ import java.net.Socket;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 
-import org.spo.cms2.model.QMessage;
+import org.spo.cms.model.QMessage;
 import org.springframework.stereotype.Component;
 @Component
 public class SocketConnector {
