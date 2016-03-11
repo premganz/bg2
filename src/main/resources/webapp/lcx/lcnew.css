@@ -34,6 +34,9 @@
 	width: auto;
 }
 
+
+
+
 #menu ul{
 	width: auto;
 	padding-bottom: 10px;
@@ -93,3 +96,13 @@
 	
 }
 
+highlight{
+	color: #000000 !important;
+	background-color: #9ffd06;
+	width: auto;
+	display: block;
+	font-weight: bold;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	width: auto;
+}
