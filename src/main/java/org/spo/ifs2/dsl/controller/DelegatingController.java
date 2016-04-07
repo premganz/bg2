@@ -50,7 +50,7 @@ public class DelegatingController{
 		TrxInfo info = null;
 		StateInfo state = null;
 		if(session.isNew()){
-			info = new TrxInfo(session, modelMap);
+			info = new TrxInfo(session, modelMap,request);
 			session.setAttribute("info",info);
 			state = new StateInfo(DSLConstants.EventType.REFRESHPAGE,trxId,"","",dataId);
 			info.put(new ScopeVar(Scope.TRX, "stateInfo"),state);
@@ -58,26 +58,12 @@ public class DelegatingController{
 			info = (TrxInfo)session.getAttribute("info");
 			info.refreshModelMap(modelMap);
 			state=info.getState();
+			
 		}
 
-		if(pageEvent==null){
-
-		}else{
-			if(state==null){
-				throw new DSLException();
-			}
-		}
-		//		StateInfo state = (StateInfo)session.getAttribute("state");
-		//		if(state==null){
-		//			state = new StateInfo(DSLConstants.EventType.REFRESHPAGE,trxId,"","",dataId);
-		//			session.setAttribute("state", state);
-		//		}
+		if(pageEvent!=null && state==null){				throw new DSLException();}
 		AbstractHandler handler = resolveHanlder(trxId);
-		if(pageEvent==null){
-			return handler.handle1(pageEvent,dataId,state,info,request);
-		}else{
-			return handler.handle1(pageEvent,dataId,state,info,request);
-		}
+		return handler.handle1(pageEvent,dataId,state,info,request);
 	}
 
 

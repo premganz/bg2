@@ -3,6 +3,7 @@ package org.spo.ifs2.dsl.controller;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.ModelMap;
@@ -36,7 +37,7 @@ public class TrxInfo {
 	}
 
 	
-	public TrxInfo(HttpSession session, ModelMap map){
+	public TrxInfo(HttpSession session, ModelMap map, HttpServletRequest request){
 		this.session=session;
 		info_req = new LinkedHashMap<ScopeVar,Object>() ;
 		info_trx = new LinkedHashMap<ScopeVar,Object>() ;

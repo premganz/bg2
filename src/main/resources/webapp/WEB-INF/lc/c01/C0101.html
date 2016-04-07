@@ -65,8 +65,8 @@
 				
 				
 						<ul>
-							<lh> <a style="cursor: pointer;" href="/home/A01T">Home</a> </lh>
-							<lh> <a style="cursor: pointer;" href="/home/B01T" >About</a> </lh>
+							<lh> <a th:text="Home" style="cursor: pointer;" th:href= "${menu.home_link_ref}"></a> </lh>	
+							<lh> <a th:text="About" style="cursor: pointer;" th:href= "${menu.about_link_ref}"></a> </lh>
 						</ul>
 						
 						<ul>

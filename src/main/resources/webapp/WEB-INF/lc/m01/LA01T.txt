@@ -1,5 +1,6 @@
 {
-	
+	"home_link_ref": "More on this",
+	"about_link_ref": "More on this",
 	"MENU_LINKS_IDEA_ZN": [
 		{
 			

@@ -65,8 +65,8 @@
 				
 				
 						<ul>
-							<lh> <a style="cursor: pointer;" href="/home/A01T">Home</a> </lh>
-							<lh> <a style="cursor: pointer;" href="/home/B01T" >About</a> </lh>
+							<lh> <a th:text="Home" style="cursor: pointer;" href= ${menu.home_link_ref}>></a> </lh>	
+							<lh> <a th:text="About" style="cursor: pointer;" href= ${menu.about_link_ref}>></a> </lh>
 						</ul>
 						
 						<ul>
@@ -143,7 +143,7 @@
  				</div>
  				<div th:utext="${message.contentObject.metaMap['contentid']}"></div>
 				<div th:switch="${message.page_id}">
-					<p th:case='A01T'><a href="http://info.flagcounter.com/fhT3"><img src="http://s01.flagcounter.com/count2/fhT3/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></img></a></p>					
+					<a href="http://info.flagcounter.com/fhT3"><img src="http://s01.flagcounter.com/count2/fhT3/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></img></a>					
 				</div>
 				</div>
 				<div class="col-lg-7  col-md-8 col-sm-8 ">

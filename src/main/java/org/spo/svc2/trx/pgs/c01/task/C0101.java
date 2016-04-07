@@ -14,6 +14,7 @@ import org.spo.svc2.trx.pgs.c01.cmd.CA01T;
 import org.spo.svc2.trx.pgs.c01.handler.C01Handler;
 import org.spo.svc2.trx.pgs.c01.toolkit.C01Toolkit;
 import org.spo.svc2.trx.pgs.m01.cmd.LA01T;
+import org.spo.svc2.trx.pgs.m01.handler.M01Handler;
 import org.spo.svc2.trx.pgs.mc.cmd.PostContent;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
@@ -87,7 +88,11 @@ public class C0101 extends AbstractTask {
 				navEvent.dataId=dataId;				
 				return navEvent;
 		}
-
+		else if(event.startsWith("EV_ABOUT")){			
+			NavEvent navEvent = C01Handler.EV_REFRESH_CONTENT;
+			navEvent.dataId="B01T";
+			return navEvent;
+		}
 		return C01Handler.EV_INIT_01;
 	}
 
