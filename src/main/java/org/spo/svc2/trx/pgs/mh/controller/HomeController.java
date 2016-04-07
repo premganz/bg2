@@ -27,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 /**
  * Handles requests for the application home page.
  */
-@Controller
+//@Controller
 public class HomeController {
 
     private static final Logger logger = LoggerFactory
@@ -46,7 +46,7 @@ public class HomeController {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {
        
-        return "redirect:home/A01T";
+        return "redirect:trx/M01/LA01T";
     }
 
     @RequestMapping(value="/home/{contentId}", method = RequestMethod.GET)
@@ -93,14 +93,14 @@ public class HomeController {
 				e.printStackTrace();
 			}
 	        
-	        return "lc/index1";
+	        return "index1";
 	 }
 	 
     
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String root(Locale locale, Model model) {
     	
-    	return "redirect:/home/A01T";
+    	  return "redirect:trx/M01/LA01T";
     }
     
     @RequestMapping(value = "/about", method = RequestMethod.GET)

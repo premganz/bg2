@@ -35,7 +35,7 @@ public class CMSContentPageController {
 		 content1.setHtmlContent("hello");
 		 model.addAttribute("content", content1);
 
-		 return "x_content";
+		 return "../cms/x_content";
 	 }
 	 
 	 @RequestMapping(value = "admin/entryTemplate", method = RequestMethod.GET)
@@ -44,7 +44,7 @@ public class CMSContentPageController {
 		 content1.setHtmlContent("hello");
 		 model.addAttribute("content", content1);
 
-		 return "y_content";
+		 return "../cms/y_content";
 	 }
 	 
 	 
@@ -196,7 +196,7 @@ public class CMSContentPageController {
 	    model.addAttribute("content", content);
 	     
 	   // model.clear();
-	    return "x_content";
+	    return "../cms/x_content";
 	}
 	
 	@RequestMapping(value="admin/submitContentTemplate")
@@ -230,7 +230,7 @@ public class CMSContentPageController {
 		response=response.equals("")?"<p>blank reply</p>":response;
 	    model.clear();
 	    model.addAttribute("content", content);
-	    return "y_content";
+	    return "../cms/y_content";
 	}
 	
 	@ResponseBody

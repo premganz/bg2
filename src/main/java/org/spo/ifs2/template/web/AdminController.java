@@ -50,7 +50,7 @@ public class AdminController {
     public String metrics(Locale locale, Model model) {
         logger.info("Welcome home! the client locale is " + locale.toString());
 
-        return "home";
+        return "../cms/home";
     }
     
     @RequestMapping(value = "/login1", method = RequestMethod.GET)

@@ -21,7 +21,8 @@ import org.springframework.stereotype.Controller;
 @ComponentScan(basePackages = {"org.spo.ifs2.config", 
 		"org.spo.ifs2.template",	
 		"org.spo.svc2.trx",
-		"org.spo.svc2.trx.pgs"
+		"org.spo.svc2.trx.pgs",
+		"org.spo.ifs2.dsl.model"
 		},
         excludeFilters = {@ComponentScan.Filter(Controller.class),
                 @ComponentScan.Filter(Configuration.class)})

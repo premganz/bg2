@@ -33,7 +33,8 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 		"org.spo.cms2.svc",
 		"org.spo.cms2.controller",		
 		"org.spo.svc2.trx",
-		"org.spo.svc2.trx.pgs"
+		"org.spo.svc2.trx.pgs",
+		"org.spo.ifs2.dsl.controller"
 		},
         includeFilters = {@ComponentScan.Filter(Controller.class)})
 
@@ -51,6 +52,8 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
        // registry.addViewController("/y_content").setViewName("lc/y_content");
         registry.addViewController("/contact").setViewName("lc/contact");
         registry.addViewController("/index1").setViewName("lc/index1");
+        registry.addViewController("/M0101").setViewName("lc/index1");
+        
 
     }
 
@@ -68,7 +71,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     public ServletContextTemplateResolver thymeleafTemplateResolver() {
         ServletContextTemplateResolver resolver =
                 new ServletContextTemplateResolver();
-        resolver.setPrefix("/WEB-INF/");
+        resolver.setPrefix("/WEB-INF/lc/");
         resolver.setSuffix(".html");
         resolver.setTemplateMode("HTML5");
         resolver.setCacheable(true);
