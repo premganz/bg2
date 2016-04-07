@@ -17,9 +17,9 @@
 			<param name="ConversionPattern" value="%d{yyyy-MM-dd, HH:mm:ss} %p - %m%n" />
 		</layout>
 	</appender>
-	<logger name="org.spo.fw.web.KeyWords">
-		<level value="error" />
-		<appender-ref ref="out" />
+	<logger name="org.spo">
+		<level value="debug" />
+		<appender-ref ref="out1" />
 	</logger>
 	<logger name="org.spo.fw.web.KeyWords">
 		<level value="debug" />
@@ -30,7 +30,7 @@
 		<appender-ref ref="FILE" />
 	</logger>
 	<root>
-		<priority value="debug" />
+		<priority value="error" />			
 		<appender-ref ref="out1" />
 	</root>
 </log4j:configuration>
