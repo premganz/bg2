@@ -93,7 +93,11 @@ public class M0101 extends AbstractTask {
 			navEvent.dataId="B01T";
 			return navEvent;
 		}
-
+		else if(event.startsWith("EV_BLOG")){		
+			NavEvent navEvent = M01Handler.EV_SWITCH_TO_BLOG_LANDING;
+			navEvent.dataId="LB01T";
+			return navEvent;
+		}
 		return M01Handler.EV_INIT_01;
 	}
 

@@ -22,9 +22,8 @@ public class M01Handler extends AbstractHandler{
    
   public static final NavEvent EV_INIT_01 =  NavEvent.create(EventType.REFRESHPAGE);
   public static final NavEvent EV_INIT_02 =  NavEvent.create(EventType.REFRESHPAGE);//loads m01/M0102
-  public static final NavEvent EV_SWITCH_TO_DTL =  NavEvent.create(EventType.TASKSET, "02");
+  public static final NavEvent EV_SWITCH_TO_BLOG_LANDING =  NavEvent.create(EventType.TASKSET, "02");
   public static final NavEvent EV_SWITCH_TO_CONTENT =  NavEvent.create(EventType.TRXSWITCH, "C01");
-  
   
    @Override
    public void configureChannel() {

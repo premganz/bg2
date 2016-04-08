@@ -12,7 +12,9 @@ public class NavEvent {
 	public NavEvent previousEvent;
 	public String url;
 
-	
+	public String getTaskId(){
+		return taskId;
+	}
 	public EventType getEventType(){
 		return this.eventType;
 	}
@@ -44,11 +46,40 @@ public class NavEvent {
 		}
 		return event;		
 	}
+	
+public static NavEvent blend(NavEvent eventIn, NavEvent event){
+		
+		
+		if(eventIn!=null){
+			if(event.trxId==null)event.trxId=eventIn.trxId;
+			if(event.dataId==null)event.dataId=eventIn.dataId;
+			if(event.eventId==null)event.eventId=eventIn.eventId;
+			if(event.taskId==null)event.taskId=eventIn.taskId;
+						
+			}
+		
+		return event;		
+	}
 	public static NavEvent create(DSLConstants.EventType type){
 		NavEvent event = new NavEvent(type);
 		return event;		
 	}
 	public String getRedirect(){return "";}
 
+	
+	@Override
+	public String toString() {
+		StringBuffer identifier= new StringBuffer();
+		identifier.append(eventType);
+		if((eventType.equals(DSLConstants.EventType.REFRESHPAGE)||eventType.equals(DSLConstants.EventType.TASKSET))){
+			identifier.append("->"+taskId);	
+		}else if(eventType.equals(DSLConstants.EventType.PROCESSEVENT)){
+			identifier.append("->"+eventId);
+		}else{
+			identifier.append("->"+trxId);
+		}
+		return identifier.toString()+super.toString();
+	}
+	
 
 }
