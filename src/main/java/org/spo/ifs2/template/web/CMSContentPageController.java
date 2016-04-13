@@ -1,5 +1,7 @@
 package org.spo.ifs2.template.web;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -34,7 +36,10 @@ public class CMSContentPageController {
 		 PostContent content1 = new PostContent();
 		 content1.setHtmlContent("hello");
 		 model.addAttribute("content", content1);
-
+		 PageService svc = new PageService(Constants.path_repo);
+		 List<String> list = svc.readFileCatalog("posts");
+		 Collections.sort(list);		 
+		 model.addAttribute("files",list);
 		 return "../cms/x_content";
 	 }
 	 
@@ -42,6 +47,10 @@ public class CMSContentPageController {
 	 public String homeTemplate(Locale locale, Model model) {
 		 PostContent content1 = new PostContent();
 		 content1.setHtmlContent("hello");
+		 PageService svc = new PageService(Constants.path_repo);
+		 List<String> list = svc.readFileCatalog("templates");
+		 Collections.sort(list);		 
+		 model.addAttribute("files",list);
 		 model.addAttribute("content", content1);
 
 		 return "../cms/y_content";
@@ -239,7 +248,7 @@ public class CMSContentPageController {
 	    		String response ="<p>blank reply</p>";
 			try {		
 				PageService svc = new PageService(Constants.path_repo);
-				response = svc.readUpPageAll();
+				response = svc.dumpFilesData();
 			
 			} catch (Exception e) {			
 				e.printStackTrace();

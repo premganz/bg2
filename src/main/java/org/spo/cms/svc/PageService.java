@@ -32,46 +32,7 @@ boolean testMode=false;
 	}
 	
 	
-	private String readUpPageUtils(File f){
-		
-		StringBuffer buf = new StringBuffer();
-			FileReader reader;
-			try {
-				reader = new FileReader(f);
-				BufferedReader readerBuf = new BufferedReader(reader);
-				try {
-					System.out.println("Trying to read path : "+f.getAbsolutePath()+"name: "+f.getName());
-					String line = readerBuf.readLine();
-					while(line!=null){
-						buf.append(line);
-						//buf.append("</br>");
-						line = readerBuf.readLine();
-					}
-					
-				} catch (Exception  e) {
-					e.printStackTrace();
-					buf.append("ERROR");
-				}finally{
-					try {
-						readerBuf.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-						buf.append("ERROR");
-					}
-				}
-			} catch (FileNotFoundException e1) {
-				buf.append("FILE not found");
-				e1.printStackTrace();
-			}
-		
-			
-		if(buf.toString().isEmpty()){
-			buf.append("BLANK");
-			buf.append("***EOL***");
-		}
-				return buf.toString();
-		
-	}
+
 	
 	public void writePage(String fileName, String content){
 		File f = null;
@@ -128,8 +89,8 @@ boolean testMode=false;
 		}
 		return resultList;
 	}
-	
-	public String readUpPageAll(){
+
+	public String dumpFilesData(){
 		StringBuffer buf = new StringBuffer();
 		String folderName=dataRootDir+"/"+"templates/";
 		File folder = new File(folderName);
@@ -154,6 +115,62 @@ boolean testMode=false;
 			        buf.append('\n'+"++++++EOF++++++: "+f.getName()+'\n');
 			      } 
 			    }
+				return buf.toString();
+		
+	}
+	
+	public List<String> readFileCatalog(String scenario){
+		File f = null;
+		ArrayList<String> resultList = new ArrayList<String>();
+		f= new File(dataRootDir+"/"+scenario);
+
+		File[] filesList = f.listFiles();
+		for (File file : filesList) {		
+			if (file.isFile() && !file.getName().endsWith("_meta.txt")) {				
+				resultList.add(file.getName().replaceAll(".txt",""));
+			}
+		}
+		return resultList;
+	}
+	
+	
+	private String readUpPageUtils(File f){
+		
+		StringBuffer buf = new StringBuffer();
+			FileReader reader;
+			try {
+				reader = new FileReader(f);
+				BufferedReader readerBuf = new BufferedReader(reader);
+				try {
+					System.out.println("Trying to read path : "+f.getAbsolutePath()+"name: "+f.getName());
+					String line = readerBuf.readLine();
+					while(line!=null){
+						buf.append(line);
+						//buf.append("</br>");
+						line = readerBuf.readLine();
+					}
+					
+				} catch (Exception  e) {
+					e.printStackTrace();
+					buf.append("ERROR");
+				}finally{
+					try {
+						readerBuf.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+						buf.append("ERROR");
+					}
+				}
+			} catch (FileNotFoundException e1) {
+				buf.append("FILE not found");
+				e1.printStackTrace();
+			}
+		
+			
+		if(buf.toString().isEmpty()){
+			buf.append("BLANK");
+			buf.append("***EOL***");
+		}
 				return buf.toString();
 		
 	}

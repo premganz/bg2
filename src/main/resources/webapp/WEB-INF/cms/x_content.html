@@ -42,14 +42,14 @@
 		$("#fetch1").click(function(){
 			
 		    $.ajax(
-		    	{url: "edit?fileName="+ $("#fileName").val(),async: false, 
+		    	{url: "edit?fileName="+ $("#fileselect").val(),async: false, 
 		    	success: function(result){
 		    		tinyMCE.activeEditor.setContent(result);
 		    		$("#fileName").prop("background-color", "PINK");
 		    	}
 		    	});
 		    $.ajax(
-			    	{url: "edit?fileName="+ $("#fileName").val()+"_meta",async: false, 
+			    	{url: "edit?fileName="+ $("#fileselect").val()+"_meta",async: false, 
 			    	success: function(result){
 			    		$("#fileMeta").prop("value", result);
 			    		$("#fileMeta").prop("background-color", "PINK");
@@ -108,8 +108,13 @@
 				<table>
 					<tr>
 						<td>
-							
-							<p>Post Content (use filename format eg M_C01)</p>
+							<p>
+							<select id="fileselect" >
+								<div th:each="link : ${files}">
+								<option th:text="${link}" ></option>					
+								</div>
+							</select>
+							</p>
 							 <h5><div th:utext="${content.formErrors}"></div></h5>
 							
 								<p>FileName : <input id="fileName" th:name="input" th:field="${content.id}" maxlength="100" />Meta : <input id="fileMeta" th:name="input" th:field="*{content.meta}" maxlength="500" /></p>

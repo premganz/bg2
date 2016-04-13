@@ -41,7 +41,7 @@
 		$(document).ready(function(){
 		$("#fetch1").click(function(){
 		    $.ajax(
-		    	{url: "editTemplate?fileName="+ $("#fileName").val(),
+		    	{url: "editTemplate?fileName="+ $("#fileselect").val(),
 		    			async: false, 
 		    			 dataType: 'json',
 		    	success: function(result){
@@ -71,7 +71,7 @@
 	
 	<div class="metadata" >
 	<table ><tr>
-	<td><h2>Post Controls</h2></td>
+	<td><h2>Template Controls</h2></td>
 	<td>
 	
                 <ul >
@@ -101,7 +101,13 @@
 					<tr>
 						<td>
 							
-							<p>Post Content (use filename format eg M_C01)</p>
+							<p>
+							<select id="fileselect" >
+								<div th:each="link : ${files}">
+								<option th:text="${link}" ></option>					
+								</div>
+							</select>
+							</p>
 							<div th:utext="${content.formErrors}"></div>
 							
 								<p>FileName : <input id="fileName" th:name="input" th:field="${content.id}" maxlength="100" /></p>
@@ -115,7 +121,7 @@
 		<div class="container">
 			<div class="row">
 				<p>					
-					<textarea id="mytextarea_template" th:field="*{content.htmlContent}" cols="80" rows="40"></textarea>
+					<textarea id="mytextarea_template" spellcheck="false" th:field="*{content.htmlContent}" cols="80" rows="40"></textarea>
 					<br></br> <input type="submit" id="doUpdate" name="_eventId_updateData" value="POST" onclick="return confirm('Are you sure you want to save?');"/>
 				</p>
 
