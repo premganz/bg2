@@ -2,7 +2,7 @@ package org.spo.ifs.template;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spo.ifs.config.RootConfiguration;
+import org.spo.ifs2.config.RootConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -56,22 +56,34 @@ public class Main {
             applicationContext.registerShutdownHook();
             applicationContext.register(RootConfiguration.class);
             applicationContext.refresh();
-            AnnotationConfigApplicationContext applicationContext1 = new AnnotationConfigApplicationContext();
-            applicationContext1.addApplicationListener(new ApplicationListener<ContextRefreshedEvent>() {
-               
-                public void onApplicationEvent(
-                        ContextRefreshedEvent event) {
-                    ApplicationContext ctx = event.getApplicationContext();
-                    if (ctx instanceof AnnotationConfigWebApplicationContext) {
-                        webApplicationContextInitialized = true;
-                    }
-                }
-            });
-
-    applicationContext1.registerShutdownHook();
-    
-            applicationContext1.register(org.spo.ifs2.config.RootConfiguration.class);
-            applicationContext1.refresh();
+         
+            /*In case you want to start a  second container and jetty instance on a seperate port
+             * All you need to do is to uncommment the part below, create a new folder called ifs3 and copy the entire ifs2 into it, 
+             * Make sure you also create a new svc3 as a replica of svc2 and then you map the whole thing svc3 to ifs3 and 
+             * you are ready to go. 
+             *  
+             */
+            
+            
+            
+            
+//            
+//            AnnotationConfigApplicationContext applicationContext1 = new AnnotationConfigApplicationContext();
+//            applicationContext1.addApplicationListener(new ApplicationListener<ContextRefreshedEvent>() {
+//               
+//                public void onApplicationEvent(
+//                        ContextRefreshedEvent event) {
+//                    ApplicationContext ctx = event.getApplicationContext();
+//                    if (ctx instanceof AnnotationConfigWebApplicationContext) {
+//                        webApplicationContextInitialized = true;
+//                    }
+//                }
+//            });
+//
+//    applicationContext1.registerShutdownHook();
+//    
+//            applicationContext1.register(org.spo.ifs.config.RootConfiguration.class);
+//            applicationContext1.refresh();
             if (!webApplicationContextInitialized) {
                 logger.error("Web application context not initialized. Exiting.");
                 System.exit(1);

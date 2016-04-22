@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spo.ifs2.dsl.controller.TrxInfo.Scope;
+import org.spo.ifs2.template.web.Constants;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -30,17 +31,19 @@ public class DelegatingController{
 	protected static final Logger logger = LoggerFactory.getLogger(AbstractHandler.class);
 	@Autowired
 	private ApplicationContext appContext;
+	@Autowired
+	Constants constants;
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 
-		return "redirect:trx/M01/LA01T";
+		return "redirect:"+constants.getLandingPage();
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String root(Locale locale, Model model) {
 
-		return "redirect:trx/M01/LA01T";
+		return "redirect:"+constants.getLandingPage();
 	}
 
 	@RequestMapping(value="/trx/{trxId}/{dataId}", method = RequestMethod.GET)

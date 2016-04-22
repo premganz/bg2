@@ -30,7 +30,7 @@
 		<appender-ref ref="FILE" />
 	</logger>
 	<root>
-		<priority value="error" />			
+		<priority value="debug" />			
 		<appender-ref ref="out1" />
 	</root>
 </log4j:configuration>

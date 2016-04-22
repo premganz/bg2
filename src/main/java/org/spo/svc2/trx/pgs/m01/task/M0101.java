@@ -10,23 +10,25 @@ import org.spo.ifs2.dsl.controller.NavEvent;
 import org.spo.ifs2.dsl.controller.TrxInfo;
 import org.spo.ifs2.dsl.model.AbstractTask;
 import org.spo.ifs2.template.web.Constants;
-import org.spo.svc2.trx.pgs.c01.cmd.CA01T;
 import org.spo.svc2.trx.pgs.m01.cmd.LA01T;
 import org.spo.svc2.trx.pgs.m01.handler.M01Handler;
-import org.spo.svc2.trx.pgs.mc.cmd.PostContent;
+import org.spo.svc2.trxdemo.pgs.c01.cmd.CA01T;
+import org.spo.svc2.trxdemo.pgs.mc.cmd.PostContent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.ModelMap;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-@Component
+@Component 
 public class M0101 extends AbstractTask {
 
-
+	@Autowired 
+	public PageService pageService; 
+	
 
 	private static final Logger logger = LoggerFactory.getLogger(M0101.class);
-
 	
 	private SocketConnector connector=new SocketConnector();
 	
@@ -34,11 +36,10 @@ public class M0101 extends AbstractTask {
 	public NavEvent initTask(String dataId, TrxInfo info) throws Exception {
 
 		String contentId= dataId;
-		PageService svc = new PageService(Constants.path_repo);
 		String response="";
 		String response_content="";
 
-		response = svc.readUpPage("templates", contentId);
+		response = pageService.readUpPage("templates", contentId);
 
 		String dataId_Content="" ;
 		if(dataId.equals("LA01T")){
@@ -47,7 +48,7 @@ public class M0101 extends AbstractTask {
 
 		}
 
-		response_content = svc.readUpPage("templates", dataId_Content);
+		response_content = pageService.readUpPage("templates", dataId_Content);
 
 		try{
 			Gson gson = new Gson();
@@ -58,8 +59,8 @@ public class M0101 extends AbstractTask {
 			CA01T cmd= gson.fromJson(response_content,typ);		
 			if(cmd.getPage_content_type_cd().equals("1")){
 				String contentId1 = cmd.getPage_content_text();
-				response = svc.readUpPage("posts", contentId1);
-				String response_meta = svc.readUpPage("posts", contentId1+"_meta");
+				response = pageService.readUpPage("posts", contentId1);
+				String response_meta = pageService.readUpPage("posts", contentId1+"_meta");
 				response=response.equals("")?"<p>blank reply</p>":response;				
 				cmd.setPage_content_text(response);	
 				PostContent contentObj = new PostContent();

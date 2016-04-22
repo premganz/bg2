@@ -3,7 +3,6 @@ package org.spo.svc2.trx.pgs.m01.handler;
 import org.spo.ifs2.dsl.controller.AbstractHandler;
 import org.spo.ifs2.dsl.controller.DSLConstants.EventType;
 import org.spo.ifs2.dsl.controller.NavEvent;
-import org.spo.ifs2.dsl.controller.StateInfo;
 import org.spo.svc2.trx.pgs.m01.task.M0101;
 import org.spo.svc2.trx.pgs.m01.task.M0102;
 import org.springframework.beans.factory.annotation.Autowired;

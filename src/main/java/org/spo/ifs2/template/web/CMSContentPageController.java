@@ -9,7 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.spo.cms.model.QMessage;
 import org.spo.cms.svc.PageService;
 import org.spo.cms.svc.SocketConnector;
-import org.spo.svc2.trx.pgs.mc.cmd.PostContent;
+import org.spo.svc2.trxdemo.pgs.mc.cmd.PostContent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -22,8 +24,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CMSContentPageController {
-
-    private static final Logger logger = LoggerFactory
+	@Autowired @Lazy
+	public PageService pageService; 
+    
+	private static final Logger logger = LoggerFactory
             .getLogger(CMSContentPageController.class);
 
    
@@ -36,24 +40,22 @@ public class CMSContentPageController {
 		 PostContent content1 = new PostContent();
 		 content1.setHtmlContent("hello");
 		 model.addAttribute("content", content1);
-		 PageService svc = new PageService(Constants.path_repo);
-		 List<String> list = svc.readFileCatalog("posts");
+		 List<String> list = pageService.readFileCatalog("posts");
 		 Collections.sort(list);		 
 		 model.addAttribute("files",list);
-		 return "../cms/x_content";
+		 return "x_content";
 	 }
 	 
 	 @RequestMapping(value = "admin/entryTemplate", method = RequestMethod.GET)
 	 public String homeTemplate(Locale locale, Model model) {
 		 PostContent content1 = new PostContent();
 		 content1.setHtmlContent("hello");
-		 PageService svc = new PageService(Constants.path_repo);
-		 List<String> list = svc.readFileCatalog("templates");
+		 List<String> list = pageService.readFileCatalog("templates");
 		 Collections.sort(list);		 
 		 model.addAttribute("files",list);
 		 model.addAttribute("content", content1);
 
-		 return "../cms/y_content";
+		 return "y_content";
 	 }
 	 
 	 
@@ -113,9 +115,8 @@ public class CMSContentPageController {
 				
 				String response ="<p>blank reply</p>";
 				try {		
-					PageService svc = new PageService(Constants.path_repo);
-					response = svc.readUpPage("posts", fileName);
-					String response_meta = svc.readUpPage("posts", fileName+"_meta");
+					response = pageService.readUpPage("posts", fileName);
+					String response_meta = pageService.readUpPage("posts", fileName+"_meta");
 					//response = connector.getResponse(message);
 					//TextMessage reply = sender.simpleSend(message.toString()); 
 					//response=reply.getText();
@@ -150,8 +151,7 @@ public class CMSContentPageController {
 				message.setMeta(metaValue);
 				String response ="<p>blank reply</p>";
 				try {		
-					PageService svc = new PageService(Constants.path_repo);
-					response = svc.readUpPage("templates", metaValue);
+					response = pageService.readUpPage("templates", metaValue);
 					//response = connector.getResponse(message);
 					//TextMessage reply = sender.simpleSend(message.toString()); 
 					//response=reply.getText();
@@ -189,9 +189,8 @@ public class CMSContentPageController {
 			message.setMeta(content.getMeta());
 			String response ="";
 			try {
-				PageService svc = new PageService(Constants.path_repo);
-				svc.writePage("posts/"+content.getId(), content.getHtmlContent());
-				svc.writePage("posts/"+content.getId()+"_meta", content.getMeta());
+				pageService.writePage("posts/"+content.getId(), content.getHtmlContent());
+				pageService.writePage("posts/"+content.getId()+"_meta", content.getMeta());
 				//response = connector.getResponse(message);
 				//TextMessage reply = sender.simpleSend(message.toString()); 
 				//response=reply.getText();
@@ -205,7 +204,7 @@ public class CMSContentPageController {
 	    model.addAttribute("content", content);
 	     
 	   // model.clear();
-	    return "../cms/x_content";
+	    return "x_content";
 	}
 	
 	@RequestMapping(value="admin/submitContentTemplate")
@@ -222,8 +221,7 @@ public class CMSContentPageController {
 	        logger.info("Writing "+content.getMeta()  );
 	       
 			try {
-				PageService svc = new PageService(Constants.path_repo);
-				svc.writePage("templates/"+content.getId(), content.getHtmlContent());
+				pageService.writePage("templates/"+content.getId(), content.getHtmlContent());
 				
 			} catch (Exception e) {			
 				e.printStackTrace();
@@ -239,7 +237,7 @@ public class CMSContentPageController {
 		response=response.equals("")?"<p>blank reply</p>":response;
 	    model.clear();
 	    model.addAttribute("content", content);
-	    return "../cms/y_content";
+	    return "y_content";
 	}
 	
 	@ResponseBody
@@ -247,8 +245,7 @@ public class CMSContentPageController {
 	public String processBackup() {
 	    		String response ="<p>blank reply</p>";
 			try {		
-				PageService svc = new PageService(Constants.path_repo);
-				response = svc.dumpFilesData();
+				response = pageService.dumpFilesData();
 			
 			} catch (Exception e) {			
 				e.printStackTrace();

@@ -2,6 +2,7 @@ package org.spo.ifs2.config;
 
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.health.HealthCheckRegistry;
+
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.stereotype.Controller;
@@ -18,11 +19,15 @@ import org.springframework.stereotype.Controller;
  */
 @Configuration
 @Import({org.spo.ifs2.config.JettyConfiguration.class, org.spo.ifs2.config.SpringSecurityConfig.class})
+//@ImportResource({"classpath:META-INF/spring/root-context.xml"})
 @ComponentScan(basePackages = {"org.spo.ifs2.config", 
 		"org.spo.ifs2.template",	
 		"org.spo.svc2.trx",
 		"org.spo.svc2.trx.pgs",
-		"org.spo.ifs2.dsl.model"
+		"org.spo.ifs2.dsl.model",
+		"org.spo.ifs2.template.web",
+		"org.spo.svc2.trx.def",
+		"org.spo.cms.svc"
 		},
         excludeFilters = {@ComponentScan.Filter(Controller.class),
                 @ComponentScan.Filter(Configuration.class)})

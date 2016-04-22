@@ -11,22 +11,32 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.spo.ifs2.template.web.Constants;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
+@Component
 public class PageService {
-	String dataRootDir ;
+	@Autowired
+	private Constants constants;
+
+	//private String dataRootDir ;
 	
 	public PageService(String rootDir){
-		this.dataRootDir=rootDir;
+	}
+	
+	
+	public PageService(){
 	}
 	
 boolean testMode=false;
 	public String readUpPage(String scenario, String pageName){
 		File f = null;
 		if(scenario!=null){
-			f= new File(dataRootDir+"/"+scenario+"/"+pageName+".txt");
+			f= new File(constants.getRepoPath()+"/"+scenario+"/"+pageName+".txt");
 		}else{
-			f= new File(dataRootDir+"/"+pageName+".txt");
+			f= new File(constants.getRepoPath()+"/"+pageName+".txt");
 		}
 		return readUpPageUtils(f);
 	}
@@ -41,8 +51,8 @@ boolean testMode=false;
 		
 		
 		BufferedWriter writerBuf = null;
-		System.out.println("writing to file "+dataRootDir+"/"+fileName+".txt");
-			f= new File(dataRootDir+"/"+fileName+".txt");
+		System.out.println("writing to file "+constants.getRepoPath()+"/"+fileName+".txt");
+			f= new File(constants.getRepoPath()+"/"+fileName+".txt");
 			FileWriter writer;
 			try {
 				writer= new FileWriter(f);
@@ -92,7 +102,7 @@ boolean testMode=false;
 
 	public String dumpFilesData(){
 		StringBuffer buf = new StringBuffer();
-		String folderName=dataRootDir+"/"+"templates/";
+		String folderName=constants.getRepoPath()+"/"+"templates/";
 		File folder = new File(folderName);
 		File[] listOfFiles = folder.listFiles();
 		    for (int i = 0; i < listOfFiles.length; i++) {
@@ -104,7 +114,7 @@ boolean testMode=false;
 		      } 
 		    }
 		    buf.append("++++++SECTION++++++: POSTS");
-		    folderName = dataRootDir+"/"+"posts/";
+		    folderName = constants.getRepoPath()+"/"+"posts/";
 		    folder = new File(folderName);
 			listOfFiles = folder.listFiles();
 			    for (int i = 0; i < listOfFiles.length; i++) {
@@ -122,7 +132,7 @@ boolean testMode=false;
 	public List<String> readFileCatalog(String scenario){
 		File f = null;
 		ArrayList<String> resultList = new ArrayList<String>();
-		f= new File(dataRootDir+"/"+scenario);
+		f= new File(constants.getRepoPath()+"/"+scenario);
 
 		File[] filesList = f.listFiles();
 		for (File file : filesList) {		
@@ -174,5 +184,12 @@ boolean testMode=false;
 				return buf.toString();
 		
 	}
+
+
+
+
+	
+	
+	
 	
 }

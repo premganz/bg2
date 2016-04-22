@@ -29,9 +29,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 @EnableWebMvc
 @Configuration
 @ComponentScan(useDefaultFilters = false, basePackages = {
-		"org.spo.ifs2.template",	
-		"org.spo.cms2.svc",
-		"org.spo.cms2.controller",		
+		
 		"org.spo.svc2.trx",
 		"org.spo.svc2.trx.pgs",
 		"org.spo.ifs2.dsl.controller"
@@ -48,11 +46,11 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
         /* Mapping to the login view. */
         registry.addViewController("/login1").setViewName("lc/login1");
        // registry.addViewController("/debug").setViewName("lc/debug");
-       // registry.addViewController("/x_content").setViewName("lc/x_content");
-       // registry.addViewController("/y_content").setViewName("lc/y_content");
+        //registry.addViewController("/x_content").setViewName("cms/x_content");
+        //registry.addViewController("/y_content").setViewName("cms/y_content");
         registry.addViewController("/contact").setViewName("lc/contact");
         registry.addViewController("/index1").setViewName("lc/index1");
-        registry.addViewController("/M0101").setViewName("lc/index1");
+      
         
 
     }
@@ -71,7 +69,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     public ServletContextTemplateResolver thymeleafTemplateResolver() {
         ServletContextTemplateResolver resolver =
                 new ServletContextTemplateResolver();
-        resolver.setPrefix("/WEB-INF/lc/");
+        resolver.setPrefix("/WEB-INF/");
         resolver.setSuffix(".html");
         resolver.setTemplateMode("HTML5");
         resolver.setCacheable(true);

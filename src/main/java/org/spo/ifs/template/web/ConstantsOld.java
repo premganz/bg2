@@ -1,26 +1,22 @@
-package org.spo.ifs2.template.web;
+package org.spo.ifs.template.web;
 
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public interface Constants {	
+public class ConstantsOld {	
 	
-	//public  String path_repo = "/usr/local/share/data-cms/lc";
+	public static String path_repo = "/usr/local/share/data-cms/lc";
 	//public static  String path_repo = "C:\\Users\\premganesh\\git\\bg1_3\\src\\main\\resources\\data-cms";
 	
-	public String getRepoPath();
-	public String getLandingPage();//trx/M01/LA01T
+	static{
+		if(!System.getProperty("os.name").startsWith("Windows")){
+			path_repo = "/usr/local/share/data-cms/lc";
+		}else{
+			path_repo = "C:\\Users\\premganesh\\git\\bg1_3\\src\\main\\resources\\data-cms";
+		}
+	}
 	
-	
-//	{
-//		if(!System.getProperty("os.name").startsWith("Windows")){
-//			path_repo = "/usr/local/share/data-cms/lc";
-//		}else{
-//			path_repo = "C:\\Users\\premganesh\\git\\bg1_3\\src\\main\\resources\\data-cms";
-//		}
-//	}
-//	
 //	static{
 //		URL resourceUrl = Constants.class.getResource("/data-cms");
 //		String resourcePath;

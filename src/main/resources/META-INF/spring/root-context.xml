@@ -30,4 +30,10 @@
 		<property name="connectionFactory" ref="connectionFactory" />
 		<property name="defaultDestination" ref="defaultDestination" />
 	</bean>
+	<!-- 
+	<bean id="pageService" class="org.spo.cms.svc.PageService">
+		<property name="dataRootDir" value="C:\\Users\\premganesh\\git\\bg1_3\\src\\main\\resources\\data-cms" />
+	</bean>
+	 -->
+
 </beans>
