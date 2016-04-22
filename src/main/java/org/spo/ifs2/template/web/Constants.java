@@ -11,7 +11,7 @@ public interface Constants {
 	
 	public String getRepoPath();
 	public String getLandingPage();//trx/M01/LA01T
-	
+	public int getPortNumber();
 	
 //	{
 //		if(!System.getProperty("os.name").startsWith("Windows")){

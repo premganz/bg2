@@ -28,15 +28,14 @@ package org.spo.ifs2.config;
 
 import java.io.IOException;
 
-import org.eclipse.jetty.server.HttpConnection;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.spo.ifs2.template.web.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -63,13 +62,16 @@ public class JettyConfiguration {
     private ApplicationContext applicationContext;
 
     @Autowired
+    private Constants constants;
+    
+    @Autowired
     private MetricRegistry metricRegistry;
 
     @Autowired
     private HealthCheckRegistry metricsHealthCheckRegistry;
 
-    @Value("${jetty.port:8089}")
-    private int jettyPort;
+    //@Value("${jetty.port:8089}")
+    //private int jettyPort;
 
     private void addMetricsServlet(WebAppContext webAppContext) {
 
@@ -129,7 +131,7 @@ public class JettyConfiguration {
         ServerConnector  httpConnector = new ServerConnector(server);
      
     //    ServerConnector  ajpConnector = new org.eclipse.jetty.ajp.Ajp13SocketConnector();
-        httpConnector.setPort(jettyPort);
+        httpConnector.setPort(constants.getPortNumber());
         //ajpConnector.setPort(8009);
         //httpConnector.setHost("mergersandamalgamations.com");
         server.addConnector(httpConnector);
@@ -144,4 +146,15 @@ public class JettyConfiguration {
 
         return server;
     }
+
+	public Constants getConstants() {
+		return constants;
+	}
+
+	public void setConstants(Constants constants) {
+		this.constants = constants;
+	}
+    
+    
+    
 }
